@@ -1,0 +1,11 @@
+<div class="container" infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" (scrolled)="onScroll()"
+  [scrollWindow]="true" [fromRoot]="true">
+  <div class="product" *ngFor="let book of books">
+    <a routerLink="/book/{{book.id}}" class="product__imgContainer">
+      <img class="product__img" [src]="book.coverPhoto">
+    </a>
+    <p class="product__name">
+      {{book.title}}
+    </p>
+  </div>
+</div>
