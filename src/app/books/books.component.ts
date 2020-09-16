@@ -10,7 +10,7 @@ import { Book } from '../models/book';
 export class BooksComponent implements OnInit {
   constructor(private bookService: BooksService) {}
   books: Book[] = [];
-  limit = 10;
+  limit = 12;
   skip = 0;
   getLimitedBooks(limit: number, skip: number): void {
     this.bookService
