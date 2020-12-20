@@ -7,7 +7,7 @@
           <span class="product__label product__label--bestseller" *ngIf="book.bestseller">bestseller</span>
           <span class="product__label product__label--new" *ngIf="book.new">nowość</span>
         </div>
-        <img class="product__img" [src]="book.coverPhoto">
+        <img [alt]="book.title" class="product__img" [src]="book.coverPhoto">
       </a>
       <p class="product__name">
         {{book.title}}
