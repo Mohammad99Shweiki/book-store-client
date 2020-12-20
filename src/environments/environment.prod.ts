@@ -1,3 +1,4 @@
 export const environment = {
-  production: true
+  production: true,
+  serverUrL: 'https://book-server-pawelblaszczyk.herokuapp.com/'
 };
