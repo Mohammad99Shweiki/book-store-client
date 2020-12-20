@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { BooksService } from '../books.service';
-import { Book } from '../models/book';
+import {Component, OnInit} from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
+import {BooksService} from '../books.service';
+import {Book} from '../models/book';
+import {Review} from '../models/review';
+import {ReviewsService} from '../reviews.service';
 
 @Component({
   selector: 'app-book',
@@ -11,15 +13,25 @@ import { Book } from '../models/book';
 export class BookComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
-    private bookService: BooksService
-  ) {}
-  book: Book;
-  ngOnInit(): void {
-    this.getHero();
-    console.log(this);
+    private booksService: BooksService,
+    private reviewsService: ReviewsService
+  ) {
   }
-  getHero(): void {
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.bookService.getBook(id).subscribe((book) => (this.book = book));
+
+  book: Book;
+  reviews: Review[];
+
+  ngOnInit(): void {
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.getBook(id);
+    this.getReviews(id);
+  }
+
+  getBook(id): void {
+    this.booksService.getBook(id).subscribe((book) => this.book = book);
+  }
+
+  getReviews(id): void {
+    this.reviewsService.getReviewsByBookId(id).subscribe((reviews) => this.reviews = reviews);
   }
 }

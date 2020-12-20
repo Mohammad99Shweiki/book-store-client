@@ -1,4 +1,20 @@
-<p *ngIf="book">
-  {{ book.title }}
-</p>
-<p>asd</p>
+<div *ngIf="book" class="product">
+  <img class="product__img" [src]="book.coverPhoto" alt=""/>
+  <p class="product__name">
+    {{book.title}}
+  </p>
+  <p class="product__author">
+    {{book.author}}
+  </p>
+  <p class="product__price">
+    <span [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:' '}} PLN</span>
+    <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:' '}}
+      PLN</span>
+  </p>
+  <div class="product__reviews">
+    <div *ngFor="let review of reviews" class="product__review">
+      {{review.reviewText}}
+    </div>
+  </div>
+</div>
+
