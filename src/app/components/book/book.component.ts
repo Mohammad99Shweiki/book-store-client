@@ -1,9 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {BooksService} from '../books.service';
-import {Book} from '../models/book';
-import {Review} from '../models/review';
-import {ReviewsService} from '../reviews.service';
+import {BooksService} from '../../services/books.service';
+import {Book} from '../../models/book';
+import {Review} from '../../models/review';
+import {ReviewsService} from '../../services/reviews.service';
 
 @Component({
   selector: 'app-book',
