@@ -1,0 +1,10 @@
+<div class="container" infiniteScroll
+     [infiniteScrollDistance]="2"
+     [infiniteScrollThrottle]="50"
+     (scrolled)="onScroll()"
+     [scrollWindow]="true"
+     [fromRoot]="true">
+    <app-book-overview class="book" *ngFor="let book of books"
+                       [book]="book">
+    </app-book-overview>
+</div>

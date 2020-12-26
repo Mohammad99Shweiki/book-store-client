@@ -6,11 +6,11 @@ import {Review} from '../../models/review';
 import {ReviewsService} from '../../services/reviews.service';
 
 @Component({
-  selector: 'app-book',
-  templateUrl: './book.component.html',
-  styleUrls: ['./book.component.css'],
+  selector: 'app-book-details',
+  templateUrl: './book-details.component.html',
+  styleUrls: ['./book-details.component.css'],
 })
-export class BookComponent implements OnInit {
+export class BookDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private booksService: BooksService,
@@ -22,16 +22,16 @@ export class BookComponent implements OnInit {
   reviews: Review[];
 
   ngOnInit(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+    const id: number = Number(this.route.snapshot.paramMap.get('id'));
     this.getBook(id);
     this.getReviews(id);
   }
 
   getBook(id): void {
-    this.booksService.getBook(id).subscribe((book) => this.book = book);
+    this.booksService.getBook(id).subscribe((book: Book) => this.book = book);
   }
 
   getReviews(id): void {
-    this.reviewsService.getReviewsByBookId(id).subscribe((reviews) => this.reviews = reviews);
+    this.reviewsService.getReviewsByBookId(id).subscribe((reviews: Array<Review>) => this.reviews = reviews);
   }
 }

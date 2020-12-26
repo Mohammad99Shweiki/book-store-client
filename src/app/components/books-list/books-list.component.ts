@@ -3,23 +3,25 @@ import { BooksService } from '../../services/books.service';
 import { Book } from '../../models/book';
 
 @Component({
-  selector: 'app-books',
-  templateUrl: './books.component.html',
-  styleUrls: ['./books.component.css'],
+  selector: 'app-books-list',
+  templateUrl: './books-list.component.html',
+  styleUrls: ['./books-list.component.css'],
 })
-export class BooksComponent implements OnInit {
+export class BooksListComponent implements OnInit {
   constructor(private booksService: BooksService) {}
   books: Book[] = [];
-  limit = 12;
-  skip = 0;
+  limit: number = 12;
+  skip: number = 0;
+
+  ngOnInit(): void {
+    this.getLimitedBooks(this.limit, this.skip);
+  }
+
   getLimitedBooks(limit: number, skip: number): void {
     this.booksService
       .getBooksWithLimitAndSkip(limit, skip)
-      .subscribe((books) => this.books.push(...books));
+      .subscribe((books: Array<Book>) => this.books.push(...books));
     this.skip += limit;
-  }
-  ngOnInit(): void {
-    this.getLimitedBooks(this.limit, this.skip);
   }
 
   onScroll(): void {

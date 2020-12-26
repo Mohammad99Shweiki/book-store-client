@@ -77,7 +77,6 @@
     "typedef": [
       true,
       "call-signature",
-      "arrow-call-signature",
       "arrow-parameter",
       "property-declaration",
       "variable-declaration",

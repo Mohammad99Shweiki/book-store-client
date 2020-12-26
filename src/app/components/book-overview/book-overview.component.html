@@ -1,0 +1,25 @@
+<div class="product">
+  <div class="product__box">
+    <a routerLink="/book/{{book.id}}" class="product__imgContainer">
+      <div class="product__labelsContainer">
+        <span class="product__label product__label--bestseller" *ngIf="book.bestseller">bestseller</span>
+        <span class="product__label product__label--new" *ngIf="book.new">nowość</span>
+      </div>
+      <img [alt]="book.title" class="product__img" [src]="book.coverPhoto">
+    </a>
+    <p class="product__name">
+      {{book.title}}
+    </p>
+    <p class="product__author">
+      {{book.author}}
+    </p>
+    <p class="product__price">
+      <span [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:' '}} PLN</span>
+      <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:' '}}
+        PLN</span>
+    </p>
+    <a routerLink="/book/{{book.id}}" class="product__button">
+      Zobacz więcej
+    </a>
+  </div>
+</div>
