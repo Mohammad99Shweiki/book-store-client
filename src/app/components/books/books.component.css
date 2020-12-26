@@ -67,6 +67,7 @@
 }
 
 .product__name {
+  font-family: 'Raleway', sans-serif;
   font-size: 1.125em;
   line-height: 1.3em;
   height: 2.6em;

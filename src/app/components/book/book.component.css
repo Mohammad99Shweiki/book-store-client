@@ -18,6 +18,7 @@
 }
 
 .product__name {
+  font-family: 'Raleway', sans-serif;
   font-weight: 700;
   font-size: 2em;
   grid-area: name;
