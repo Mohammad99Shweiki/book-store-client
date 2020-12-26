@@ -1,0 +1,13 @@
+.rating__result {
+  position: absolute;
+  color: #EF233C;
+  top: 0;
+  overflow: hidden;
+  height: 100%;
+}
+
+.rating__maximum {
+  position: relative;
+  color: #8D99AE;
+  width: fit-content;
+}

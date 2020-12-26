@@ -1,0 +1,8 @@
+<div class="rating">
+  <div class="rating__maximum">
+    <fa-icon *ngFor="let item of [].constructor(5)" [icon]="faStar"></fa-icon>
+    <div class="rating__result" [ngStyle]="resolveRatingWidth()">
+      <fa-icon *ngFor="let item of [].constructor(rating)" [icon]="faStar"></fa-icon>
+    </div>
+  </div>
+</div>

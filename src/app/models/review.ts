@@ -3,4 +3,5 @@ export interface Review {
   bookId: number;
   reviewText: string;
   rating: number;
+  reviewDate: number;
 }

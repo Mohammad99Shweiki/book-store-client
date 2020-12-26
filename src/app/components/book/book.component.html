@@ -13,7 +13,7 @@
   </p>
   <div class="product__reviews">
     <div *ngFor="let review of reviews" class="product__review">
-      {{review.reviewText}}
+      <app-review [review]="review"></app-review>
     </div>
   </div>
 </div>
