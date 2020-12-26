@@ -7,14 +7,40 @@
     {{book.author}}
   </p>
   <p class="product__price">
-    <span [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:' '}} PLN</span>
-    <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:' '}}
-      PLN</span>
+    <span [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:'&nbsp;'}}&nbsp;PLN</span>
+    <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:'&nbsp;'}}&nbsp;PLN</span>
   </p>
-  <div class="product__reviews">
-    <div *ngFor="let review of reviews" class="product__review">
-      <app-review [review]="review"></app-review>
+  <button class="product__button product__button--basket">
+    Dodaj do koszyka
+  </button>
+  <button class="product__button product__button--buy">
+    Kup teraz
+  </button>
+  <div class="product__info">
+    <div class="product__tabs">
+      <a (click)="changeActiveTab('description')" class="product__tab">
+        Opis
+      </a>
+      <a (click)="changeActiveTab('details')" class="product__tab">
+        Informacje
+      </a>
+      <a (click)="changeActiveTab('reviews')" class="product__tab">
+        Opinie
+      </a>
+    </div>
+    <div *ngIf="activeTab === 'description'">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus asperiores consequatur ducimus error eveniet ex excepturi in iure minus, nemo nesciunt omnis optio perferendis, perspiciatis possimus, quam recusandae tempore vitae.
+    </div>
+    <div *ngIf="activeTab === 'details'">
+
+    </div>
+    <div *ngIf="activeTab === 'reviews'" class="product__reviews">
+      <app-review *ngFor="let review of reviews"
+                  class="product__review"
+                  [review]="review">
+      </app-review>
     </div>
   </div>
+
 </div>
 

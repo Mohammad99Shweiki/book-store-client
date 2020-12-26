@@ -9,7 +9,9 @@
     "photo photo"
     "name name"
     "author price"
-    "reviews reviews"
+    "basket basket"
+    "buy buy"
+    "info info"
 }
 
 .product__img {
@@ -20,22 +22,23 @@
 .product__name {
   font-family: 'Raleway', sans-serif;
   font-weight: 700;
-  font-size: 2em;
+  font-size: 1.8em;
   grid-area: name;
-  margin: 0.5em 0;
+  margin: 0.4em 0 0.2em;
 }
 
 .product__author {
   grid-area: author;
-  font-size: 1.125em;
-  line-height: 1.3em;
+  font-size: 1.2em;
+  align-self: flex-end;
 }
 
 .product__price {
-  font-size: 1.125em;
+  font-size: 1.5em;
+  font-weight: 600;
   grid-area: price;
   text-align: right;
-  line-height: 1.3em;
+  align-self: flex-end;
 }
 
 .product__price--discounted {
@@ -45,10 +48,61 @@
 
 .product__pricePromo {
   font-weight: 600;
-  font-size: 1.125em;
+  font-size: 1.05em;
   color: #ef233c;
 }
 
-.product__reviews{
-  grid-area: reviews;
+.product__reviews {
+
+}
+
+.product__info {
+  grid-area: info;
+}
+
+.product__tabs {
+  display: flex;
+}
+
+.product__tab {
+  background-color: #EDF2F4;
+  width: 33%;
+  padding: 10px;
+  margin: 20px 0;
+  font-weight: 600;
+  text-align: center;
+  border: 2px solid #2B2D42;
+  cursor: pointer;
+  font-size: 0.875em;
+}
+
+.product__tab:not(:first-of-type) {
+  border-left: 0;
+}
+
+.product__button {
+  font-family: 'Raleway', sans-serif;
+  margin: 5px 0;
+  padding: 15px;
+  font-weight: bold;
+  border: 0;
+  font-size: 1.125em;
+  color: white;
+}
+
+.product__button--basket {
+  margin-top: 15px;
+  grid-area: basket;
+  background-color: #2B2D42;
+}
+
+.product__button--buy {
+  grid-area: buy;
+  background-color: #EF233C;
+}
+
+@media screen and (min-width: 420px) {
+  .product__tab {
+    font-size: 1.125em;
+  }
 }

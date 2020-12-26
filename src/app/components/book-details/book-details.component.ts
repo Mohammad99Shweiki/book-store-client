@@ -20,6 +20,7 @@ export class BookDetailsComponent implements OnInit {
 
   book: Book;
   reviews: Review[];
+  activeTab: 'description' | 'details' | 'reviews' = 'description';
 
   ngOnInit(): void {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
@@ -33,5 +34,9 @@ export class BookDetailsComponent implements OnInit {
 
   getReviews(id): void {
     this.reviewsService.getReviewsByBookId(id).subscribe((reviews: Array<Review>) => this.reviews = reviews);
+  }
+
+  changeActiveTab(tabName: 'description' | 'details' | 'reviews'): void {
+    this.activeTab = tabName;
   }
 }
