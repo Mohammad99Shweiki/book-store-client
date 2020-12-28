@@ -66,7 +66,7 @@
 .product__author {
   margin: 4px 0 7px;
   font-size: 0.95em;
-  font-weight: 300;
+  color: #222;
 }
 
 .product__price--discounted {
@@ -97,6 +97,7 @@
   color: #fff;
   background-color: #2B2D42;
   border: 1px solid #2B2D42;
+  font-weight: 500;
 }
 
 @media screen and (min-width: 920px) {
