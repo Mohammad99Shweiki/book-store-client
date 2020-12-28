@@ -11,16 +11,16 @@ import {ReviewsService} from '../../services/reviews.service';
   styleUrls: ['./book-details.component.css'],
 })
 export class BookDetailsComponent implements OnInit {
+  book: Book;
+  reviews: Review[];
+  activeTab: 'description' | 'details' | 'reviews' = 'description';
+
   constructor(
     private route: ActivatedRoute,
     private booksService: BooksService,
     private reviewsService: ReviewsService
   ) {
   }
-
-  book: Book;
-  reviews: Review[];
-  activeTab: 'description' | 'details' | 'reviews' = 'description';
 
   ngOnInit(): void {
     const id: number = Number(this.route.snapshot.paramMap.get('id'));
