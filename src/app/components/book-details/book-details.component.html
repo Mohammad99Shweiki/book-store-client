@@ -1,3 +1,4 @@
+<app-loading-spinner *ngIf="!book" color="#2B2D42"></app-loading-spinner>
 <div *ngIf="book" class="product">
   <img class="product__img" [src]="book.coverPhoto" alt=""/>
   <p class="product__name">

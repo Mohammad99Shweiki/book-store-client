@@ -1,4 +1,5 @@
-<div class="container" infiniteScroll
+<app-loading-spinner *ngIf="!books.length" color="#2B2D42"></app-loading-spinner>
+<div *ngIf="books.length" class="container" infiniteScroll
      [infiniteScrollDistance]="2"
      [infiniteScrollThrottle]="50"
      (scrolled)="onScroll()"

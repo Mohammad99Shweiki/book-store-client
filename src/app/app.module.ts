@@ -10,10 +10,19 @@ import {BookDetailsComponent} from './components/book-details/book-details.compo
 import {RatingComponent} from './components/rating/rating.component';
 import {ReviewComponent} from './components/review/review.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
-import { BookOverviewComponent } from './components/book-overview/book-overview.component';
+import {BookOverviewComponent} from './components/book-overview/book-overview.component';
+import {LoadingSpinnerComponent} from './components/shared/loading-spinner/loading-spinner.component';
 
 @NgModule({
-  declarations: [AppComponent, BooksListComponent, BookDetailsComponent, RatingComponent, ReviewComponent, BookOverviewComponent],
+  declarations: [
+    AppComponent,
+    BooksListComponent,
+    BookDetailsComponent,
+    RatingComponent,
+    ReviewComponent,
+    BookOverviewComponent,
+    LoadingSpinnerComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
