@@ -24,7 +24,7 @@
   font-weight: 600;
   font-size: 1.4em;
   grid-area: name;
-  margin: 0.4em 0 0.2em;
+  margin: 0.6em 0 0.2em;
 }
 
 .product__author {
@@ -50,10 +50,6 @@
   font-weight: 600;
   font-size: 1.05em;
   color: #ef233c;
-}
-
-.product__reviews {
-
 }
 
 .product__info {
@@ -104,8 +100,18 @@
 }
 
 .product__description {
-  font-size: 0.875em;
+  font-size: 0.9375em;
   line-height: 1.4;
-  font-weight: 400;
   color: #222;
+}
+
+.product__review:not(:last-of-type)::after {
+  content: '';
+  display: block;
+  position: relative;
+  width: 80%;
+  left: 10%;
+  border-bottom: 2px solid #CCC;
+  border-radius: 1px;
+  margin: 12px 0;
 }

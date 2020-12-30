@@ -1,3 +1,5 @@
-<p>{{review.reviewText}}</p>
-<app-rating [rating]="review.rating"></app-rating>
-<p>{{review.reviewDate * 1000 | date: 'MMMM d, y'}}</p>
+<p class="review__text">{{review.reviewText}}</p>
+<div class="review__container">
+  <p class="review__date">{{review.reviewDate * 1000 | date: 'dd.MM.YYYY'}}</p>
+  <app-rating [rating]="review.rating"></app-rating>
+</div>
