@@ -14,8 +14,8 @@ export class BookDetailsComponent implements OnInit {
   book: Book;
   reviews: Review[];
   activeTab: 'description' | 'details' | 'reviews' = 'description';
-  limit: 10;
-  skip: 0;
+  limit: number = 10;
+  skip: number = 0;
   reviewsNumber: number;
   id: number;
 
