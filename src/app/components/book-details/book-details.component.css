@@ -102,3 +102,10 @@
   grid-area: buy;
   background-color: #EF233C;
 }
+
+.product__description {
+  font-size: 0.875em;
+  line-height: 1.4;
+  font-weight: 400;
+  color: #222;
+}
