@@ -12,11 +12,16 @@ export class ReviewsService {
   constructor(private http: HttpClient) {
   }
 
-  httpOptions = {
+  httpOptions: object = {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),
   };
 
-  getReviewsByBookId(id: number): Observable<Review[]> {
-    return this.http.get<Review[]>( environment.serverUrL + `getReviewsByBookId/${id}`);
+  getReviewsByBookId(id: number, limit: number, skip: number): Observable<Review[]> {
+    return this.http.get<Review[]>( environment.serverUrL + `getReviewsByBookId/${id}/${limit}/${skip}`);
   }
+
+  getNumberOfReviewsByBookId(id: number): Observable<number> {
+    return this.http.get<number>( environment.serverUrL + `getNumberOfReviewsByBookId/${id}`);
+  }
+
 }

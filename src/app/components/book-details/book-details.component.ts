@@ -14,6 +14,10 @@ export class BookDetailsComponent implements OnInit {
   book: Book;
   reviews: Review[];
   activeTab: 'description' | 'details' | 'reviews' = 'description';
+  limit: 10;
+  skip: 0;
+  reviewsNumber: number;
+  id: number;
 
   constructor(
     private route: ActivatedRoute,
@@ -23,17 +27,26 @@ export class BookDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const id: number = Number(this.route.snapshot.paramMap.get('id'));
-    this.getBook(id);
-    this.getReviews(id);
+    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.getBook(this.id);
+    this.getReviewsNumber(this.id);
   }
 
   getBook(id): void {
     this.booksService.getBook(id).subscribe((book: Book) => this.book = book);
   }
 
-  getReviews(id): void {
-    this.reviewsService.getReviewsByBookId(id).subscribe((reviews: Array<Review>) => this.reviews = reviews);
+  getReviews(id, limit, skip): void {
+    this.reviewsService.getReviewsByBookId(id, limit, skip).subscribe((reviews: Array<Review>) => this.reviews = reviews);
+  }
+
+  getReviewsNumber(id): void {
+    this.reviewsService.getNumberOfReviewsByBookId(id).subscribe((reviewsNumber: number) => {
+      this.reviewsNumber = reviewsNumber;
+      if (reviewsNumber) {
+        this.getReviews(this.id, this.limit, this.skip);
+      }
+    });
   }
 
   changeActiveTab(tabName: 'description' | 'details' | 'reviews'): void {
