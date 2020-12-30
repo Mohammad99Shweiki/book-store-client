@@ -29,22 +29,22 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.getBook(this.id);
-    this.getReviewsNumber(this.id);
+    this.getNumberOfReviews(this.id);
   }
 
   getBook(id): void {
     this.booksService.getBook(id).subscribe((book: Book) => this.book = book);
   }
 
-  getReviews(id, limit, skip): void {
-    this.reviewsService.getReviewsByBookId(id, limit, skip).subscribe((reviews: Array<Review>) => this.reviews = reviews);
+  getLimitedReviews(id, limit, skip): void {
+    this.reviewsService.getLimitedReviews(id, limit, skip).subscribe((reviews: Array<Review>) => this.reviews = reviews);
   }
 
-  getReviewsNumber(id): void {
-    this.reviewsService.getNumberOfReviewsByBookId(id).subscribe((reviewsNumber: number) => {
+  getNumberOfReviews(id): void {
+    this.reviewsService.getNumberOfReviews(id).subscribe((reviewsNumber: number) => {
       this.reviewsNumber = reviewsNumber;
       if (reviewsNumber) {
-        this.getReviews(this.id, this.limit, this.skip);
+        this.getLimitedReviews(this.id, this.limit, this.skip);
       }
     });
   }

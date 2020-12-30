@@ -16,12 +16,12 @@ export class ReviewsService {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),
   };
 
-  getReviewsByBookId(id: number, limit: number, skip: number): Observable<Review[]> {
-    return this.http.get<Review[]>( environment.serverUrL + `getReviewsByBookId/${id}/${limit}/${skip}`);
+  getLimitedReviews(id: number, limit: number, skip: number): Observable<Review[]> {
+    return this.http.get<Review[]>( environment.serverUrL + `getLimitedReviews/${id}/${limit}/${skip}`);
   }
 
-  getNumberOfReviewsByBookId(id: number): Observable<number> {
-    return this.http.get<number>( environment.serverUrL + `getNumberOfReviewsByBookId/${id}`);
+  getNumberOfReviews(id: number): Observable<number> {
+    return this.http.get<number>( environment.serverUrL + `getNumberOfReviews/${id}`);
   }
 
 }

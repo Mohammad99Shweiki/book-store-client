@@ -19,7 +19,7 @@ export class BooksListComponent implements OnInit {
 
   getLimitedBooks(limit: number, skip: number): void {
     this.booksService
-      .getBooksWithLimitAndSkip(limit, skip)
+      .getLimitedBooks(limit, skip)
       .subscribe((books: Array<Book>) => this.books.push(...books));
     this.skip += limit;
   }

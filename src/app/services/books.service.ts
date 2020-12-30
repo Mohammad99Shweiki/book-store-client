@@ -11,15 +11,15 @@ export class BooksService {
   constructor(private http: HttpClient) {
   }
 
-  httpOptions = {
+  httpOptions: object = {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),
   };
 
-  getBooksWithLimitAndSkip(limit: number, skip: number): Observable<Book[]> {
-    return this.http.get<Book[]>(environment.serverUrL + `limitSkip/${limit}/${skip}`);
+  getLimitedBooks(limit: number, skip: number): Observable<Book[]> {
+    return this.http.get<Book[]>(environment.serverUrL + `getLimitedBooks/${limit}/${skip}`);
   }
 
   getBook(id: number): Observable<Book> {
-    return this.http.get<Book>(environment.serverUrL + `getBookById/${id}`);
+    return this.http.get<Book>(environment.serverUrL + `getBook/${id}`);
   }
 }
