@@ -22,7 +22,7 @@
 .product__name {
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
-  font-size: 1.8em;
+  font-size: 1.4em;
   grid-area: name;
   margin: 0.4em 0 0.2em;
 }
@@ -35,7 +35,7 @@
 }
 
 .product__price {
-  font-size: 1.5em;
+  font-size: 1.3em;
   grid-area: price;
   text-align: right;
   align-self: flex-end;
