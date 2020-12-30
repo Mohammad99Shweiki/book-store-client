@@ -19,13 +19,13 @@
   </button>
   <div class="product__info">
     <div class="product__tabs">
-      <a (click)="changeActiveTab('description')" class="product__tab">
+      <a [class.product__tab--active]="activeTab === 'description'" (click)="changeActiveTab('description')" class="product__tab">
         Opis
       </a>
-      <a (click)="changeActiveTab('details')" class="product__tab">
+      <a [class.product__tab--active]="activeTab === 'details'" (click)="changeActiveTab('details')" class="product__tab">
         Informacje
       </a>
-      <a (click)="changeActiveTab('reviews')" class="product__tab">
+      <a [class.product__tab--active]="activeTab === 'reviews'" (click)="changeActiveTab('reviews')" class="product__tab">
         Opinie
       </a>
     </div>

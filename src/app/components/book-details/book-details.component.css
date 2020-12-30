@@ -66,18 +66,20 @@
 
 .product__tab {
   background-color: #EDF2F4;
-  width: 33%;
   padding: 10px;
   margin: 20px 0;
-  font-weight: 600;
+  font-weight: 400;
   text-align: center;
-  border: 2px solid #2B2D42;
   cursor: pointer;
-  font-size: 0.875em;
+  font-size: 1em;
+  transition: 0.2s;
+  flex-grow: 1;
 }
 
-.product__tab:not(:first-of-type) {
-  border-left: 0;
+.product__tab--active {
+  background-color: #2B2D42;
+  color: white;
+  font-weight: 600;
 }
 
 .product__button {
@@ -99,10 +101,4 @@
 .product__button--buy {
   grid-area: buy;
   background-color: #EF233C;
-}
-
-@media screen and (min-width: 420px) {
-  .product__tab {
-    font-size: 1.125em;
-  }
 }
