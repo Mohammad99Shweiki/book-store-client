@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Book} from '../../models/book';
+import {faShoppingBasket, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-book-overview',
@@ -9,6 +10,7 @@ import {Book} from '../../models/book';
 export class BookOverviewComponent implements OnInit {
   @Input() book: Book;
   constructor() { }
+  faShoppingBasket: IconDefinition = faShoppingBasket;
 
   ngOnInit(): void {
   }

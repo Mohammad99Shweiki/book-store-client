@@ -18,8 +18,13 @@
       <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:' '}}
         PLN</span>
     </p>
-    <a routerLink="/book/{{book.id}}" class="product__button">
-      Zobacz więcej
-    </a>
+    <div class="product__buttons">
+      <a routerLink="/book/{{book.id}}" class="product__button product__button--seeMore">
+        Zobacz więcej
+      </a>
+      <button class="product__button product__button--basket">
+        <fa-icon [icon]="faShoppingBasket"></fa-icon>
+      </button>
+    </div>
   </div>
 </div>
