@@ -1,5 +1,4 @@
 import {Pipe, PipeTransform} from '@angular/core';
-import {formatDate} from '@angular/common';
 import {genreTranslations} from '../../helpers/genreTranslations/genreTranslations';
 
 @Pipe({
@@ -17,7 +16,7 @@ export class CustomDetailPipe implements PipeTransform {
         break;
       }
       case 'publication': {
-        transformedString = formatDate(value, 'dd.MM.YYYY', 'en-US');
+        transformedString = value.split('/').join('.');
         break;
       }
       case 'bestseller':
