@@ -12,6 +12,7 @@ import {ReviewComponent} from './components/review/review.component';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {BookOverviewComponent} from './components/book-overview/book-overview.component';
 import {LoadingSpinnerComponent} from './components/shared/loading-spinner/loading-spinner.component';
+import {CustomDetailPipe} from './pipes/detail/custom-detail.pipe';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import {LoadingSpinnerComponent} from './components/shared/loading-spinner/loadi
     RatingComponent,
     ReviewComponent,
     BookOverviewComponent,
-    LoadingSpinnerComponent
+    LoadingSpinnerComponent,
+    CustomDetailPipe,
   ],
   imports: [
     BrowserModule,
