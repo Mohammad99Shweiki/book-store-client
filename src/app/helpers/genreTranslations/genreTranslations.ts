@@ -14,5 +14,6 @@ export const genreTranslations: object = {
   Animation: 'DLa dzieci',
   Horror: 'Horror',
   Western: 'Western',
-  War: 'Wojenny'
+  War: 'Wojenny',
+  'Film-Noir' : 'Starodawny'
 };
