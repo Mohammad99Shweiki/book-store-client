@@ -33,7 +33,17 @@
       {{book.description}}
     </div>
     <div *ngIf="activeTab === 'details'" class="product__details">
-
+      <ng-container class="product__detailsContainer" *ngFor="let detail of details">
+        <p class="product__detail product__detail--label">
+          {{detail.label}}
+        </p>
+        <p *ngIf="!detail.customPipe" class="product__detail product__detail--value">
+          {{detail.value}}
+        </p>
+        <p *ngIf="detail.customPipe" class="product__detail product__detail--value">
+          {{detail.value.toString() | customDetail: detail.key}}
+        </p>
+      </ng-container>
     </div>
     <div *ngIf="activeTab === 'reviews'" class="product__reviews">
       <app-review *ngFor="let review of reviews"

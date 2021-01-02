@@ -115,3 +115,28 @@
   border-radius: 1px;
   margin: 12px 0;
 }
+
+.product__details {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.product__detail {
+  width: 100%;
+  font-size: 0.9375em;
+  padding: 5px;
+  border: 1px solid #CCC;
+}
+
+.product__detail:not(:last-of-type) {
+  border-bottom: none;
+}
+
+.product__detail--label {
+  background-color: #EDF2F4;
+  font-weight: 600;
+}
+
+.product__detail--value {
+  color: #222;
+}

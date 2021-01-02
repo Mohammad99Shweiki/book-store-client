@@ -4,6 +4,9 @@ import {BooksService} from '../../services/books.service';
 import {Book} from '../../models/book';
 import {Review} from '../../models/review';
 import {ReviewsService} from '../../services/reviews.service';
+import {detailsMapping} from '../../helpers/detailsMapping/detailsMapping';
+import {DetailMapping} from '../../models/detailMapping';
+import {Detail} from '../../models/detail';
 
 @Component({
   selector: 'app-book-details',
@@ -18,6 +21,7 @@ export class BookDetailsComponent implements OnInit {
   skip: number = 0;
   reviewsNumber: number;
   id: number;
+  details: Array<Detail>;
 
   constructor(
     private route: ActivatedRoute,
@@ -33,7 +37,10 @@ export class BookDetailsComponent implements OnInit {
   }
 
   getBook(id): void {
-    this.booksService.getBook(id).subscribe((book: Book) => this.book = book);
+    this.booksService.getBook(id).subscribe((book: Book) => {
+      this.book = book;
+      this.details = this.mapDetails(book);
+    });
   }
 
   getLimitedReviews(id, limit, skip): void {
@@ -51,5 +58,13 @@ export class BookDetailsComponent implements OnInit {
 
   changeActiveTab(tabName: 'description' | 'details' | 'reviews'): void {
     this.activeTab = tabName;
+  }
+
+  mapDetails(book): Array<Detail> {
+    const detailsMapped: Array<Detail> = [];
+    detailsMapping.forEach((val: DetailMapping) => {
+      detailsMapped.push({key: val.key, label: val.label, value: book[val.key], customPipe: val.customPipe});
+    });
+    return detailsMapped;
   }
 }
