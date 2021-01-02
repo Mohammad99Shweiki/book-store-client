@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {BooksService} from '../../services/books.service';
 import {Book} from '../../models/book';
 import {Review} from '../../models/review';
@@ -27,8 +27,10 @@ export class BookDetailsComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private booksService: BooksService,
-    private reviewsService: ReviewsService
+    private reviewsService: ReviewsService,
+    private router: Router
   ) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
 
   ngOnInit(): void {
