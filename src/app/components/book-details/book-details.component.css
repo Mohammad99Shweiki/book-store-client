@@ -157,3 +157,22 @@
   font-size: 1em;
   margin-bottom: 10px;
 }
+
+.product__getReviews {
+  background-color: #EF233C;
+  font-family: 'Raleway', sans-serif;
+  padding: 10px;
+  font-weight: 500;
+  border: 0;
+  font-size: 0.925em;
+  color: white;
+  margin: 10px auto;
+  display: block;
+}
+
+.product__reviewsInfo {
+  text-align: center;
+  font-size: 0.85rem;
+  color: #444;
+  margin: 15px 0;
+}

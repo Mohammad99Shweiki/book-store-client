@@ -15,9 +15,9 @@ import {Detail} from '../../models/detail';
 })
 export class BookDetailsComponent implements OnInit {
   book: Book;
-  reviews: Review[];
+  reviews: Array<Review> = [];
   activeTab: 'description' | 'details' | 'reviews' = 'description';
-  limit: number = 10;
+  limit: number = 5;
   skip: number = 0;
   reviewsNumber: number;
   id: number;
@@ -35,29 +35,37 @@ export class BookDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
-    this.getBook(this.id);
-    this.getNumberOfReviews(this.id);
-    this.getRecommendedBooks(this.id);
+    this.getBook();
+    this.getNumberOfReviews();
+    this.getRecommendedBooks();
   }
 
-  getBook(id): void {
-    this.booksService.getBook(id).subscribe((book: Book) => {
+  getBook(): void {
+    this.booksService.getBook(this.id).subscribe((book: Book) => {
       this.book = book;
       this.details = this.mapDetails(book);
     });
   }
 
   getLimitedReviews(id, limit, skip): void {
-    this.reviewsService.getLimitedReviews(id, limit, skip).subscribe((reviews: Array<Review>) => this.reviews = reviews);
+    this.reviewsService.getLimitedReviews(id, limit, skip).subscribe((reviews: Array<Review>) => {
+      this.reviews.push(...reviews);
+      console.log(this.reviews);
+    });
   }
 
-  getNumberOfReviews(id): void {
-    this.reviewsService.getNumberOfReviews(id).subscribe((reviewsNumber: number) => {
+  getNumberOfReviews(): void {
+    this.reviewsService.getNumberOfReviews(this.id).subscribe((reviewsNumber: number) => {
       this.reviewsNumber = reviewsNumber;
       if (reviewsNumber) {
         this.getLimitedReviews(this.id, this.limit, this.skip);
       }
     });
+  }
+
+  getMoreReviews(): void {
+    this.skip += this.limit;
+    this.getLimitedReviews(this.id, this.limit, this.skip);
   }
 
   changeActiveTab(tabName: 'description' | 'details' | 'reviews'): void {
@@ -72,7 +80,7 @@ export class BookDetailsComponent implements OnInit {
     return detailsMapped;
   }
 
-  getRecommendedBooks(bookId: number): void {
-   this.booksService.getRecommendedBooks(bookId).subscribe((books: Array<Book>) => this.recommendedBooks = books);
+  getRecommendedBooks(): void {
+    this.booksService.getRecommendedBooks(this.id).subscribe((books: Array<Book>) => this.recommendedBooks = books);
   }
 }

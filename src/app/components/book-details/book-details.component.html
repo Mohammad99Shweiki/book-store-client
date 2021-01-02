@@ -50,6 +50,12 @@
                   class="product__review"
                   [review]="review">
       </app-review>
+      <p *ngIf="reviewsNumber === 0" class="product__reviewsInfo">
+        Brak opinii
+      </p>
+      <button class="product__getReviews" *ngIf="this.skip < (this.reviewsNumber - this.limit)" (click)="getMoreReviews()">
+        Zobacz więcej opinii
+      </button>
     </div>
   </div>
   <div class="product__recommendedBooks">
