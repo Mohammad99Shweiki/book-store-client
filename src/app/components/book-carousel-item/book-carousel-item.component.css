@@ -82,6 +82,7 @@
 }
 
 .product__button {
+  cursor: pointer;
   font-family: 'Raleway', sans-serif;
   text-align: center;
   padding: 8px 0;

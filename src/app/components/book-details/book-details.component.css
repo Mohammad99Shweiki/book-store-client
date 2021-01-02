@@ -80,6 +80,7 @@
 }
 
 .product__button {
+  cursor: pointer;
   font-family: 'Raleway', sans-serif;
   margin: 5px 0;
   padding: 15px;
@@ -168,6 +169,7 @@
   color: white;
   margin: 10px auto;
   display: block;
+  cursor: pointer;
 }
 
 .product__reviewsInfo {
