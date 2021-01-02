@@ -12,21 +12,21 @@
     <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:'&nbsp;'}}&nbsp;PLN</span>
   </p>
   <button class="product__button product__button--basket">
-    Dodaj do koszyka
+    Add to cart
   </button>
   <button class="product__button product__button--buy">
-    Kup teraz
+    Buy now
   </button>
   <div class="product__info">
     <div class="product__tabs">
       <a [class.product__tab--active]="activeTab === 'description'" (click)="changeActiveTab('description')" class="product__tab">
-        Opis
+        Description
       </a>
       <a [class.product__tab--active]="activeTab === 'details'" (click)="changeActiveTab('details')" class="product__tab">
-        Informacje
+        Details
       </a>
       <a [class.product__tab--active]="activeTab === 'reviews'" (click)="changeActiveTab('reviews')" class="product__tab">
-        Opinie
+        Reviews
       </a>
     </div>
     <div *ngIf="activeTab === 'description'" class="product__description">
@@ -51,16 +51,16 @@
                   [review]="review">
       </app-review>
       <p *ngIf="reviewsNumber === 0" class="product__reviewsInfo">
-        Brak opinii
+        No reviews
       </p>
       <button class="product__getReviews" *ngIf="this.skip < (this.reviewsNumber - this.limit)" (click)="getMoreReviews()">
-        Zobacz więcej opinii
+        Load more reviews
       </button>
     </div>
   </div>
   <div class="product__recommendedBooks">
     <p class="product__recommendedTitle">
-      Polecane dla Ciebie
+      Recommended for you
     </p>
     <app-book-carousel *ngIf="recommendedBooks.length" [recommendedBooks]="recommendedBooks"></app-book-carousel>
   </div>

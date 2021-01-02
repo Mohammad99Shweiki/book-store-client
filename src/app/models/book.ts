@@ -7,7 +7,9 @@ export interface Book {
   price: number;
   discountedPrice?: number;
   coverPhoto: string;
+  pages: number;
   publication: string;
+  publisher: string;
   ISBN: string;
   bestseller: boolean;
   new: boolean;
