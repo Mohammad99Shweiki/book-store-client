@@ -11,7 +11,7 @@ export class CustomDetailPipe implements PipeTransform {
     switch (type) {
       case 'genre': {
         transformedString = value.split('|').map((val: string) => {
-          return genreTranslations[val];
+          return genreTranslations[val] || 'Interesujący';
         }).join(', ');
         break;
       }
