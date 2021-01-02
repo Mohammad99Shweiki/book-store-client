@@ -45,6 +45,10 @@
   background-color: #2B2D42;
 }
 
+.product__label--sale {
+  background-color: #D90429;
+}
+
 .product__img {
   max-width: 100%;
   max-height: 100%;
