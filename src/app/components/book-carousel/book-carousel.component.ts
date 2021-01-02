@@ -19,7 +19,8 @@ export class BookCarouselComponent implements OnInit {
     load: 3,
     loop: true,
     touch: true,
-    velocity: 0.1
+    velocity: 0.1,
+    speed: 500
   };
 
   faChevronLeft: IconDefinition = faChevronLeft;
