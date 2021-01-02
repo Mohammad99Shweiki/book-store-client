@@ -15,11 +15,15 @@ export class BooksService {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),
   };
 
-  getLimitedBooks(limit: number, skip: number): Observable<Book[]> {
-    return this.http.get<Book[]>(environment.serverUrL + `getLimitedBooks/${limit}/${skip}`);
+  getLimitedBooks(limit: number, skip: number): Observable<Array<Book>> {
+    return this.http.get<Array<Book>>(environment.serverUrL + `getLimitedBooks/${limit}/${skip}`);
   }
 
   getBook(id: number): Observable<Book> {
     return this.http.get<Book>(environment.serverUrL + `getBook/${id}`);
+  }
+
+  getRecommendedBooks(id: number): Observable<Array<Book>> {
+    return this.http.get<Array<Book>>(environment.serverUrL + `getRecommendedBooks/${id}`);
   }
 }

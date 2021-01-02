@@ -35,12 +35,12 @@ export class BookDetailsComponent implements OnInit {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.getBook(this.id);
     this.getNumberOfReviews(this.id);
+    this.getRecommendedBooks(this.id);
   }
 
   getBook(id): void {
     this.booksService.getBook(id).subscribe((book: Book) => {
       this.book = book;
-      this.getRecommendedBooks();
       this.details = this.mapDetails(book);
     });
   }
@@ -70,9 +70,7 @@ export class BookDetailsComponent implements OnInit {
     return detailsMapped;
   }
 
-  getRecommendedBooks(): void {
-    for (let i: number = 0; i < 10; i++) {
-      this.recommendedBooks.push(this.book);
-    }
+  getRecommendedBooks(bookId: number): void {
+   this.booksService.getRecommendedBooks(bookId).subscribe((books: Array<Book>) => this.recommendedBooks = books);
   }
 }

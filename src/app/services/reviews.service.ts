@@ -16,8 +16,8 @@ export class ReviewsService {
     headers: new HttpHeaders({'Content-Type': 'application/json'}),
   };
 
-  getLimitedReviews(id: number, limit: number, skip: number): Observable<Review[]> {
-    return this.http.get<Review[]>( environment.serverUrL + `getLimitedReviews/${id}/${limit}/${skip}`);
+  getLimitedReviews(id: number, limit: number, skip: number): Observable<Array<Review>> {
+    return this.http.get<Array<Review>>( environment.serverUrL + `getLimitedReviews/${id}/${limit}/${skip}`);
   }
 
   getNumberOfReviews(id: number): Observable<number> {
