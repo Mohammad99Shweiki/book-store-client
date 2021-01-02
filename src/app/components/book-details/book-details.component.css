@@ -12,6 +12,7 @@
     "basket basket"
     "buy buy"
     "info info"
+    "recommended recommended"
 }
 
 .product__img {
@@ -139,4 +140,20 @@
 
 .product__detail--value {
   color: #222;
+}
+
+.product__recommendedBooks {
+  grid-area: recommended;
+  margin: 20px 0;
+}
+
+.product__recommendedTitle {
+  background-color: #2B2D42;
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  padding: 10px;
+  width: 100%;
+  font-size: 1em;
+  margin-bottom: 10px;
 }

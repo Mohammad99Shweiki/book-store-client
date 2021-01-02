@@ -13,6 +13,9 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {BookOverviewComponent} from './components/book-overview/book-overview.component';
 import {LoadingSpinnerComponent} from './components/shared/loading-spinner/loading-spinner.component';
 import {CustomDetailPipe} from './pipes/detail/custom-detail.pipe';
+import { BookCarouselComponent } from './components/book-carousel/book-carousel.component';
+import {NguCarouselModule} from '@ngu/carousel';
+import { BookCarouselItemComponent } from './components/book-carousel-item/book-carousel-item.component';
 
 @NgModule({
   declarations: [
@@ -24,13 +27,16 @@ import {CustomDetailPipe} from './pipes/detail/custom-detail.pipe';
     BookOverviewComponent,
     LoadingSpinnerComponent,
     CustomDetailPipe,
+    BookCarouselComponent,
+    BookCarouselItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     InfiniteScrollModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    NguCarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -52,6 +52,11 @@
       </app-review>
     </div>
   </div>
-
+  <div class="product__recommendedBooks">
+    <p class="product__recommendedTitle">
+      Polecane dla Ciebie
+    </p>
+    <app-book-carousel *ngIf="recommendedBooks.length" [recommendedBooks]="recommendedBooks"></app-book-carousel>
+  </div>
 </div>
 

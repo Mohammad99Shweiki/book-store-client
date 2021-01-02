@@ -1,0 +1,11 @@
+<ngu-carousel class="bookCarousel" #bookCarousel [inputs]="carouselConfig" [dataSource]="recommendedBooks">
+  <div class="item" *nguCarouselDef="let book;">
+    <app-book-carousel-item class="bookCarousel__item" [book]="book"></app-book-carousel-item>
+  </div>
+  <button NguCarouselNext class="bookCarousel__button bookCarousel__button--next">
+    <fa-icon [icon]="faChevronRight"></fa-icon>
+  </button>
+  <button NguCarouselPrev class="bookCarousel__button bookCarousel__button--prev">
+    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  </button>
+</ngu-carousel>
