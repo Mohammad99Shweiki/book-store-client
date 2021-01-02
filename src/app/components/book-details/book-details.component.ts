@@ -48,10 +48,7 @@ export class BookDetailsComponent implements OnInit {
   }
 
   getLimitedReviews(id, limit, skip): void {
-    this.reviewsService.getLimitedReviews(id, limit, skip).subscribe((reviews: Array<Review>) => {
-      this.reviews.push(...reviews);
-      console.log(this.reviews);
-    });
+    this.reviewsService.getLimitedReviews(id, limit, skip).subscribe((reviews: Array<Review>) => this.reviews.push(...reviews));
   }
 
   getNumberOfReviews(): void {
