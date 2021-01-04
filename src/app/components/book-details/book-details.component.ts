@@ -24,7 +24,7 @@ export class BookDetailsComponent implements OnInit {
   id: number;
   details: Array<Detail>;
   recommendedBooks: Array<Book> = [];
-  title: string = ' - BookShop';
+  title: string = ' - BookStore';
 
   constructor(
     private route: ActivatedRoute,
