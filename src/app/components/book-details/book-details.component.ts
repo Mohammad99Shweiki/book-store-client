@@ -7,6 +7,7 @@ import {ReviewsService} from '../../services/reviews.service';
 import {detailsMapping} from '../../helpers/detailsMapping/detailsMapping';
 import {DetailMapping} from '../../models/detailMapping';
 import {Detail} from '../../models/detail';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-book-details',
@@ -23,12 +24,14 @@ export class BookDetailsComponent implements OnInit {
   id: number;
   details: Array<Detail>;
   recommendedBooks: Array<Book> = [];
+  title: string = ' - BookShop';
 
   constructor(
     private route: ActivatedRoute,
     private booksService: BooksService,
     private reviewsService: ReviewsService,
-    private router: Router
+    private router: Router,
+    private titleService: Title
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -44,6 +47,7 @@ export class BookDetailsComponent implements OnInit {
     this.booksService.getBook(this.id).subscribe((book: Book) => {
       this.book = book;
       this.details = this.mapDetails(book);
+      this.titleService.setTitle(book.title + this.title);
     });
   }
 
