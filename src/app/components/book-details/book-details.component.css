@@ -181,3 +181,51 @@
   color: #444;
   margin: 15px 0;
 }
+
+@media screen and (min-width: 660px) {
+  .product {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+    "photo photo"
+    "name name"
+    "author price"
+    "basket buy"
+    "info info"
+    "recommended recommended"
+  }
+
+  .product__button {
+    margin: 10px 5px 5px;
+  }
+
+  .product__button--buy {
+    margin-right: 0;
+  }
+
+  .product__button--basket {
+    margin-left: 0;
+  }
+
+  .product__detail {
+    width: 50%;
+    background-color: unset;
+    border: 1px solid #CCC;
+  }
+
+  .product__detail:nth-child(4n+1),
+  .product__detail:nth-child(4n+2) {
+    background-color: #EDF2F4;
+  }
+
+  .product__detail {
+    border-bottom: none;
+  }
+
+  .product__detail--label {
+    border-right: none;
+  }
+
+  .product__detail:nth-last-of-type(-n + 2) {
+    border-bottom: 1px solid #CCC;
+  }
+}
