@@ -3,45 +3,57 @@
   padding: 25px;
   width: 100%;
   margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-template-areas:
-    "photo photo"
-    "name name"
-    "author price"
-    "basket basket"
-    "buy buy"
-    "info info"
-    "recommended recommended"
+}
+
+.product__container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.product__imgContainer {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  position: relative;
 }
 
 .product__img {
   width: 100%;
-  grid-area: photo;
-  max-width: 600px;
-  margin: 0 auto;
 }
+
+.product__labels {
+  position: absolute;
+  left: -10px;
+  top: 5px;
+}
+
+.product__basicInfo {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 
 .product__name {
   font-family: 'Raleway', sans-serif;
   font-weight: 600;
   font-size: 1.4em;
-  grid-area: name;
   margin: 0.6em 0 0.2em;
+  width: 100%;
 }
 
 .product__author {
-  grid-area: author;
   font-size: 1.2em;
   align-self: flex-end;
   color: #222;
+  width: 50%;
 }
 
 .product__price {
   font-size: 1.3em;
-  grid-area: price;
   text-align: right;
   align-self: flex-end;
+  width: 50%;
 }
 
 .product__price--discounted {
@@ -53,10 +65,6 @@
   font-weight: 600;
   font-size: 1.05em;
   color: #ef233c;
-}
-
-.product__info {
-  grid-area: info;
 }
 
 .product__tabs {
@@ -91,16 +99,16 @@
   font-size: 1.125em;
   color: white;
   border-radius: 0;
+  display: block;
+  width: 100%;
 }
 
 .product__button--basket {
   margin-top: 15px;
-  grid-area: basket;
   background-color: #2B2D42;
 }
 
 .product__button--buy {
-  grid-area: buy;
   background-color: #EF233C;
 }
 
@@ -147,7 +155,6 @@
 }
 
 .product__recommendedBooks {
-  grid-area: recommended;
   margin: 20px 0;
 }
 
@@ -183,19 +190,9 @@
 }
 
 @media screen and (min-width: 660px) {
-  .product {
-    grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-    "photo photo"
-    "name name"
-    "author price"
-    "basket buy"
-    "info info"
-    "recommended recommended"
-  }
-
   .product__button {
     margin: 10px 5px 5px;
+    width: calc(50% - 5px);
   }
 
   .product__button--buy {
@@ -227,5 +224,44 @@
 
   .product__detail:nth-last-of-type(-n + 2) {
     border-bottom: 1px solid #CCC;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .product__container {
+    width: 800px;
+  }
+
+  .product__basicInfo {
+    margin-left: 20px;
+    position: fixed;
+    width: 330px;
+    left: calc(50% + 225px);
+    flex-direction: column;
+    padding: 30px 20px;
+    box-shadow: 10px 10px 5px 0 rgba(70, 70, 70, 0.4);
+    background-color: #EDF2F4;
+  }
+
+  .product__name {
+    font-size: 1.65em;
+    margin-top: 5px;
+  }
+
+  .product__author {
+    width: 100%;
+    font-size: 1.3em;
+    margin: 5px 0;
+  }
+
+  .product__price {
+    width: 100%;
+    font-size: 1.4em;
+    margin: 5px 0 25px;
+  }
+
+  .product__button {
+    width: 100%;
+    margin: 5px 0;
   }
 }

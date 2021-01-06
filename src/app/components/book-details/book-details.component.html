@@ -1,68 +1,79 @@
 <app-loading-spinner *ngIf="!book" color="#2B2D42"></app-loading-spinner>
 <div *ngIf="book" class="product">
-  <img class="product__img" [src]="book.coverPhoto" alt=""/>
-  <p class="product__name">
-    {{book.title}}
-  </p>
-  <p class="product__author">
-    {{book.author}}
-  </p>
-  <p class="product__price">
-    <span [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:'&nbsp;'}}&nbsp;PLN</span>
-    <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:'&nbsp;'}}&nbsp;PLN</span>
-  </p>
-  <button class="product__button product__button--basket">
-    Add to cart
-  </button>
-  <button class="product__button product__button--buy">
-    Buy now
-  </button>
-  <div class="product__info">
-    <div class="product__tabs">
-      <a [class.product__tab--active]="activeTab === 'description'" (click)="changeActiveTab('description')" class="product__tab">
-        Description
-      </a>
-      <a [class.product__tab--active]="activeTab === 'details'" (click)="changeActiveTab('details')" class="product__tab">
-        Details
-      </a>
-      <a [class.product__tab--active]="activeTab === 'reviews'" (click)="changeActiveTab('reviews')" class="product__tab">
-        Reviews
-      </a>
+  <div class="product__container">
+    <div class="product__imgContainer">
+      <app-book-labels class="product__labels" [book]="book" size="lg"></app-book-labels>
+      <img class="product__img" [src]="book.coverPhoto" alt=""/>
     </div>
-    <div *ngIf="activeTab === 'description'" class="product__description">
-      {{book.description}}
-    </div>
-    <div *ngIf="activeTab === 'details'" class="product__details">
-      <ng-container class="product__detailsContainer" *ngFor="let detail of details">
-        <p class="product__detail product__detail--label">
-          {{detail.label}}
-        </p>
-        <p *ngIf="!detail.customPipe" class="product__detail product__detail--value">
-          {{detail.value}}
-        </p>
-        <p *ngIf="detail.customPipe" class="product__detail product__detail--value">
-          {{detail.value.toString() | customDetail: detail.key}}
-        </p>
-      </ng-container>
-    </div>
-    <div *ngIf="activeTab === 'reviews'" class="product__reviews">
-      <app-review *ngFor="let review of reviews"
-                  class="product__review"
-                  [review]="review">
-      </app-review>
-      <p *ngIf="reviewsNumber === 0" class="product__reviewsInfo">
-        No reviews
+    <div class="product__basicInfo">
+      <p class="product__name">
+        {{book.title}}
       </p>
-      <button class="product__getReviews" *ngIf="this.skip < (this.reviewsNumber - this.limit)" (click)="getMoreReviews()">
-        Load more reviews
+      <p class="product__author">
+        {{book.author}}
+      </p>
+      <p class="product__price">
+        <span
+          [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:'&nbsp;'}}&nbsp;PLN</span>
+        <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:'&nbsp;'}}&nbsp;PLN</span>
+      </p>
+      <button class="product__button product__button--basket">
+        Add to cart
+      </button>
+      <button class="product__button product__button--buy">
+        Buy now
       </button>
     </div>
-  </div>
-  <div class="product__recommendedBooks">
-    <p class="product__recommendedTitle">
-      Recommended for you
-    </p>
-    <app-book-carousel *ngIf="recommendedBooks.length" [recommendedBooks]="recommendedBooks"></app-book-carousel>
+    <div class="product__additionalInfo">
+      <div class="product__tabs">
+        <a [class.product__tab--active]="activeTab === 'description'" (click)="changeActiveTab('description')"
+           class="product__tab">
+          Description
+        </a>
+        <a [class.product__tab--active]="activeTab === 'details'" (click)="changeActiveTab('details')"
+           class="product__tab">
+          Details
+        </a>
+        <a [class.product__tab--active]="activeTab === 'reviews'" (click)="changeActiveTab('reviews')"
+           class="product__tab">
+          Reviews
+        </a>
+      </div>
+      <div *ngIf="activeTab === 'description'" class="product__description">
+        {{book.description}}
+      </div>
+      <div *ngIf="activeTab === 'details'" class="product__details">
+        <ng-container class="product__detailsContainer" *ngFor="let detail of details">
+          <p class="product__detail product__detail--label">
+            {{detail.label}}
+          </p>
+          <p *ngIf="!detail.customPipe" class="product__detail product__detail--value">
+            {{detail.value}}
+          </p>
+          <p *ngIf="detail.customPipe" class="product__detail product__detail--value">
+            {{detail.value.toString() | customDetail: detail.key}}
+          </p>
+        </ng-container>
+      </div>
+      <div *ngIf="activeTab === 'reviews'" class="product__reviews">
+        <app-review *ngFor="let review of reviews"
+                    class="product__review"
+                    [review]="review">
+        </app-review>
+        <p *ngIf="reviewsNumber === 0" class="product__reviewsInfo">
+          No reviews
+        </p>
+        <button class="product__getReviews" *ngIf="this.skip < (this.reviewsNumber - this.limit)"
+                (click)="getMoreReviews()">
+          Load more reviews
+        </button>
+      </div>
+    </div>
+    <div class="product__recommendedBooks">
+      <p class="product__recommendedTitle">
+        Recommended for you
+      </p>
+      <app-book-carousel *ngIf="recommendedBooks.length" [recommendedBooks]="recommendedBooks"></app-book-carousel>
+    </div>
   </div>
 </div>
-
