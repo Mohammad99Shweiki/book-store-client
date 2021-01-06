@@ -7,13 +7,15 @@ import {Component, Input, OnInit} from '@angular/core';
 })
 export class LoadingSpinnerComponent implements OnInit {
   @Input() color: string;
+  borderColors: {border: string, borderLeftColor: string};
   constructor() { }
 
   ngOnInit(): void {
+    this.setBorderColors();
   }
 
-  getBorderColors(): object {
-    return {
+  setBorderColors(): void {
+    this.borderColors = {
       border: `1em solid ${this.color}33`,
       borderLeftColor: this.color
     };

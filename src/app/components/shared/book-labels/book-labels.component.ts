@@ -9,18 +9,20 @@ import {Book} from '../../../models/book';
 export class BookLabelsComponent implements OnInit {
   @Input() book: Book;
   @Input() size?: 'sm' | 'lg' = 'sm';
+  sizeStyles: { fontSize: string, padding: string };
 
-  constructor() { }
-
-  ngOnInit(): void {
+  constructor() {
   }
 
-  getSizeStyles(): {fontSize: string, padding: string} {
-    return {
+  ngOnInit(): void {
+    this.setSizeStyles();
+  }
+
+  setSizeStyles(): void {
+    this.sizeStyles = {
       fontSize: this.size === 'sm' ? '0.875rem' : '0.9375rem',
       padding: this.size === 'sm' ? '3px 12px' : '4px 16px'
     };
   }
-
 
 }

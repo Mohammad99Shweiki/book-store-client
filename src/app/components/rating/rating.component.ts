@@ -1,7 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {faStar, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 
-
 @Component({
   selector: 'app-rating',
   templateUrl: './rating.component.html',
@@ -10,16 +9,16 @@ import {faStar, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 export class RatingComponent implements OnInit {
   @Input() rating: number = 0;
   faStar: IconDefinition = faStar;
+  width: string;
 
   constructor() {
   }
 
   ngOnInit(): void {
+    this.setWidth();
   }
 
-  resolveRatingWidth(): object {
-    return {
-      width: this.rating * 20 + '%'
-    };
+  setWidth(): void {
+    this.width = this.rating * 20 + '%';
   }
 }
