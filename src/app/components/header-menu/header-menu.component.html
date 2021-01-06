@@ -5,7 +5,7 @@
   <nav class="nav">
     <fa-icon class="nav__icon nav__icon--tablet" routerLink="" [icon]="faShoppingBasket" size="2x"></fa-icon>
     <fa-icon class="nav__icon nav__icon--tablet" routerLink="" [icon]="faUser" size="2x"></fa-icon>
-    <fa-icon (click)="toggleMenu()" class="nav__icon" [icon]="menuIcon" size="2x"></fa-icon>
+    <fa-icon (click)="toggleMenu()" class="nav__icon nav__icon--hamburger" [icon]="menuIcon" size="2x"></fa-icon>
     <div class="nav__links">
       <a class="nav__link" routerLink="">
         Bestsellers
@@ -20,7 +20,7 @@
         About us
       </a>
       <a class="nav__link" routerLink="">
-        Browse
+        Contact
       </a>
       <div class="nav__iconsContainer">
         <fa-icon class="nav__icon nav__icon--mobile" routerLink="" [icon]="faShoppingBasket" size="2x"></fa-icon>

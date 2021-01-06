@@ -44,7 +44,7 @@
 
 .nav__icon--mobile {
   color: white;
-  margin: 10px;
+  margin: 10px 15px;
 }
 
 .nav__links {
@@ -70,4 +70,53 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.nav__iconContainer {
+  position: relative;
+}
+
+@media screen and (min-width: 660px) {
+  .nav__icon--tablet {
+    display: block;
+  }
+
+  .nav__icon--mobile {
+    display: none;
+  }
+
+  .nav__icon {
+    width: 35px;
+    height: 35px;
+    margin: 10px 15px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .nav__links {
+    position: static;
+    display: flex;
+    flex-direction: row;
+    width: unset;
+    height: unset;
+    background-color: unset;
+  }
+
+  .nav__icon {
+    order: 2;
+  }
+
+  .nav__iconContainer {
+    order: 2;
+    position: relative;
+  }
+
+  .nav__link {
+    color: #2B2D42;
+    font-weight: 600;
+  }
+
+  .nav__icon--hamburger {
+    display: none;
+  }
 }
