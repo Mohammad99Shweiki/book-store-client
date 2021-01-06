@@ -1,11 +1,13 @@
-<app-loading-spinner *ngIf="!books.length" color="#2B2D42"></app-loading-spinner>
-<div *ngIf="books.length" class="container" infiniteScroll
-     [infiniteScrollDistance]="2"
-     [infiniteScrollThrottle]="50"
-     (scrolled)="onScroll()"
-     [scrollWindow]="true"
-     [fromRoot]="true">
+<div class="container" [ngStyle]="{transform: transformString}">
+  <app-loading-spinner *ngIf="!books.length" color="#2B2D42"></app-loading-spinner>
+  <div *ngIf="books.length" class="booksContainer" infiniteScroll
+       [infiniteScrollDistance]="2"
+       [infiniteScrollThrottle]="50"
+       (scrolled)="onScroll()"
+       [scrollWindow]="true"
+       [fromRoot]="true">
     <app-book-overview class="book" *ngFor="let book of books"
                        [book]="book">
     </app-book-overview>
+  </div>
 </div>

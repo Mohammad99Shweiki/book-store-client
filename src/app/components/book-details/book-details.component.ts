@@ -8,6 +8,8 @@ import {detailsMapping} from '../../helpers/detailsMapping/detailsMapping';
 import {DetailMapping} from '../../models/detailMapping';
 import {Detail} from '../../models/detail';
 import {Title} from '@angular/platform-browser';
+import {NavService} from '../../services/nav.service';
+import {Subscription} from 'rxjs';
 
 @Component({
   selector: 'app-book-details',
@@ -25,13 +27,16 @@ export class BookDetailsComponent implements OnInit {
   details: Array<Detail>;
   recommendedBooks: Array<Book> = [];
   title: string = ' - BookStore';
+  sidebarOpenedSubscription: Subscription;
+  transformString: string;
 
   constructor(
     private route: ActivatedRoute,
     private booksService: BooksService,
     private reviewsService: ReviewsService,
     private router: Router,
-    private titleService: Title
+    private titleService: Title,
+    private navService: NavService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -41,6 +46,7 @@ export class BookDetailsComponent implements OnInit {
     this.getBook();
     this.getNumberOfReviews();
     this.getRecommendedBooks();
+    this.setupSubscription();
   }
 
   getBook(): void {
@@ -83,5 +89,11 @@ export class BookDetailsComponent implements OnInit {
 
   getRecommendedBooks(): void {
     this.booksService.getRecommendedBooks(this.id).subscribe((books: Array<Book>) => this.recommendedBooks = books);
+  }
+
+  setupSubscription(): void {
+    this.sidebarOpenedSubscription = this.navService.isSidebarOpened$.subscribe((status: boolean) => {
+      this.transformString = status ? 'translateX(-300px)' : '';
+    });
   }
 }

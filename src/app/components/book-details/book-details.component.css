@@ -3,6 +3,7 @@
   padding: 25px;
   width: 100%;
   margin: 0 auto;
+  transition: 0.5s;
 }
 
 .product__container {

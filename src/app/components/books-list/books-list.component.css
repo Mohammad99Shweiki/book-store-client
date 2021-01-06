@@ -1,4 +1,4 @@
-.container {
+.booksContainer {
   max-width: 1200px;
   padding: 25px;
   width: 100%;
@@ -15,14 +15,18 @@
   height: 100%;
 }
 
+.container {
+  transition: 0.5s;
+}
+
 @media screen and (min-width: 660px) {
-  .container {
+  .booksContainer {
     grid-template-columns: 1fr 1fr;
   }
 }
 
 @media screen and (min-width: 920px) {
-  .container {
+  .booksContainer {
     grid-template-columns: 1fr 1fr 1fr;
     column-gap: 30px;
     row-gap: 30px;
@@ -30,7 +34,7 @@
 }
 
 @media screen and (min-width: 1200px) {
-  .container {
+  .booksContainer {
     grid-template-columns: 1fr 1fr 1fr 1fr;
   }
 }

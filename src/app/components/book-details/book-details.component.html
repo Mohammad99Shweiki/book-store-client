@@ -1,5 +1,5 @@
 <app-loading-spinner *ngIf="!book" color="#2B2D42"></app-loading-spinner>
-<div *ngIf="book" class="product">
+<div *ngIf="book" class="product" [ngStyle]="{transform: transformString}">
   <div class="product__container">
     <div class="product__imgContainer">
       <app-book-labels class="product__labels" [book]="book" size="lg"></app-book-labels>
