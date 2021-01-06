@@ -66,6 +66,16 @@
   text-align: center;
 }
 
+.nav__link:hover {
+  background-color: #8D99AE;
+  color: white;
+}
+
+.nav__link--active {
+  background-color: #EDF2F4;
+  color: #2B2D42;
+}
+
 .nav__iconsContainer {
   display: flex;
   justify-content: center;
@@ -114,6 +124,16 @@
   .nav__link {
     color: #2B2D42;
     font-weight: 600;
+  }
+
+  .nav__link:hover {
+    background-color: #8D99AE;
+    color: white;
+  }
+
+  .nav__link--active {
+    background-color: #2B2D42;
+    color: white;
   }
 
   .nav__icon--hamburger {
