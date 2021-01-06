@@ -17,6 +17,7 @@ import {BookCarouselComponent} from './components/book-carousel/book-carousel.co
 import {NguCarouselModule} from '@ngu/carousel';
 import {BookCarouselItemComponent} from './components/book-carousel-item/book-carousel-item.component';
 import {BookLabelsComponent} from './components/shared/book-labels/book-labels.component';
+import {HeaderMenuComponent} from './components/header-menu/header-menu.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +32,7 @@ import {BookLabelsComponent} from './components/shared/book-labels/book-labels.c
     BookCarouselComponent,
     BookCarouselItemComponent,
     BookLabelsComponent,
+    HeaderMenuComponent,
   ],
   imports: [
     BrowserModule,

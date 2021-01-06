@@ -1,0 +1,31 @@
+<header class="header" [ngStyle]="{height: height + 'px', transform: navTransformString}">
+  <a class="header__logoContainer" routerLink="">
+    <img class="header__logo" alt="BookStore logo" src="assets/logo.png"/>
+  </a>
+  <nav class="nav">
+    <fa-icon class="nav__icon nav__icon--tablet" routerLink="" [icon]="faShoppingBasket" size="2x"></fa-icon>
+    <fa-icon class="nav__icon nav__icon--tablet" routerLink="" [icon]="faUser" size="2x"></fa-icon>
+    <fa-icon (click)="toggleMenu()" class="nav__icon" [icon]="menuIcon" size="2x"></fa-icon>
+    <div class="nav__links">
+      <a class="nav__link" routerLink="">
+        Bestsellers
+      </a>
+      <a class="nav__link" routerLink="">
+        Sales
+      </a>
+      <a class="nav__link" routerLink="">
+        Browse
+      </a>
+      <a class="nav__link" routerLink="">
+        About us
+      </a>
+      <a class="nav__link" routerLink="">
+        Browse
+      </a>
+      <div class="nav__iconsContainer">
+        <fa-icon class="nav__icon nav__icon--mobile" routerLink="" [icon]="faShoppingBasket" size="2x"></fa-icon>
+        <fa-icon class="nav__icon nav__icon--mobile" routerLink="" [icon]="faUser" size="2x"></fa-icon>
+      </div>
+    </div>
+  </nav>
+</header>
