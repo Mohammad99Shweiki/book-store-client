@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders} from '@angular/common/http';
+import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Review} from '../models/review';
 import {environment} from '../../environments/environment';
@@ -12,16 +12,21 @@ export class ReviewsService {
   constructor(private http: HttpClient) {
   }
 
-  httpOptions: object = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'}),
+  httpOptions: {headers: HttpHeaders, params?: HttpParams} = {
+    headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
   getLimitedReviews(id: number, limit: number, skip: number): Observable<Array<Review>> {
-    return this.http.get<Array<Review>>( environment.serverUrL + `getLimitedReviews/${id}/${limit}/${skip}`);
+    this.httpOptions.params = new HttpParams()
+      .append('id', id.toString())
+      .append('limit', limit.toString())
+      .append('skip', skip.toString());
+    return this.http.get<Array<Review>>( environment.serverUrL + 'getLimitedReviews', this.httpOptions);
   }
 
   getNumberOfReviews(id: number): Observable<number> {
-    return this.http.get<number>( environment.serverUrL + `getNumberOfReviews/${id}`);
+    this.httpOptions.params = new HttpParams().append('id', id.toString());
+    return this.http.get<number>( environment.serverUrL + 'getNumberOfReviews', this.httpOptions);
   }
 
 }
