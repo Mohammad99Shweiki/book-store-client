@@ -1,0 +1,5 @@
+<div>
+  <span [ngStyle]="getSizeStyles()" class="label label--bestseller" *ngIf="book.bestseller">bestseller</span>
+  <span [ngStyle]="getSizeStyles()" class="label label--sale" *ngIf="book.discountedPrice">sale</span>
+  <span [ngStyle]="getSizeStyles()" class="label label--new" *ngIf="book.new">new</span>
+</div>

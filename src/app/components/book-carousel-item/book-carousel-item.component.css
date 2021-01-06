@@ -17,36 +17,10 @@
   position: relative;
 }
 
-.product__labelsContainer {
+.product__labels {
   position: absolute;
   left: -10px;
   top: 5px;
-}
-
-.product__label {
-  width: fit-content;
-  text-align: center;
-  display: block;
-  padding: 3px 10px;
-  text-decoration: none;
-  color: white;
-  border-radius: 5px;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  font-weight: 600;
-  margin-bottom: 3px;
-}
-
-.product__label--bestseller {
-  background-color: #ef233c;
-}
-
-.product__label--new {
-  background-color: #2B2D42;
-}
-
-.product__label--sale {
-  background-color: #D90429;
 }
 
 .product__img {
