@@ -16,7 +16,7 @@ export class HeaderMenuComponent implements OnInit {
   sidebarOpened: boolean = false;
   navTransformString: string = '';
   menuIcon: IconDefinition = faBars;
-
+  basketCounter: number = 5;
   constructor(private navService: NavService, private router: Router) {
   }
 
