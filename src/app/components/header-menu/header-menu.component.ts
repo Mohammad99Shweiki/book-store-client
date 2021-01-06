@@ -30,6 +30,14 @@ export class HeaderMenuComponent implements OnInit {
     this.height = offset - this.height > 20 ? 80 : 100;
   }
 
+  @HostListener('window:resize', [])
+  onResize(): void {
+    const windowWidth: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
+    if (windowWidth > 1200 && this.sidebarOpened) {
+      this.toggleMenu();
+    }
+  }
+
   toggleMenu(): void {
     this.sidebarOpened = !this.sidebarOpened;
     this.menuIcon = this.sidebarOpened ? faTimes : faBars;
