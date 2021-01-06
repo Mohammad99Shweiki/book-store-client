@@ -1,0 +1,14 @@
+.numberIndicator {
+  font-size: 0.875em;
+  background-color: #D90429;
+  color: white;
+  width: 1.825em;
+  height: 1.825em;
+  border-radius: 50%;
+  position: absolute;
+  font-weight: 600;
+  top: 0;
+  right: 0;
+  text-align: center;
+  line-height: 1.825em;
+}

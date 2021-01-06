@@ -18,6 +18,8 @@ import {NguCarouselModule} from '@ngu/carousel';
 import {BookCarouselItemComponent} from './components/book-carousel-item/book-carousel-item.component';
 import {BookLabelsComponent} from './components/shared/book-labels/book-labels.component';
 import {HeaderMenuComponent} from './components/header-menu/header-menu.component';
+import {ScrollTopComponent} from './components/scroll-top/scroll-top.component';
+import {NumberIndicatorComponent} from './components/shared/number-indicator/number-indicator.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +35,8 @@ import {HeaderMenuComponent} from './components/header-menu/header-menu.componen
     BookCarouselItemComponent,
     BookLabelsComponent,
     HeaderMenuComponent,
+    ScrollTopComponent,
+    NumberIndicatorComponent,
   ],
   imports: [
     BrowserModule,
