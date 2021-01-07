@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BooksService} from '../../services/books.service';
 import {Book} from '../../models/book';
@@ -16,7 +16,7 @@ import {Subscription} from 'rxjs';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css'],
 })
-export class BookDetailsComponent implements OnInit {
+export class BookDetailsComponent implements OnInit, OnDestroy {
   book: Book;
   reviews: Array<Review> = [];
   activeTab: 'description' | 'details' | 'reviews' = 'description';
@@ -96,4 +96,9 @@ export class BookDetailsComponent implements OnInit {
       this.transformString = status ? 'translateX(-300px)' : '';
     });
   }
+
+  ngOnDestroy(): void {
+    this.sidebarOpenedSubscription.unsubscribe();
+  }
+
 }

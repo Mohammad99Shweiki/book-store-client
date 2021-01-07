@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BooksService} from '../../services/books.service';
 import {Book} from '../../models/book';
 import {Subscription} from 'rxjs';
@@ -9,7 +9,7 @@ import {NavService} from '../../services/nav.service';
   templateUrl: './books-list.component.html',
   styleUrls: ['./books-list.component.css'],
 })
-export class BooksListComponent implements OnInit {
+export class BooksListComponent implements OnInit, OnDestroy {
   books: Book[] = [];
   limit: number = 12;
   skip: number = 0;
@@ -39,6 +39,10 @@ export class BooksListComponent implements OnInit {
     this.sidebarOpenedSubscription = this.navService.isSidebarOpened$.subscribe((status: boolean) => {
       this.transformString = status ? 'translateX(-300px)' : '';
     });
+  }
+
+  ngOnDestroy(): void {
+    this.sidebarOpenedSubscription.unsubscribe();
   }
 
 }
