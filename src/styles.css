@@ -6,6 +6,12 @@
   font-family: 'Open Sans', sans-serif;
 }
 
+html {
+  height: 100%;
+}
+
 body {
   overflow-x: hidden;
+  height: 100%;
 }
+
