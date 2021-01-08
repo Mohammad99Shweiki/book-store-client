@@ -20,7 +20,15 @@ import {BookLabelsComponent} from './components/shared/book-labels/book-labels.c
 import {HeaderMenuComponent} from './components/header-menu/header-menu.component';
 import {ScrollTopComponent} from './components/scroll-top/scroll-top.component';
 import {NumberIndicatorComponent} from './components/shared/number-indicator/number-indicator.component';
-import { BooksFilterComponent } from './components/books-filter/books-filter.component';
+import {BooksFilterComponent} from './components/books-filter/books-filter.component';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatInputModule} from '@angular/material/input';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule, MatOptionModule} from '@angular/material/core';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatButtonModule} from '@angular/material/button';
+import {MatSelectModule} from '@angular/material/select';
 
 @NgModule({
   declarations: [
@@ -38,7 +46,7 @@ import { BooksFilterComponent } from './components/books-filter/books-filter.com
     HeaderMenuComponent,
     ScrollTopComponent,
     NumberIndicatorComponent,
-    BooksFilterComponent,
+    BooksFilterComponent
   ],
   imports: [
     BrowserModule,
@@ -46,7 +54,16 @@ import { BooksFilterComponent } from './components/books-filter/books-filter.com
     HttpClientModule,
     InfiniteScrollModule,
     FontAwesomeModule,
-    NguCarouselModule
+    NguCarouselModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatButtonModule,
+    MatOptionModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent],

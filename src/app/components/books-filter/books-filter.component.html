@@ -1,0 +1,35 @@
+<div class="booksFilter">
+  <p class="booksFilter__header">Lorem Ipsum</p>
+  <mat-form-field class="example-full-width">
+    <mat-label>Search</mat-label>
+    <input type="text" matInput placeholder="Value to search">
+  </mat-form-field>
+  <p class="booksFilter__label">Publication date</p>
+  <div class="booksFilter__dateContainer">
+    <mat-form-field class="booksFilter__datePicker">
+      <mat-label>From</mat-label>
+      <input matInput [matDatepicker]="startPicker">
+      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+      <mat-datepicker #startPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field class="booksFilter__datePicker">
+      <mat-label>To</mat-label>
+      <input matInput [matDatepicker]="endPicker">
+      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+      <mat-datepicker #endPicker></mat-datepicker>
+    </mat-form-field>
+  </div>
+  <mat-form-field>
+    <mat-label>Genre</mat-label>
+    <mat-select multiple>
+      <mat-option>
+        test
+      </mat-option>
+      <mat-option>
+        test
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-checkbox color="primary">On sale</mat-checkbox>
+  <mat-checkbox color="primary">Bestsellers</mat-checkbox>
+</div>

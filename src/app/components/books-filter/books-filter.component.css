@@ -1,0 +1,31 @@
+
+.booksFilter {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  padding: 30px 20px;
+}
+
+.booksFilter__header {
+  font-family: 'Raleway', sans-serif;
+  font-size: 1.25em;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.booksFilter__dateContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.booksFilter__datePicker {
+  width: 45%;
+}
+
+.booksFilter__label {
+  margin-bottom: 5px;
+  font-size: 0.825em;
+  font-family: 'Raleway', sans-serif;
+  color: #2B2D42;
+  font-weight: 500;
+}
