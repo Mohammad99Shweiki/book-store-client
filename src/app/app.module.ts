@@ -20,6 +20,7 @@ import {BookLabelsComponent} from './components/shared/book-labels/book-labels.c
 import {HeaderMenuComponent} from './components/header-menu/header-menu.component';
 import {ScrollTopComponent} from './components/scroll-top/scroll-top.component';
 import {NumberIndicatorComponent} from './components/shared/number-indicator/number-indicator.component';
+import { BooksFilterComponent } from './components/books-filter/books-filter.component';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import {NumberIndicatorComponent} from './components/shared/number-indicator/num
     HeaderMenuComponent,
     ScrollTopComponent,
     NumberIndicatorComponent,
+    BooksFilterComponent,
   ],
   imports: [
     BrowserModule,

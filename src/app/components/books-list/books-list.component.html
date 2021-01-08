@@ -1,5 +1,5 @@
-<div class="container" [ngStyle]="{transform: transformString}">
-  <app-loading-spinner *ngIf="!books.length" color="#2B2D42"></app-loading-spinner>
+<div class="container" [ngStyle]="{transform: sidebarTransformString}">
+  <app-loading-spinner class="spinner" *ngIf="!books.length" color="#2B2D42"></app-loading-spinner>
   <div *ngIf="books.length" class="booksContainer" infiniteScroll
        [infiniteScrollDistance]="2"
        [infiniteScrollThrottle]="50"
@@ -9,5 +9,9 @@
     <app-book-overview class="book" *ngFor="let book of books"
                        [book]="book">
     </app-book-overview>
+  </div>
+  <div *ngIf="books.length" class="booksFilter" [class.booksFilter--opened]="filtersOpened">
+    <div (click)="toggleFilters()" class="booksFilter__open"></div>
+    <app-books-filter></app-books-filter>
   </div>
 </div>

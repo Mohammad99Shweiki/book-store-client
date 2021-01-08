@@ -14,7 +14,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
   limit: number = 12;
   skip: number = 0;
   sidebarOpenedSubscription: Subscription;
-  transformString: string;
+  sidebarTransformString: string;
+  filtersOpened: boolean;
 
   constructor(private booksService: BooksService, private navService: NavService) {
   }
@@ -37,8 +38,15 @@ export class BooksListComponent implements OnInit, OnDestroy {
 
   setupSubscription(): void {
     this.sidebarOpenedSubscription = this.navService.isSidebarOpened$.subscribe((status: boolean) => {
-      this.transformString = status ? 'translateX(-300px)' : '';
+      if (status) {
+        this.toggleFilters();
+      }
+      this.sidebarTransformString = status ? 'translateX(-300px)' : '';
     });
+  }
+
+  toggleFilters(): void {
+    this.filtersOpened = !this.filtersOpened;
   }
 
   ngOnDestroy(): void {
