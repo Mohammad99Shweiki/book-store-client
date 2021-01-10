@@ -2,7 +2,7 @@
   width: 100%;
   background-color: #EDF2F4;
   box-shadow: 0 10px 5px 0 rgba(70, 70, 70, 0.4);
-  position: fixed;
+  position: sticky;
   top: 0;
   z-index: 12;
   transition: height 0.2s ease-out,
