@@ -13,7 +13,8 @@ export class CustomDetailPipe implements PipeTransform {
         break;
       }
       case 'publication': {
-        transformedString = value.split('/').join('.');
+        const date: Date = new Date(Number(value));
+        transformedString = date.toLocaleDateString('en-GB');
         break;
       }
     }
