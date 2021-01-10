@@ -51,7 +51,7 @@
             {{detail.value}}
           </p>
           <p *ngIf="detail.customPipe" class="product__detail product__detail--value">
-            {{detail.value.toString() | customDetail: detail.key}}
+            {{detail.value | customDetail: detail.key}}
           </p>
         </ng-container>
       </div>

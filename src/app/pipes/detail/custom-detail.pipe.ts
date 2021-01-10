@@ -5,11 +5,11 @@ import {Pipe, PipeTransform} from '@angular/core';
 })
 export class CustomDetailPipe implements PipeTransform {
 
-  transform(value: string, type: string): string {
+  transform(value: string | Array<string>, type: string): string {
     let transformedString: string;
     switch (type) {
       case 'genre': {
-        transformedString = value.split('|').join(', ');
+        transformedString = Array.from(value).join(', ');
         break;
       }
       case 'publication': {
