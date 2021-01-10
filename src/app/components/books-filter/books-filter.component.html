@@ -36,8 +36,8 @@
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-checkbox [(ngModel)]="booksFilter.sale" class="booksFilter__checkbox" color="primary">On sale</mat-checkbox>
-  <mat-checkbox [(ngModel)]="booksFilter.bestseller" class="booksFilter__checkbox" color="primary">Bestsellers</mat-checkbox>
-  <mat-checkbox [(ngModel)]="booksFilter.new" class="booksFilter__checkbox" color="primary">New</mat-checkbox>
+  <mat-checkbox *ngIf="type !== 'sale'" [(ngModel)]="booksFilter.sale" class="booksFilter__checkbox" color="primary">On sale</mat-checkbox>
+  <mat-checkbox *ngIf="type !== 'bestseller'" [(ngModel)]="booksFilter.bestseller" class="booksFilter__checkbox" color="primary">Bestsellers</mat-checkbox>
+  <mat-checkbox *ngIf="type !== 'new'" [(ngModel)]="booksFilter.new" class="booksFilter__checkbox" color="primary">New</mat-checkbox>
   <button (click)="filterBooks()" class="booksFilter__button">Filter results</button>
 </div>

@@ -5,6 +5,10 @@ import { BooksListComponent } from './components/books-list/books-list.component
 
 const routes: Routes = [
   { path: '', component: BooksListComponent },
+  { path: 'sales', component: BooksListComponent },
+  { path: 'bestsellers', component: BooksListComponent },
+  { path: 'new', component: BooksListComponent },
+  { path: 'browse', component: BooksListComponent },
   { path: 'book/:id', component: BookDetailsComponent },
   { path: '**', component: BooksListComponent },
 ];

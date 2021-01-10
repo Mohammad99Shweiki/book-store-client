@@ -10,22 +10,22 @@
     <fa-icon class="nav__icon nav__icon--tablet" routerLink="" [icon]="faUser" size="2x"></fa-icon>
     <fa-icon (click)="toggleMenu()" class="nav__icon nav__icon--hamburger" [icon]="menuIcon" size="2x"></fa-icon>
     <div class="nav__links">
-      <a class="nav__link" routerLink="">
+      <a class="nav__link" routerLink="/bestsellers" routerLinkActive="nav__link--active" [state]="{type: 'bestseller'}">
         Bestsellers
       </a>
-      <a class="nav__link" routerLink="">
+      <a class="nav__link" routerLink="/sales" routerLinkActive="nav__link--active" [state]="{type: 'sale'}">
         Sales
       </a>
-      <a class="nav__link" routerLink="">
+      <a class="nav__link" routerLink="/new" routerLinkActive="nav__link--active" [state]="{type: 'new'}">
         New
       </a>
-      <a class="nav__link" routerLink="">
+      <a class="nav__link" routerLink="/browse" routerLinkActive="nav__link--active" [state]="{type: 'browse'}">
         Browse
       </a>
-      <a class="nav__link" routerLink="">
+      <a class="nav__link" routerLinkActive="nav__link--active" routerLink="/placeholder">
         About us
       </a>
-      <a class="nav__link" routerLink="">
+      <a class="nav__link" routerLinkActive="nav__link--active" routerLink="/placeholder">
         Contact
       </a>
       <div class="nav__iconsContainer">

@@ -5,6 +5,7 @@ import {Subscription} from 'rxjs';
 import {NavService} from '../../services/nav/nav.service';
 import {BooksFilter} from '../../models/booksFilter';
 import {FilterService} from '../../services/filter/filter.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-books-list',
@@ -30,13 +31,26 @@ export class BooksListComponent implements OnInit, OnDestroy {
     new: false
   };
   booksFilterSubscription: Subscription;
+  type: 'sale' | 'browse' | 'bestseller' | 'new';
 
-  constructor(private booksService: BooksService, private navService: NavService, private filterService: FilterService) {
+  constructor(private booksService: BooksService,
+              private navService: NavService,
+              private filterService: FilterService,
+              private router: Router) {
+    this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+    this.type = this.router.getCurrentNavigation().extras.state?.type;
   }
 
   ngOnInit(): void {
-    this.getBooks(this.limit, this.skip, this.booksFilter);
     this.setupSubscription();
+    this.setupType();
+  }
+
+  setupType(): void {
+    if (this.type !== 'browse') {
+      this.booksFilter[this.type] = true;
+    }
+    this.getBooks(this.limit, this.skip, this.booksFilter);
   }
 
   onScroll(): void {

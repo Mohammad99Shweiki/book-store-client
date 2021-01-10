@@ -28,6 +28,7 @@ export class BooksFilterComponent implements OnInit {
     bestseller: false,
     new: false
   };
+  @Input() type: 'sale' | 'browse' | 'bestseller' | 'new';
 
   constructor(private filterService: FilterService) {
   }
