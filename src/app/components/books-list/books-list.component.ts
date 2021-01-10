@@ -18,6 +18,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
   sidebarOpenedSubscription: Subscription;
   sidebarTransformString: string;
   filtersOpened: boolean;
+  noBooks: boolean = false;
   booksFilter: BooksFilter = {
     searchPhrase: null,
     dateFrom: null,
@@ -29,27 +30,28 @@ export class BooksListComponent implements OnInit, OnDestroy {
     new: false
   };
   booksFilterSubscription: Subscription;
+
   constructor(private booksService: BooksService, private navService: NavService, private filterService: FilterService) {
   }
 
   ngOnInit(): void {
-    this.getLimitedBooks(this.limit, this.skip);
+    this.getBooks(this.limit, this.skip, this.booksFilter);
     this.setupSubscription();
   }
 
-  getLimitedBooks(limit: number, skip: number): void {
-    this.booksService
-      .getLimitedBooks(limit, skip)
-      .subscribe((books: Array<Book>) => this.books.push(...books));
-    this.skip += limit;
-  }
-
   onScroll(): void {
-    this.getLimitedBooks(this.limit, this.skip);
+    this.getBooks(this.limit, this.skip, this.booksFilter);
   }
 
-  getBooksWithFilterPlaceholder(limit: number, skip: number, filter: BooksFilter): void {
-    this.booksService.getBooksWithFilterPlaceholder(limit, skip, filter).subscribe((books: Array<Book>) => {});
+  getBooks(limit: number, skip: number, filter: BooksFilter): void {
+    this.noBooks = false;
+    this.booksService.getBooks(limit, skip, filter).subscribe((books: Array<Book>) => {
+      this.books.push(...books);
+      if (!this.books.length) {
+        this.noBooks = true;
+      }
+    });
+    this.skip += limit;
   }
 
   setupSubscription(): void {
@@ -60,9 +62,10 @@ export class BooksListComponent implements OnInit, OnDestroy {
       this.sidebarTransformString = status ? 'translateX(-300px)' : '';
     });
     this.booksFilterSubscription = this.filterService.filter$.subscribe((filter: BooksFilter) => {
+      this.books = [];
       this.booksFilter = filter;
       this.skip = 0;
-      this.getBooksWithFilterPlaceholder(this.limit, this.skip, this.booksFilter);
+      this.getBooks(this.limit, this.skip, this.booksFilter);
     });
   }
 

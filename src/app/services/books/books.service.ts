@@ -16,13 +16,6 @@ export class BooksService {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
-  getLimitedBooks(limit: number, skip: number): Observable<Array<Book>> {
-    this.httpOptions.params = new HttpParams()
-      .append('limit', limit.toString())
-      .append('skip', skip.toString());
-    return this.http.get<Array<Book>>(environment.serverUrL + 'getLimitedBooks', this.httpOptions);
-  }
-
   getBook(id: number): Observable<Book> {
     this.httpOptions.params = new HttpParams().append('id', id.toString());
     return this.http.get<Book>(environment.serverUrL + 'getBook', this.httpOptions);
@@ -33,8 +26,8 @@ export class BooksService {
     return this.http.get<Array<Book>>(environment.serverUrL + 'getRecommendedBooks', this.httpOptions);
   }
 
-  getBooksWithFilterPlaceholder(limit: number, skip: number, filter: BooksFilter): Observable<Array<Book>> {
-    return this.http.post<Array<Book>>(environment.serverUrL + 'getBooksWithFilterPlaceholder',
+  getBooks(limit: number, skip: number, filter: BooksFilter): Observable<Array<Book>> {
+    return this.http.post<Array<Book>>(environment.serverUrL + 'getBooks',
       {limit, skip, ...filter},
       {headers: new HttpHeaders({'Content-Type': 'application/json'})}
       );
