@@ -1,9 +1,10 @@
 <div class="booksFilter">
-  <p class="booksFilter__header">Lorem Ipsum</p>
-  <mat-form-field class="example-full-width">
+  <p class="booksFilter__header">Find book for you</p>
+  <mat-form-field class="booksFilter__searchContainer">
     <mat-label>Search</mat-label>
     <input type="text" matInput placeholder="Value to search">
   </mat-form-field>
+  <p class="booksFilter__header booksFilter__header--sub">Filter results</p>
   <p class="booksFilter__label">Publication date</p>
   <div class="booksFilter__dateContainer">
     <mat-form-field class="booksFilter__datePicker">
@@ -22,14 +23,26 @@
   <mat-form-field>
     <mat-label>Genre</mat-label>
     <mat-select multiple>
-      <mat-option>
-        test
-      </mat-option>
-      <mat-option>
-        test
+      <mat-option *ngFor="let genre of genres" [value]="genre">
+        {{genre}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-checkbox color="primary">On sale</mat-checkbox>
-  <mat-checkbox color="primary">Bestsellers</mat-checkbox>
+  <mat-form-field>
+    <mat-label>Sort by</mat-label>
+    <mat-select>
+      <mat-option>
+        Relevance
+      </mat-option>
+      <mat-option>
+        Price (<fa-icon [icon]="faCaretDown"></fa-icon>)
+      </mat-option>
+      <mat-option>
+        Price (<fa-icon [icon]="faCaretUp"></fa-icon>)
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-checkbox class="booksFilter__checkbox" color="primary">On sale</mat-checkbox>
+  <mat-checkbox class="booksFilter__checkbox" color="primary">Bestsellers</mat-checkbox>
+  <button class="booksFilter__button">Filter results</button>
 </div>
