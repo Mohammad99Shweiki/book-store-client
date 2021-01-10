@@ -10,11 +10,12 @@ import {FilterService} from '../../services/filter/filter.service';
 export class BooksFilterComponent implements OnInit {
   genres: Array<string> = ['Humor', 'Romance', 'Action', 'Adventure', 'Classic', 'Graphic Novel', 'Fantasy', 'Crime', 'Historical Fiction', 'Horror', 'Literary Fiction', 'Sci-Fi', 'Short Stories',
     'Thriller', 'Biography', 'History', 'Poetry'];
-  sortMethods: Array<{ name: string, value: string }> = [
+  sortMethods: Array<{ name: string, value: string | {name: string, direction: 'asc' | 'desc'} }> = [
     {name: 'Default', value: 'default'},
-    {name: 'Relevance', value: 'relevance'},
-    {name: 'Price (desc)', value: 'price_desc'},
-    {name: 'Price (asc)', value: 'price_asc'}
+    {name: 'Price (desc)', value: {name: 'minPrice', direction: 'desc'}},
+    {name: 'Price (asc)', value: {name: 'minPrice', direction: 'asc'}},
+    {name: 'Publication date (asc)', value: {name: 'publication', direction: 'asc'}},
+    {name: 'Publication date (desc)', value: {name: 'publication', direction: 'desc'}}
   ];
   timeout: number = null;
   @Input() booksFilter: BooksFilter = {
