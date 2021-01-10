@@ -1,5 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {faCaretUp, faCaretDown, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-books-filter',
@@ -9,8 +8,11 @@ import {faCaretUp, faCaretDown, IconDefinition} from '@fortawesome/free-solid-sv
 export class BooksFilterComponent implements OnInit {
   genres: Array<string> = ['Humor', 'Romance', 'Action', 'Adventure', 'Classic', 'Graphic Novel', 'Fantasy', 'Crime', 'Historical Fiction', 'Horror', 'Literary Fiction', 'Sci-Fi', 'Short Stories',
     'Thriller', 'Biography', 'History', 'Poetry'];
-  faCaretUp: IconDefinition = faCaretUp;
-  faCaretDown: IconDefinition = faCaretDown;
+  sortMethods: Array<{name: string, value: string}> = [
+    {name: 'Relevance', value: 'relevance'},
+    {name: 'Price (desc)', value: 'price_desc'},
+    {name: 'Price (asc)', value: 'price_asc'}
+  ];
   constructor() {
   }
 

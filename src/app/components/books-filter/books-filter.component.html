@@ -31,14 +31,8 @@
   <mat-form-field>
     <mat-label>Sort by</mat-label>
     <mat-select>
-      <mat-option>
-        Relevance
-      </mat-option>
-      <mat-option>
-        Price (<fa-icon [icon]="faCaretDown"></fa-icon>)
-      </mat-option>
-      <mat-option>
-        Price (<fa-icon [icon]="faCaretUp"></fa-icon>)
+      <mat-option *ngFor="let method of sortMethods" [value]="method.value">
+        {{method.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
