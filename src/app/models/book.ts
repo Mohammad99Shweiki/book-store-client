@@ -6,6 +6,7 @@ export interface Book {
   genre: Array<string>;
   price: number;
   discountedPrice?: number;
+  minPrice: number;
   coverPhoto: string;
   pages: number;
   publication: string;
