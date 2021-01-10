@@ -66,6 +66,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.sidebarOpenedSubscription.unsubscribe();
+    this.booksFilterSubscription.unsubscribe();
   }
 
 }
