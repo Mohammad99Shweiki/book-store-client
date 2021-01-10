@@ -1,6 +1,6 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {faBars, faShoppingBasket, faUser, faTimes, IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {NavService} from '../../services/nav.service';
+import {NavService} from '../../services/nav/nav.service';
 import {NavigationStart, Router, RouterEvent} from '@angular/router';
 import {filter} from 'rxjs/operators';
 

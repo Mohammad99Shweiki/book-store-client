@@ -1,8 +1,10 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {BooksService} from '../../services/books.service';
+import {BooksService} from '../../services/books/books.service';
 import {Book} from '../../models/book';
 import {Subscription} from 'rxjs';
-import {NavService} from '../../services/nav.service';
+import {NavService} from '../../services/nav/nav.service';
+import {BooksFilter} from '../../models/booksFilter';
+import {FilterService} from '../../services/filter/filter.service';
 
 @Component({
   selector: 'app-books-list',
@@ -16,8 +18,18 @@ export class BooksListComponent implements OnInit, OnDestroy {
   sidebarOpenedSubscription: Subscription;
   sidebarTransformString: string;
   filtersOpened: boolean;
-
-  constructor(private booksService: BooksService, private navService: NavService) {
+  booksFilter: BooksFilter = {
+    searchPhrase: null,
+    dateFrom: null,
+    dateTo: null,
+    genres: [],
+    sortBy: 'default',
+    sale: false,
+    bestseller: false,
+    new: false
+  };
+  booksFilterSubscription: Subscription;
+  constructor(private booksService: BooksService, private navService: NavService, private filterService: FilterService) {
   }
 
   ngOnInit(): void {
@@ -38,10 +50,13 @@ export class BooksListComponent implements OnInit, OnDestroy {
 
   setupSubscription(): void {
     this.sidebarOpenedSubscription = this.navService.isSidebarOpened$.subscribe((status: boolean) => {
-      if (status) {
+      if (status && this.filtersOpened) {
         this.toggleFilters();
       }
       this.sidebarTransformString = status ? 'translateX(-300px)' : '';
+    });
+    this.booksFilterSubscription = this.filterService.filter$.subscribe((filter: BooksFilter) => {
+      this.booksFilter = filter;
     });
   }
 

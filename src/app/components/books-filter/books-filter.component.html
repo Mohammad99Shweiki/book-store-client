@@ -2,7 +2,7 @@
   <p class="booksFilter__header">Find book for you</p>
   <mat-form-field class="booksFilter__searchContainer">
     <mat-label>Search</mat-label>
-    <input [(ngModel)]="bookFilter.searchPhrase" type="text" matInput placeholder="Value to search">
+    <input (ngModelChange)="searchTermChange()" [(ngModel)]="booksFilter.searchPhrase" type="text" matInput placeholder="Value to search">
   </mat-form-field>
   <p class="booksFilter__header booksFilter__header--sub">Filter results</p>
   <p class="booksFilter__label">Publication date</p>
@@ -22,7 +22,7 @@
   </div>
   <mat-form-field>
     <mat-label>Genre</mat-label>
-    <mat-select [(ngModel)]="bookFilter.genres" multiple>
+    <mat-select [(ngModel)]="booksFilter.genres" multiple>
       <mat-option *ngFor="let genre of genres" [value]="genre">
         {{genre}}
       </mat-option>
@@ -30,14 +30,14 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Sort by</mat-label>
-    <mat-select [(ngModel)]="bookFilter.sortBy">
+    <mat-select [(ngModel)]="booksFilter.sortBy">
       <mat-option *ngFor="let method of sortMethods" [value]="method.value">
         {{method.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
-  <mat-checkbox [(ngModel)]="bookFilter.sale" class="booksFilter__checkbox" color="primary">On sale</mat-checkbox>
-  <mat-checkbox [(ngModel)]="bookFilter.bestseller" class="booksFilter__checkbox" color="primary">Bestsellers</mat-checkbox>
-  <mat-checkbox [(ngModel)]="bookFilter.new" class="booksFilter__checkbox" color="primary">New</mat-checkbox>
-  <button class="booksFilter__button">Filter results</button>
+  <mat-checkbox [(ngModel)]="booksFilter.sale" class="booksFilter__checkbox" color="primary">On sale</mat-checkbox>
+  <mat-checkbox [(ngModel)]="booksFilter.bestseller" class="booksFilter__checkbox" color="primary">Bestsellers</mat-checkbox>
+  <mat-checkbox [(ngModel)]="booksFilter.new" class="booksFilter__checkbox" color="primary">New</mat-checkbox>
+  <button (click)="filterBooks()" class="booksFilter__button">Filter results</button>
 </div>

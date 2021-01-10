@@ -12,6 +12,6 @@
   </div>
   <div *ngIf="books.length" class="booksFilter" [class.booksFilter--opened]="filtersOpened">
     <div (click)="toggleFilters()" class="booksFilter__open"></div>
-    <app-books-filter></app-books-filter>
+    <app-books-filter [booksFilter]="booksFilter"></app-books-filter>
   </div>
 </div>

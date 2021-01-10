@@ -1,6 +1,6 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {BooksFilter} from '../../models/booksFilter';
-import {Subject} from 'rxjs';
+import {FilterService} from '../../services/filter/filter.service';
 
 @Component({
   selector: 'app-books-filter',
@@ -10,13 +10,14 @@ import {Subject} from 'rxjs';
 export class BooksFilterComponent implements OnInit {
   genres: Array<string> = ['Humor', 'Romance', 'Action', 'Adventure', 'Classic', 'Graphic Novel', 'Fantasy', 'Crime', 'Historical Fiction', 'Horror', 'Literary Fiction', 'Sci-Fi', 'Short Stories',
     'Thriller', 'Biography', 'History', 'Poetry'];
-  sortMethods: Array<{name: string, value: string}> = [
+  sortMethods: Array<{ name: string, value: string }> = [
     {name: 'Default', value: 'default'},
     {name: 'Relevance', value: 'relevance'},
     {name: 'Price (desc)', value: 'price_desc'},
     {name: 'Price (asc)', value: 'price_asc'}
   ];
-  bookFilter: BooksFilter = {
+  timeout: number = null;
+  @Input() booksFilter: BooksFilter = {
     searchPhrase: null,
     dateFrom: null,
     dateTo: null,
@@ -26,9 +27,8 @@ export class BooksFilterComponent implements OnInit {
     bestseller: false,
     new: false
   };
-  searchTerms: Subject<string> = new Subject<string>();
 
-  constructor() {
+  constructor(private filterService: FilterService) {
   }
 
   ngOnInit(): void {
@@ -39,9 +39,22 @@ export class BooksFilterComponent implements OnInit {
     const date: number = new Date(dateArray[0], dateArray[1], dateArray[2]).getTime();
 
     if (type === 'from' && !isNaN(date)) {
-      this.bookFilter.dateFrom = date;
-    } else if (type === 'to'  && !isNaN(date)) {
-      this.bookFilter.dateTo = date;
+      this.booksFilter.dateFrom = date;
+    } else if (type === 'to' && !isNaN(date)) {
+      this.booksFilter.dateTo = date;
     }
+  }
+
+  searchTermChange(): void {
+    if (this.timeout !== null) {
+      clearTimeout(this.timeout);
+    }
+    this.timeout = setTimeout(() => {
+      this.filterService.changeFilter(this.booksFilter);
+    }, 1000);
+  }
+
+  filterBooks(): void {
+    this.filterService.changeFilter(this.booksFilter);
   }
 }

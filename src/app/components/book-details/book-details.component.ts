@@ -1,14 +1,14 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
-import {BooksService} from '../../services/books.service';
+import {BooksService} from '../../services/books/books.service';
 import {Book} from '../../models/book';
 import {Review} from '../../models/review';
-import {ReviewsService} from '../../services/reviews.service';
+import {ReviewsService} from '../../services/reviews/reviews.service';
 import {detailsMapping} from '../../helpers/detailsMapping/detailsMapping';
 import {DetailMapping} from '../../models/detailMapping';
 import {Detail} from '../../models/detail';
 import {Title} from '@angular/platform-browser';
-import {NavService} from '../../services/nav.service';
+import {NavService} from '../../services/nav/nav.service';
 import {Subscription} from 'rxjs';
 
 @Component({
