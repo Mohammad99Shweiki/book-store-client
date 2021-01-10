@@ -48,6 +48,10 @@ export class BooksListComponent implements OnInit, OnDestroy {
     this.getLimitedBooks(this.limit, this.skip);
   }
 
+  getBooksWithFilterPlaceholder(limit: number, skip: number, filter: BooksFilter): void {
+    this.booksService.getBooksWithFilterPlaceholder(limit, skip, filter).subscribe((books: Array<Book>) => {});
+  }
+
   setupSubscription(): void {
     this.sidebarOpenedSubscription = this.navService.isSidebarOpened$.subscribe((status: boolean) => {
       if (status && this.filtersOpened) {
@@ -57,6 +61,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
     });
     this.booksFilterSubscription = this.filterService.filter$.subscribe((filter: BooksFilter) => {
       this.booksFilter = filter;
+      this.skip = 0;
+      this.getBooksWithFilterPlaceholder(this.limit, this.skip, this.booksFilter);
     });
   }
 
