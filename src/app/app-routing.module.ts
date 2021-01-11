@@ -4,13 +4,13 @@ import { BookDetailsComponent } from './components/book-details/book-details.com
 import { BooksListComponent } from './components/books-list/books-list.component';
 
 const routes: Routes = [
-  { path: '', component: BooksListComponent },
-  { path: 'sales', component: BooksListComponent },
-  { path: 'bestsellers', component: BooksListComponent },
-  { path: 'new', component: BooksListComponent },
-  { path: 'browse', component: BooksListComponent },
+  { path: '', component: BooksListComponent, data: {type: 'browse'} }, // to delete later
+  { path: 'sales', component: BooksListComponent, data: {type: 'sale'} },
+  { path: 'bestsellers', component: BooksListComponent, data: {type: 'bestseller'} },
+  { path: 'new', component: BooksListComponent, data: {type: 'new'} },
+  { path: 'browse', component: BooksListComponent, data: {type: 'browse'} },
   { path: 'book/:id', component: BookDetailsComponent },
-  { path: '**', component: BooksListComponent },
+  { path: '**', component: BooksListComponent, data: {type: 'browse'} } // to delete later
 ];
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

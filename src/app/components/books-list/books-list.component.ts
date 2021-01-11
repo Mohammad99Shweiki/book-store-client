@@ -5,7 +5,8 @@ import {Subscription} from 'rxjs';
 import {NavService} from '../../services/nav/nav.service';
 import {BooksFilter} from '../../models/booksFilter';
 import {FilterService} from '../../services/filter/filter.service';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-books-list',
@@ -32,18 +33,22 @@ export class BooksListComponent implements OnInit, OnDestroy {
   };
   booksFilterSubscription: Subscription;
   type: 'sale' | 'browse' | 'bestseller' | 'new';
+  title: string = '';
 
   constructor(private booksService: BooksService,
               private navService: NavService,
               private filterService: FilterService,
-              private router: Router) {
+              private router: Router,
+              private titleService: Title,
+              private route: ActivatedRoute) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.type = this.router.getCurrentNavigation().extras.state?.type;
+    this.type = this.route.snapshot.data.type;
   }
 
   ngOnInit(): void {
     this.setupSubscription();
     this.setupType();
+    this.setupTitle();
   }
 
   setupType(): void {
@@ -51,6 +56,12 @@ export class BooksListComponent implements OnInit, OnDestroy {
       this.booksFilter[this.type] = true;
     }
     this.getBooks(this.limit, this.skip, this.booksFilter);
+  }
+
+  setupTitle(): void {
+    this.title += this.type.charAt(0).toUpperCase() + this.type.slice(1);
+    this.title += this.type === 'browse' || this.type === 'new' ? ' - BookStore' : 's - BookStore';
+    this.titleService.setTitle(this.title);
   }
 
   onScroll(): void {
