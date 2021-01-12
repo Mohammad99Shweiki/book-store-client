@@ -11,7 +11,8 @@ import {faChevronLeft, faChevronRight, IconDefinition} from '@fortawesome/free-s
   styleUrls: ['./book-carousel.component.css']
 })
 export class BookCarouselComponent implements OnInit {
-  @Input() recommendedBooks: Array<Book>;
+  @Input() books: Array<Book>;
+  @Input() size: 'sm' | 'lg' = 'sm';
 
   @ViewChild('bookCarousel') myCarousel: NguCarousel<any>;
   carouselConfig: NguCarouselConfig = {
@@ -28,6 +29,11 @@ export class BookCarouselComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.setSize();
+  }
 
+  setSize(): void {
+    this.carouselConfig.grid = this.size === 'sm' ? { xs: 1, sm: 2, md: 3, lg: 3, all: 0 } : { xs: 1, sm: 2, md: 3, lg: 4, all: 0 };
+  }
 }

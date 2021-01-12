@@ -1,4 +1,4 @@
-<ngu-carousel class="bookCarousel" #bookCarousel [inputs]="carouselConfig" [dataSource]="recommendedBooks">
+<ngu-carousel class="bookCarousel" #bookCarousel [inputs]="carouselConfig" [dataSource]="books">
   <div class="item" *nguCarouselDef="let book;">
     <app-book-carousel-item class="bookCarousel__item" [book]="book"></app-book-carousel-item>
   </div>
