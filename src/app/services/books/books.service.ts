@@ -26,6 +26,18 @@ export class BooksService {
     return this.http.get<Array<Book>>(environment.serverUrL + 'getRecommendedBooks', this.httpOptions);
   }
 
+  getSales(): Observable<Array<Book>> {
+    return this.http.get<Array<Book>>(environment.serverUrL + 'getSales', {headers: new HttpHeaders({'Content-Type': 'application/json'})});
+  }
+
+  getNew(): Observable<Array<Book>> {
+    return this.http.get<Array<Book>>(environment.serverUrL + 'getNew', {headers: new HttpHeaders({'Content-Type': 'application/json'})});
+  }
+
+  getBestsellers(): Observable<Array<Book>> {
+    return this.http.get<Array<Book>>(environment.serverUrL + 'getBestsellers', {headers: new HttpHeaders({'Content-Type': 'application/json'})});
+  }
+
   getBooks(limit: number, skip: number, filter: BooksFilter): Observable<Array<Book>> {
     return this.http.post<Array<Book>>(environment.serverUrL + 'getBooks',
       {limit, skip, ...filter},
