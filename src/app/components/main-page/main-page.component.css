@@ -5,3 +5,38 @@
   margin: 0 auto;
   min-height: 85vh;
 }
+
+.main_spinner {
+  width: 100%;
+}
+
+.main__banner {
+  max-width: 100%;
+  margin-bottom: 25px;
+}
+
+.main__carouselTitle {
+  color: white;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 500;
+  padding: 10px;
+  width: 100%;
+  font-size: 1em;
+  margin-bottom: 10px;
+}
+
+.main__carouselTitle--bestseller {
+  background-color: #ef233c;
+}
+
+.main__carouselTitle--new {
+  background-color: #2B2D42;
+}
+
+.main__carouselTitle--sale {
+  background-color: #D90429;
+}
+
+.main__carousel {
+  margin-bottom: 15px;
+}
