@@ -17,6 +17,7 @@
 
 .container {
   transition: transform 0.5s;
+  min-height: 80vh;
 }
 
 .booksFilter {

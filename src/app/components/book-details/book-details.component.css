@@ -4,6 +4,7 @@
   width: 100%;
   margin: 0 auto;
   transition: 0.5s;
+  min-height: 80vh;
 }
 
 .product__container {
