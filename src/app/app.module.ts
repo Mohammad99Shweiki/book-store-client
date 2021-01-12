@@ -30,6 +30,7 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
+import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import {FormsModule} from '@angular/forms';
     HeaderMenuComponent,
     ScrollTopComponent,
     NumberIndicatorComponent,
-    BooksFilterComponent
+    BooksFilterComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
