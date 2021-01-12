@@ -1,8 +1,26 @@
 <footer class="footer">
+  <img class="footer__logo" alt="BookStore logo" src="assets/logo.png">
+  <div class="footer__navigation">
+    <a class="footer__link" routerLink="/bestsellers">
+      Bestsellers
+    </a>
+    <a class="footer__link" routerLink="/sales">
+      Sales
+    </a>
+    <a class="footer__link" routerLink="/new">
+      New
+    </a>
+    <a class="footer__link" routerLink="/browse">
+      Browse
+    </a>
+    <a class="footer__link" routerLink="/placeholder">
+      About us
+    </a>
+    <a class="footer__link" routerLink="/placeholder">
+      Contact
+    </a>
+  </div>
   <div class="footer__socials">
-    <p class="footer__socialsText">
-      Check us out on social media
-    </p>
     <a href="https://facebook.com" target="_blank">
       <fa-icon class="footer__icon" [icon]="faFacebook" size="2x"></fa-icon>
     </a>
@@ -13,4 +31,7 @@
       <fa-icon class="footer__icon" [icon]="faTwitter" size="2x"></fa-icon>
     </a>
   </div>
+  <p class="footer__copy">
+    &copy;2020 - 2021, Paweł Błaszczyk
+  </p>
 </footer>
