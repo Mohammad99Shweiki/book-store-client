@@ -1,7 +1,9 @@
 <div class="main">
   <app-loading-spinner class="main_spinner" *ngIf="booksLoaded < 24" color="#2B2D42"></app-loading-spinner>
   <main *ngIf="booksLoaded >= 24">
-    <img class="main__banner" alt="Sales up to 50%, BookStore" src="assets/banner.png">
+    <a routerLink="/sales">
+      <img class="main__banner" alt="Sales up to 50%, BookStore" src="assets/banner.png">
+    </a>
     <p class="main__carouselTitle main__carouselTitle--bestseller">
       Bestsellers
     </p>
