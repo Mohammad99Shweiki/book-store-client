@@ -11,8 +11,21 @@
 }
 
 .main__banner {
-  max-width: 100%;
   margin-bottom: 25px;
+  width: calc(100% + 50px);
+  position: relative;
+  left: -25px;
+  object-fit: cover;
+  min-height: 240px;
+}
+
+.main_subBanner {
+  margin: 15px 0;
+  width: calc(100% + 50px);
+  position: relative;
+  left: -25px;
+  object-fit: cover;
+  min-height: 120px;
 }
 
 .main__carouselTitle {
@@ -39,4 +52,20 @@
 
 .main__carousel {
   margin-bottom: 15px;
+}
+
+@media screen and (min-width: 660px) {
+  .main__banner {
+    width: 100%;
+    position: static;
+    object-fit: initial;
+    min-height: unset;
+  }
+
+  .main_subBanner {
+    width: 100%;
+    position: static;
+    object-fit: initial;
+    min-height: unset;
+  }
 }
