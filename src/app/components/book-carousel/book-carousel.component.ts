@@ -17,6 +17,7 @@ export class BookCarouselComponent implements OnInit {
   @ViewChild('bookCarousel') myCarousel: NguCarousel<any>;
   carouselConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 2, md: 3, lg: 3, all: 0 },
+    gridBreakpoints: {sm: 660, md: 920, lg: 1200, xl: 1200},
     load: 3,
     loop: true,
     touch: true,
