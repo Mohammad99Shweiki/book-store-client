@@ -11,28 +11,6 @@
   position: relative;
 }
 
-.footer__socials {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-}
-
-.footer__icon {
-  color: #2B2D42;
-  margin: 0 8px;
-}
-
-.footer__socialsText {
-  width: 100%;
-  font-size: 1.2em;
-  color: #2B2D42;
-  font-family: 'Raleway', sans-serif;
-  font-weight: 600;
-  margin: 10px 0;
-  text-align: center;
-}
-
 .footer__logo {
   max-width: 300px;
   width: 100%;

@@ -34,6 +34,7 @@ import {FooterComponent} from './components/footer/footer.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { SocialsComponent } from './components/shared/socials/socials.component';
 
 @NgModule({
   declarations: [
@@ -55,7 +56,8 @@ import { ContactComponent } from './components/contact/contact.component';
     FooterComponent,
     MainPageComponent,
     AboutUsComponent,
-    ContactComponent
+    ContactComponent,
+    SocialsComponent
   ],
   imports: [
     BrowserModule,

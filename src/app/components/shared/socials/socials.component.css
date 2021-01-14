@@ -1,0 +1,11 @@
+.socials {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.socials__icon {
+  color: #2B2D42;
+  margin: 0 8px;
+}
