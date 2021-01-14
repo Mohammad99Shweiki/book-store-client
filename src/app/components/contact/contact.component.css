@@ -1,0 +1,43 @@
+.contact {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 100px;
+}
+
+.contact__header {
+  font-size: 1.75em;
+  font-weight: 600;
+  color: #2b2d42;
+  margin-bottom: 5px;
+}
+
+.contact__field {
+  width: 100%;
+  max-width: 500px;
+  font-size: 1em;
+}
+
+.contact__textarea {
+  resize: none;
+  height: 150px;
+  line-height: 25px;
+}
+
+.contact__submit {
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  margin: 5px 0;
+  padding: 15px;
+  font-weight: 500;
+  border: 0;
+  font-size: 1.125em;
+  color: white;
+  border-radius: 0;
+  width: 100%;
+  max-width: 250px;
+  background-color: #2b2d42;
+}
