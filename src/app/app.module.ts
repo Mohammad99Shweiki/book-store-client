@@ -30,8 +30,10 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
 import {FormsModule} from '@angular/forms';
-import { FooterComponent } from './components/footer/footer.component';
-import { MainPageComponent } from './components/main-page/main-page.component';
+import {FooterComponent} from './components/footer/footer.component';
+import {MainPageComponent} from './components/main-page/main-page.component';
+import { AboutUsComponent } from './components/about-us/about-us.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -51,7 +53,9 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     NumberIndicatorComponent,
     BooksFilterComponent,
     FooterComponent,
-    MainPageComponent
+    MainPageComponent,
+    AboutUsComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
@@ -72,7 +76,7 @@ import { MainPageComponent } from './components/main-page/main-page.component';
     FormsModule
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' }
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
   ],
   bootstrap: [AppComponent],
 })
