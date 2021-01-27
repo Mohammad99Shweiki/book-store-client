@@ -29,7 +29,7 @@ import {MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule} from '@angular/ma
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatButtonModule} from '@angular/material/button';
 import {MatSelectModule} from '@angular/material/select';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FooterComponent} from './components/footer/footer.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
@@ -75,7 +75,8 @@ import { SocialsComponent } from './components/shared/socials/socials.component'
     MatButtonModule,
     MatOptionModule,
     MatSelectModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
