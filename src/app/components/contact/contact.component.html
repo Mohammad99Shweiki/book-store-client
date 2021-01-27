@@ -13,5 +13,5 @@
     <textarea [formControl]="messageControl" class="contact__textarea" matInput></textarea>
     <mat-error *ngIf="messageControl.invalid && messageControl.errors.required">This field is required</mat-error>
   </mat-form-field>
-  <button (click)="validateControls()" class="contact__submit">Submit</button>
+  <button [disabled]="!emailControl.valid || !messageControl.valid" (click)="validateControls()" class="contact__submit">Submit</button>
 </div>
