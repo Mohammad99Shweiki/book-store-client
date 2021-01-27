@@ -13,6 +13,6 @@
     <textarea [formControl]="messageControl" class="contact__textarea" matInput></textarea>
     <mat-error *ngIf="messageControl.invalid && messageControl.errors.required">This field is required</mat-error>
   </mat-form-field>
-  <p class="contact__error">Unexpected error, try again later</p>
+  <p *ngIf="sendingError" class="contact__error">Unexpected error, try again later</p>
   <button [disabled]="!emailControl.valid || !messageControl.valid" (click)="sendContactData()" class="contact__submit">Submit</button>
 </div>
