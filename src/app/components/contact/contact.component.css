@@ -45,3 +45,11 @@
 .contact__submit[disabled] {
   background-color: #2b2d4299;
 }
+
+.contact__error {
+  width: 100%;
+  max-width: 500px;
+  color: #ef233c;
+  font-size: 0.8em;
+  text-align: left;
+}
