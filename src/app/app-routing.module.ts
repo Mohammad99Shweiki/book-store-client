@@ -5,6 +5,8 @@ import {BooksListComponent} from './components/books-list/books-list.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
 import {AboutUsComponent} from './components/about-us/about-us.component';
 import {ContactComponent} from './components/contact/contact.component';
+import {UserComponent} from './components/user/user.component';
+import {AuthGuard} from './guards/auth.guard';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
@@ -15,6 +17,7 @@ const routes: Routes = [
   {path: 'book/:id', component: BookDetailsComponent},
   {path: 'about-us', component: AboutUsComponent},
   {path: 'contact', component: ContactComponent},
+  {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   {path: '**', component: MainPageComponent}
 ];
 

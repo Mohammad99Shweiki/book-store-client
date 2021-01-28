@@ -35,6 +35,10 @@ import {MainPageComponent} from './components/main-page/main-page.component';
 import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { SocialsComponent } from './components/shared/socials/socials.component';
+import { LoginFormComponent } from './components/login-form/login-form.component';
+import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { UserResolveComponent } from './components/user-resolve/user-resolve.component';
+import { UserComponent } from './components/user/user.component';
 
 @NgModule({
   declarations: [
@@ -57,7 +61,11 @@ import { SocialsComponent } from './components/shared/socials/socials.component'
     MainPageComponent,
     AboutUsComponent,
     ContactComponent,
-    SocialsComponent
+    SocialsComponent,
+    LoginFormComponent,
+    RegisterFormComponent,
+    UserResolveComponent,
+    UserComponent
   ],
   imports: [
     BrowserModule,
