@@ -5,13 +5,13 @@
   <mat-form-field class="contact__field">
     <mat-label>Your email address (let us answer you)</mat-label>
     <input [formControl]="emailControl" type="email" matInput>
-    <mat-error *ngIf="emailControl.invalid && emailControl.errors.required">This field is required</mat-error>
-    <mat-error *ngIf="emailControl.invalid && emailControl.errors.email">Please enter proper email address</mat-error>
+    <mat-error *ngIf="emailControl.errors?.required">This field is required</mat-error>
+    <mat-error *ngIf="emailControl.errors?.email">Please enter proper email address</mat-error>
   </mat-form-field>
   <mat-form-field class="contact__field">
     <mat-label>Your message</mat-label>
     <textarea [formControl]="messageControl" class="contact__textarea" matInput></textarea>
-    <mat-error *ngIf="messageControl.invalid && messageControl.errors.required">This field is required</mat-error>
+    <mat-error *ngIf="messageControl.errors?.required">This field is required</mat-error>
   </mat-form-field>
   <p *ngIf="sendingError" class="contact__error">Unexpected error, try again later</p>
   <button [ngStyle]="{cursor: requestInProgress ? 'wait' : undefined}"
