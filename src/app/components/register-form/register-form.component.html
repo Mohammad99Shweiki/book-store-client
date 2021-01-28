@@ -1,1 +1,26 @@
-<p>register-form works!</p>
+<form class="registerForm"
+      [formGroup]="registerForm"
+      (ngSubmit)="onSubmit()">
+  <mat-form-field class="registerForm__field">
+    <mat-label>Email address</mat-label>
+    <input formControlName="email" type="email" matInput>
+    <mat-error *ngIf="registerForm.controls.email.errors?.required">This field is required</mat-error>
+    <mat-error *ngIf="registerForm.controls.email.errors?.email">Please enter proper email address</mat-error>
+  </mat-form-field>
+  <mat-form-field class="registerForm__field">
+    <mat-label>Password</mat-label>
+    <input formControlName="password" type="password" matInput>
+    <mat-error *ngIf="registerForm.controls.password.errors?.required">This field is required</mat-error>
+    <mat-error
+      *ngIf="!registerForm.controls.password.errors?.required &&registerForm.controls.password.errors?.passwordValidator">
+      Password should have minimum: eight characters, one letter and one number
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field class="registerForm__field">
+    <mat-label>Confirm password</mat-label>
+    <input formControlName="confirmPassword" type="password" matInput>
+    <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.required">This field is required</mat-error>
+  </mat-form-field>
+  <mat-error class="registerForm__customError" *ngIf="registerForm.errors?.passwordMatches">Passwords are different</mat-error>
+  <button [disabled]="!registerForm.valid || onGoingRequest" class="registerForm__submit" type="submit">Register</button>
+</form>
