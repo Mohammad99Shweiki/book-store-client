@@ -1,0 +1,29 @@
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 500px;
+}
+
+.loginForm__field {
+  width: 100%;
+}
+
+.loginForm__submit {
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  margin: 15px 0;
+  padding: 10px;
+  font-weight: 500;
+  border: 0;
+  font-size: 1.125em;
+  color: white;
+  border-radius: 0;
+  width: 100%;
+  max-width: 170px;
+  background-color: #2b2d42;
+}
+
+.loginForm__submit[disabled] {
+  background-color: #2b2d4299;
+}
