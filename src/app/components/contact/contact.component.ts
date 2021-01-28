@@ -11,6 +11,7 @@ export class ContactComponent implements OnInit {
   emailControl: FormControl = new FormControl('', [Validators.required, Validators.email]);
   messageControl: FormControl = new FormControl('', [Validators.required]);
   sendingError: boolean = false;
+  requestInProgress: boolean = false;
 
   constructor(private contactService: ContactService) {
   }
@@ -19,12 +20,14 @@ export class ContactComponent implements OnInit {
   }
 
   sendContactData(): void {
+    this.requestInProgress = true;
     this.sendingError = false;
     const data: { contactEmail: string, messageText: string } = {
       contactEmail: this.emailControl.value,
       messageText: this.messageControl.value
     };
     this.contactService.sendContactMessage(data).subscribe((result: boolean) => {
+      this.requestInProgress = false;
       if (result) {
         this.emailControl.reset();
         this.messageControl.reset();
