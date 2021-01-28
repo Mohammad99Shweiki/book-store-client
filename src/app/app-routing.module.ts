@@ -6,7 +6,9 @@ import {MainPageComponent} from './components/main-page/main-page.component';
 import {AboutUsComponent} from './components/about-us/about-us.component';
 import {ContactComponent} from './components/contact/contact.component';
 import {UserComponent} from './components/user/user.component';
-import {AuthGuard} from './guards/auth.guard';
+import {AuthGuard} from './guards/auth/auth.guard';
+import {UserResolveComponent} from './components/user-resolve/user-resolve.component';
+import {NotLoggedGuard} from './guards/not-logged/not-logged.guard';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
@@ -18,7 +20,8 @@ const routes: Routes = [
   {path: 'about-us', component: AboutUsComponent},
   {path: 'contact', component: ContactComponent},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
-  {path: '**', component: MainPageComponent}
+  {path: 'getUser', component: UserResolveComponent},
+  {path: '**', component: MainPageComponent, canActivate: [NotLoggedGuard]}
 ];
 
 @NgModule({
