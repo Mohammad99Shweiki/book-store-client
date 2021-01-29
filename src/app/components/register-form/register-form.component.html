@@ -7,13 +7,16 @@
     <mat-error *ngIf="registerForm.controls.email.errors?.required">This field is required</mat-error>
     <mat-error *ngIf="registerForm.controls.email.errors?.email">Please enter proper email address</mat-error>
   </mat-form-field>
-  <mat-form-field class="registerForm__field">
+  <mat-form-field class="registerForm__field"
+                  [ngStyle]="{marginBottom:
+                  (registerForm.controls.password.touched && registerForm.controls.password.dirty && !registerForm.controls.password.errors?.required && registerForm.controls.password.errors?.passwordValidator) ?
+                  '28px' : null}">
     <mat-label>Password</mat-label>
     <input formControlName="password" type="password" matInput>
     <mat-error *ngIf="registerForm.controls.password.errors?.required">This field is required</mat-error>
     <mat-error
-      *ngIf="!registerForm.controls.password.errors?.required &&registerForm.controls.password.errors?.passwordValidator">
-      Password should have minimum: eight characters, one letter and one number
+      *ngIf="!registerForm.controls.password.errors?.required && registerForm.controls.password.errors?.passwordValidator">
+      Password should contain at least 8 characters, capital and small letter, number and special character.
     </mat-error>
   </mat-form-field>
   <mat-form-field class="registerForm__field">
@@ -21,6 +24,9 @@
     <input formControlName="confirmPassword" type="password" matInput>
     <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.required">This field is required</mat-error>
   </mat-form-field>
-  <mat-error class="registerForm__customError" *ngIf="registerForm.errors?.passwordMatches">Passwords are different</mat-error>
+  <mat-error class="registerForm__customError"
+             *ngIf="registerForm.errors?.passwordMatches && registerForm.controls.password.dirty && registerForm.controls.confirmPassword.dirty">
+    Passwords are different
+  </mat-error>
   <button [disabled]="!registerForm.valid || onGoingRequest" class="registerForm__submit" type="submit">Register</button>
 </form>
