@@ -1,5 +1,6 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {FormControl, FormGroup, Validators} from '@angular/forms';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
+import {FormControl, FormGroup, FormGroupDirective, Validators} from '@angular/forms';
+import {LoginData} from '../../models/loginData';
 
 @Component({
   selector: 'app-login-form',
@@ -8,6 +9,8 @@ import {FormControl, FormGroup, Validators} from '@angular/forms';
 })
 export class LoginFormComponent implements OnInit {
   @Input() onGoingRequest: boolean;
+  @Output() login: EventEmitter<LoginData> = new EventEmitter<LoginData>();
+  @ViewChild('form') form: FormGroupDirective;
 
   loginForm: FormGroup = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
@@ -20,6 +23,7 @@ export class LoginFormComponent implements OnInit {
   }
 
   onSubmit(): void {
-
+    this.login.emit(this.loginForm.value);
+    this.form.resetForm();
   }
 }
