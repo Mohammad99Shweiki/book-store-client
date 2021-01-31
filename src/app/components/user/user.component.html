@@ -57,9 +57,9 @@
   <div class="userData__reviewsContainer" *ngIf="userData.reviews.length > 0 && booksData.length > 0">
     <div class="userData__review"
          *ngFor="let review of userData.reviews">
-      <p class="userData__reviewBookTitle">
+      <a routerLink="/book/{{review.bookId}}" class="userData__reviewBookTitle">
         {{getBookById(review.bookId).title}}
-      </p>
+      </a>
       <app-review [review]="review"></app-review>
     </div>
   </div>

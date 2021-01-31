@@ -102,6 +102,8 @@
   font-family: 'Raleway', sans-serif;
   font-size: 1.1em;
   font-weight: 600;
+  display: block;
+  text-decoration: none;
   margin-bottom: 0.5em;
 }
 

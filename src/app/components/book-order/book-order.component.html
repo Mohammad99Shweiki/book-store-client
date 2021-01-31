@@ -1,7 +1,11 @@
 <div class="orderedBook" *ngIf="book">
-  <img class="orderedBook__cover" src="{{book.coverPhoto}}" [alt]="book.title">
+  <a class="orderedBook__anchor" routerLink="/book/{{book.id}}">
+    <img class="orderedBook__cover" src="{{book.coverPhoto}}" [alt]="book.title">
+  </a>
   <div class="orderedBook__infoContainer">
-    <h4 class="orderedBook__title">{{book.title}}</h4>
+    <a class="orderedBook__anchor" routerLink="/book/{{book.id}}">
+      <h4 class="orderedBook__title">{{book.title}}</h4>
+    </a>
     <p class="orderedBook_info">
       ISBN: {{book.ISBN}}
     </p>
