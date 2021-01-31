@@ -32,13 +32,14 @@ import {MatSelectModule} from '@angular/material/select';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {FooterComponent} from './components/footer/footer.component';
 import {MainPageComponent} from './components/main-page/main-page.component';
-import { AboutUsComponent } from './components/about-us/about-us.component';
-import { ContactComponent } from './components/contact/contact.component';
-import { SocialsComponent } from './components/shared/socials/socials.component';
-import { LoginFormComponent } from './components/login-form/login-form.component';
-import { RegisterFormComponent } from './components/register-form/register-form.component';
-import { UserResolveComponent } from './components/user-resolve/user-resolve.component';
-import { UserComponent } from './components/user/user.component';
+import {AboutUsComponent} from './components/about-us/about-us.component';
+import {ContactComponent} from './components/contact/contact.component';
+import {SocialsComponent} from './components/shared/socials/socials.component';
+import {LoginFormComponent} from './components/login-form/login-form.component';
+import {RegisterFormComponent} from './components/register-form/register-form.component';
+import {UserResolveComponent} from './components/user-resolve/user-resolve.component';
+import {UserComponent} from './components/user/user.component';
+import {ToastrModule} from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -84,7 +85,8 @@ import { UserComponent } from './components/user/user.component';
     MatOptionModule,
     MatSelectModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ToastrModule.forRoot()
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
