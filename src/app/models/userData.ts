@@ -2,7 +2,7 @@ import {Order} from './order';
 import {Review} from './review';
 
 export interface UserData {
-  registeredAt: number;
+  createdAt: number;
   email: string;
   ordersSum: number;
   orders: Array<Order>;

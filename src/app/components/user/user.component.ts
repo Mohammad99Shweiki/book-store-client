@@ -4,6 +4,7 @@ import {UserData} from '../../models/userData';
 import {BooksService} from '../../services/books/books.service';
 import {Order} from '../../models/order';
 import {Book} from '../../models/book';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-user',
@@ -12,9 +13,9 @@ import {Book} from '../../models/book';
 })
 export class UserComponent implements OnInit {
   userData: UserData;
-  booksData: Array<Book>;
+  booksData: Array<Book> = [];
 
-  constructor(private userService: UserService, private booksService: BooksService) {
+  constructor(private userService: UserService, private booksService: BooksService, private router: Router) {
   }
 
   ngOnInit(): void {
@@ -38,5 +39,14 @@ export class UserComponent implements OnInit {
     this.booksService.getBooksByIds(Array.from(booksIds)).subscribe((books: Array<Book>) => {
       this.booksData = books;
     });
+  }
+
+  getBookById(id): Book {
+    return this.booksData.filter((val: Book) => val.id === id)[0];
+  }
+
+  logout(): void {
+    localStorage.removeItem('userData');
+    this.router.navigate(['/']);
   }
 }

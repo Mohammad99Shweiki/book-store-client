@@ -1,1 +1,48 @@
-<p>user works!</p>
+<app-loading-spinner *ngIf="!userData" color="#2B2D42"></app-loading-spinner>
+<div *ngIf="userData" class="userData">
+  <h2 class="userData__heading">Info about your account</h2>
+  <div class="userData__table">
+    <p class="userData__detail userData__detail--label">
+      Your email address
+    </p>
+    <p class="userData__detail userData__detail--value">
+      {{userData.email}}
+    </p>
+    <p class="userData__detail userData__detail--label">
+      Your account creation date
+    </p>
+    <p class="userData__detail userData__detail--value">
+      {{userData.createdAt | date: 'dd/MM/YYYY'}}
+    </p>
+    <p class="userData__detail userData__detail--label">
+      Your orders sum
+    </p>
+    <p class="userData__detail userData__detail--value">
+      {{userData.ordersSum | currency:'&nbsp;'}}&nbsp;PLN
+    </p>
+  </div>
+
+  <h2 class="userData__subHeading">Your orders</h2>
+  <div class="userData__ordersContainer">
+    <div class="userData__order" *ngFor="let order of userData.orders">
+      {{order | json}}
+    </div>
+  </div>
+  <p class="userData__disc" *ngIf="userData.orders.length === 0">
+    No orders found (yet).
+  </p>
+  <h2 class="userData__subHeading">Your reviews</h2>
+  <div class="userData__reviewsContainer" *ngIf="userData.reviews.length > 0 && booksData.length > 0">
+    <div class="userData__review"
+         *ngFor="let review of userData.reviews">
+      <p class="userData__reviewBookTitle">
+        {{getBookById(review.bookId).title}}
+      </p>
+      <app-review [review]="review"></app-review>
+    </div>
+  </div>
+  <p class="userData__disc" *ngIf="userData.reviews.length === 0">
+    No reviews found (yet).
+  </p>
+  <button (click)="logout()" class="userData__logout">Logout</button>
+</div>
