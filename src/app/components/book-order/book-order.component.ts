@@ -36,6 +36,7 @@ export class BookOrderComponent implements OnInit {
       userId : JSON.parse(localStorage.getItem('userData')).userId
     };
     this.reviewsService.addReview(review).subscribe((response: boolean) => {
+      this.onGoingRequest = false;
       if (response) {
         this.toastr.success('Review added');
         this.review = true;
