@@ -24,7 +24,7 @@ export class AuthService {
         if (!value) {
           localStorage.removeItem('userData');
         }
-        return value ?? this.router.createUrlTree(['/getUser']);
+        return value || this.router.createUrlTree(['/getUser']);
       }));
     } else {
       return of(this.router.createUrlTree(['/getUser']));
