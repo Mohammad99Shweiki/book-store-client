@@ -12,7 +12,7 @@ export class ReviewsService {
   constructor(private http: HttpClient) {
   }
 
-  httpOptions: {headers: HttpHeaders, params?: HttpParams} = {
+  httpOptions: { headers: HttpHeaders, params?: HttpParams } = {
     headers: new HttpHeaders({'Content-Type': 'application/json'})
   };
 
@@ -21,12 +21,16 @@ export class ReviewsService {
       .append('id', id.toString())
       .append('limit', limit.toString())
       .append('skip', skip.toString());
-    return this.http.get<Array<Review>>( environment.serverUrL + 'getLimitedReviews', this.httpOptions);
+    return this.http.get<Array<Review>>(environment.serverUrL + 'getLimitedReviews', this.httpOptions);
   }
 
   getNumberOfReviews(id: number): Observable<number> {
     this.httpOptions.params = new HttpParams().append('id', id.toString());
-    return this.http.get<number>( environment.serverUrL + 'getNumberOfReviews', this.httpOptions);
+    return this.http.get<number>(environment.serverUrL + 'getNumberOfReviews', this.httpOptions);
+  }
+
+  addReview(review: Review): Observable<boolean> {
+    return this.http.post<boolean>(environment.serverUrL + 'addReview', {review, userData: JSON.parse(localStorage.getItem('userData'))});
   }
 
 }

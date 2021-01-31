@@ -1,0 +1,16 @@
+<div class="rating">
+  <div class="rating__maximum">
+    <fa-icon
+      size="lg"
+      (click)="setRating(rating + 1)"
+      *ngFor="let item of [].constructor(5); index as rating"
+      [icon]="faStar">
+    </fa-icon>
+    <div class="rating__result" [ngStyle]="{width: rating * 20 + '%'}">
+      <fa-icon size="lg"
+               (click)="setRating(rating + 1)" *ngFor="let item of [].constructor(rating); index as rating"
+               [icon]="faStar">
+      </fa-icon>
+    </div>
+  </div>
+</div>

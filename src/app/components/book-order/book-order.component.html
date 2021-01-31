@@ -1,0 +1,43 @@
+<div class="orderedBook" *ngIf="book">
+  <img class="orderedBook__cover" src="{{book.coverPhoto}}" [alt]="book.title">
+  <div class="orderedBook__infoContainer">
+    <h4 class="orderedBook__title">{{book.title}}</h4>
+    <p class="orderedBook_info">
+      ISBN: {{book.ISBN}}
+    </p>
+    <p class="orderedBook_info">
+      Publisher: {{book.publisher}}
+    </p>
+    <p class="orderedBook_info">
+      Publication: {{book.publication | date: 'dd/MM/YYYY'}}
+    </p>
+    <p class="orderedBook_info">
+      Number of pages: {{book.pages}}
+    </p>
+    <button *ngIf="!review && !reviewTextareaVisible"
+            (click)="reviewTextareaVisible = true"
+            class="orderedBook__button"
+            type="button">
+      Add review
+    </button>
+    <p class="orderedBook__disc"
+       *ngIf="review">
+      Review already added
+    </p>
+  </div>
+</div>
+<div class="orderedBook__review" *ngIf="reviewTextareaVisible">
+  <mat-form-field class="orderedBook__field">
+    <mat-label>Review text</mat-label>
+    <textarea [formControl]="reviewTextControl" class="orderedBook__textarea" matInput></textarea>
+    <mat-error *ngIf="reviewTextControl.errors?.required">This field is required</mat-error>
+    <mat-error *ngIf="reviewTextControl.errors?.minlength">Please provide at least 50 characters</mat-error>
+  </mat-form-field>
+  <app-rating-selector [(rating)]="reviewRating"></app-rating-selector>
+  <button type="button"
+          class="orderedBook__button orderedBook__button--submitReview"
+          (click)="addReview()"
+          [disabled]="reviewTextControl.invalid || onGoingRequest">
+    Submit review
+  </button>
+</div>

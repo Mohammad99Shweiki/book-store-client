@@ -21,11 +21,33 @@
       {{userData.ordersSum | currency:'&nbsp;'}}&nbsp;PLN
     </p>
   </div>
-
   <h2 class="userData__subHeading">Your orders</h2>
   <div class="userData__ordersContainer">
-    <div class="userData__order" *ngFor="let order of userData.orders">
-      {{order | json}}
+    <div class="userData__order" *ngFor="let order of userData.orders; index as i">
+      <h3 class="userData__orderInfo">Order id: {{order._id}}
+        <fa-icon [icon]="orderVisibility[i] ? faMinusSquare : faPlusSquare"
+                 class="userData__orderIcon" size="lg"
+                 (click)="toggleOrderVisibility(i)"></fa-icon>
+      </h3>
+      <p class="userData__orderAdditionalInfo">
+        Order date: {{order.time | date:'dd/MM/YYYY' }}
+      </p>
+      <p class="userData__orderAdditionalInfo">
+        Order price: {{order.value | currency:'&nbsp;'}}&nbsp;PLN
+      </p>
+      <p class="userData__orderAdditionalInfo">
+        Order delivered: &#10003;
+      </p>
+      <div class="userData__orderBooksContainer"
+           [ngStyle]="{transform: orderVisibility[i] ? 'scaleY(1)' : 'scaleY(0)', height: orderVisibility[i] ? 'max-content' : 0}">
+        <app-book-order
+          class="userData__orderedBook"
+          [book]="getBookById(product.id)"
+          [qty]="product.qty"
+          [review]="isBookReviewed(product.id)"
+          (addedReview)="addReview($event)"
+          *ngFor="let product of order.products"></app-book-order>
+      </div>
     </div>
   </div>
   <p class="userData__disc" *ngIf="userData.orders.length === 0">
