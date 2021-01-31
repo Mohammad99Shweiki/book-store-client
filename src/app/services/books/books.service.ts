@@ -44,4 +44,8 @@ export class BooksService {
       {headers: new HttpHeaders({'Content-Type': 'application/json'})}
       );
   }
+
+  getBooksByIds(ids: Array<number>): Observable<Array<Book>> {
+    return this.http.post<Array<Book>>(environment.serverUrL + 'getBooksByIds', {ids});
+  }
 }
