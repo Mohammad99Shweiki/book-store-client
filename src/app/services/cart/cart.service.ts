@@ -13,14 +13,21 @@ export class CartService {
     this.countCartProductsLength();
   }
 
-  changeCart(cart: Cart): void {
-    this.cart = cart;
-    this.countCartProductsLength();
-  }
-
   addProductToCart(bookId: number): void {
     const bookIndex: number = this.cart.products.findIndex((element: {id: number, qty: number}) => element.id === bookId);
     bookIndex !== -1 ? this.cart.products[bookIndex].qty++ : this.cart.products.push({id: bookId, qty: 1});
+    this.countCartProductsLength();
+    this.setCartToLocalStorage();
+  }
+
+  modifyProductInCart(bookId: number, qty: number): void {
+    this.cart.products[this.cart.products.findIndex((element: {id: number, qty: number}) => element.id === bookId)].qty = qty;
+    this.countCartProductsLength();
+    this.setCartToLocalStorage();
+  }
+
+  removeProductFromCart(bookId: number): void {
+    this.cart.products.splice(this.cart.products.findIndex((element: {id: number, qty: number}) => element.id === bookId), 1);
     this.countCartProductsLength();
     this.setCartToLocalStorage();
   }
@@ -41,5 +48,7 @@ export class CartService {
 
   removeCart(): void {
     localStorage.removeItem('userCart');
+    this.cart = {products: []};
+    this.setCartToLocalStorage();
   }
 }
