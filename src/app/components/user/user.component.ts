@@ -46,13 +46,15 @@ export class UserComponent implements OnInit {
         booksIds.add(product.id);
       });
     });
-    this.booksService.getBooksByIds(Array.from(booksIds)).subscribe((books: Array<Book>) => {
-      this.booksData = books;
-    });
+    if (booksIds.size) {
+      this.booksService.getBooksByIds(Array.from(booksIds)).subscribe((books: Array<Book>) => {
+        this.booksData = books;
+      });
+    }
   }
 
   getBookById(id): Book {
-    return this.booksData.filter((val: Book) => val.id === id)[0];
+    return this.booksData.find((val: Book) => val.id === id);
   }
 
   isBookReviewed(id): boolean {
