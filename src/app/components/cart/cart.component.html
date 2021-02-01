@@ -8,6 +8,7 @@
   <p class="cart__disc" *ngIf="!loggedIn && cart.products.length">
     You are not logged in, you can place order but you will not have access to order history, and you will can not review books that you bought. Please consider registering.
   </p>
+  {{cartValue}}
   <button [disabled]="!cart.products.length" type="button" (click)="placeOrder()" class="cart__button">
     Order & Pay
   </button>
