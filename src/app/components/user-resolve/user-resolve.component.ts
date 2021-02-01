@@ -6,6 +6,7 @@ import {LoginResponse} from '../../models/loginResponse';
 import {AuthResponse} from '../../models/authResponse';
 import {ToastrService} from 'ngx-toastr';
 import {Router} from '@angular/router';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user-resolve',
@@ -15,10 +16,11 @@ import {Router} from '@angular/router';
 export class UserResolveComponent implements OnInit {
   onGoingRequest: boolean = false;
 
-  constructor(private authService: AuthService, private toastr: ToastrService, private router: Router) {
+  constructor(private authService: AuthService, private toastr: ToastrService, private router: Router, private titleService: Title) {
   }
 
   ngOnInit(): void {
+    this.titleService.setTitle('Login | Register - BookStore');
   }
 
   registerUser(data: RegisterData): void {

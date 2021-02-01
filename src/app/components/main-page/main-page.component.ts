@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {BooksService} from '../../services/books/books.service';
 import {Book} from '../../models/book';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-main-page',
@@ -13,13 +14,14 @@ export class MainPageComponent implements OnInit {
   new: Array<Book> = [];
   booksLoaded: number = 0;
 
-  constructor(private booksService: BooksService) {
+  constructor(private booksService: BooksService, private titleService: Title) {
   }
 
   ngOnInit(): void {
     this.getBestsellers();
     this.getNew();
     this.getSales();
+    this.titleService.setTitle('BookStore');
   }
 
   getBestsellers(): void {

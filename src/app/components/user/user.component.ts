@@ -7,6 +7,7 @@ import {Book} from '../../models/book';
 import {Router} from '@angular/router';
 import {Review} from '../../models/review';
 import {faPlusSquare, faMinusSquare, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-user',
@@ -19,13 +20,13 @@ export class UserComponent implements OnInit {
   faPlusSquare: IconDefinition = faPlusSquare;
   faMinusSquare: IconDefinition = faMinusSquare;
   orderVisibility: Array<boolean> = [];
-  onGoingRequest: boolean = false;
 
-  constructor(private userService: UserService, private booksService: BooksService, private router: Router) {
+  constructor(private userService: UserService, private booksService: BooksService, private router: Router, private titleService: Title) {
   }
 
   ngOnInit(): void {
     this.getUserData();
+    this.titleService.setTitle('User page - BookStore');
   }
 
   getUserData(): void {
