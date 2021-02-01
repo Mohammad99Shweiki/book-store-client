@@ -3,6 +3,7 @@ import {faBars, faShoppingBasket, faUser, faTimes, IconDefinition} from '@fortaw
 import {NavService} from '../../services/nav/nav.service';
 import {NavigationStart, Router, RouterEvent} from '@angular/router';
 import {filter} from 'rxjs/operators';
+import {CartService} from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -17,11 +18,13 @@ export class HeaderMenuComponent implements OnInit {
   navTransformString: string = '';
   menuIcon: IconDefinition = faBars;
   basketCounter: number = 5;
-  constructor(private navService: NavService, private router: Router) {
+
+  constructor(private navService: NavService, private router: Router, private cartService: CartService) {
   }
 
   ngOnInit(): void {
     this.subscribeTouRouting();
+    this.subscribeToBasketCounter();
   }
 
   @HostListener('window:scroll', [])
@@ -50,6 +53,13 @@ export class HeaderMenuComponent implements OnInit {
       if (this.sidebarOpened) {
         this.toggleMenu();
       }
+    });
+  }
+
+  subscribeToBasketCounter(): void {
+    this.basketCounter = this.cartService.cartLengthSource.getValue();
+    this.cartService.cartLengthSource.subscribe((val: number) => {
+      this.basketCounter = val;
     });
   }
 }

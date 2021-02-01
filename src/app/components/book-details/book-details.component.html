@@ -17,7 +17,7 @@
           [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:'&nbsp;'}}&nbsp;PLN</span>
         <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:'&nbsp;'}}&nbsp;PLN</span>
       </p>
-      <button class="product__button product__button--basket">
+      <button (click)="addToBasket(book.id)" class="product__button product__button--basket">
         Add to cart
       </button>
       <button class="product__button product__button--buy">

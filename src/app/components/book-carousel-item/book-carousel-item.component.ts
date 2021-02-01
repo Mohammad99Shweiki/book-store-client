@@ -1,6 +1,7 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Book} from '../../models/book';
 import {faShoppingBasket, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import {CartService} from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-book-carousel-item',
@@ -12,9 +13,12 @@ export class BookCarouselItemComponent implements OnInit {
 
   faShoppingBasket: IconDefinition = faShoppingBasket;
 
-  constructor() { }
+  constructor(private cartService: CartService) { }
 
   ngOnInit(): void {
   }
 
+  addToBasket(id: number): void {
+    this.cartService.addProductToCart(id);
+  }
 }

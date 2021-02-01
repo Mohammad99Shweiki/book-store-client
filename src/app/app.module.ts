@@ -42,6 +42,7 @@ import {UserComponent} from './components/user/user.component';
 import {ToastrModule} from 'ngx-toastr';
 import { BookOrderComponent } from './components/book-order/book-order.component';
 import { RatingSelectorComponent } from './components/rating-selector/rating-selector.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -70,7 +71,8 @@ import { RatingSelectorComponent } from './components/rating-selector/rating-sel
     UserResolveComponent,
     UserComponent,
     BookOrderComponent,
-    RatingSelectorComponent
+    RatingSelectorComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

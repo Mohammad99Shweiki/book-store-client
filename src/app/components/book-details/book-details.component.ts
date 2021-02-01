@@ -10,6 +10,7 @@ import {Detail} from '../../models/detail';
 import {Title} from '@angular/platform-browser';
 import {NavService} from '../../services/nav/nav.service';
 import {Subscription} from 'rxjs';
+import {CartService} from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-book-details',
@@ -36,7 +37,8 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     private reviewsService: ReviewsService,
     private router: Router,
     private titleService: Title,
-    private navService: NavService
+    private navService: NavService,
+    private cartService: CartService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -101,4 +103,7 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     this.sidebarOpenedSubscription.unsubscribe();
   }
 
+  addToBasket(id: number): void {
+    this.cartService.addProductToCart(id);
+  }
 }

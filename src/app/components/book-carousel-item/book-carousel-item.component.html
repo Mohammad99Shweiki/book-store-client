@@ -18,7 +18,7 @@
     <a routerLink="/book/{{book.id}}" class="product__button product__button--seeMore">
       See more
     </a>
-    <button class="product__button product__button--basket">
+    <button (click)="addToBasket(book.id)" class="product__button product__button--basket">
       <fa-icon [icon]="faShoppingBasket"></fa-icon>
     </button>
   </div>
