@@ -1,21 +1,27 @@
-.orderedBook {
+.bookCart {
+  width: 100%;
+  display: flex;
+  margin: 0.5em 0;
+}
+
+.bookCart {
   display: flex;
   justify-content: space-between;
   width: 100%;
 }
 
-.orderedBook__cover {
+.bookCart__cover {
   display: none;
 }
 
-.orderedBook__infoContainer {
+.bookCart__infoContainer {
   display: flex;
   width: 100%;
   flex-direction: column;
   align-items: flex-start;
 }
 
-.orderedBook__title {
+.bookCart__title {
   color: #2b2d42;
   font-weight: 600;
   font-family: 'Raleway', sans-serif;
@@ -23,7 +29,7 @@
   margin-bottom: 0.5em;
 }
 
-.orderedBook__button {
+.bookCart__button {
   cursor: pointer;
   font-family: 'Raleway', sans-serif;
   padding: 0.5em;
@@ -38,56 +44,45 @@
   margin-top: 0.5em;
 }
 
-.orderedBook__button--submitReview {
-  background-color: #2b2d42;
-}
-
-.orderedBook__button--submitReview[disabled] {
-  background-color: #2b2d4299;
-  cursor: unset;
-}
-
-.orderedBook__info {
+.bookCart__info {
   color: #2b2d42;
   font-size: 0.9em;
 }
 
-.orderedBook__disc {
+.bookCart__qty {
+  margin: 0.5em 0;
+  color: #2b2d42;
+  font-size: 1.1em;
+}
+
+.bookCart__icon {
+  font-size: 1.2em;
+  margin: 0.25em;
+}
+
+.bookCart__disc {
   color: #444;
   margin-top: 0.5em;
   font-size: 0.8em;
 }
 
-.orderedBook__field {
-  width: 100%;
-  max-width: 500px;
-  margin-bottom: 0.5em;
-}
-
-.orderedBook__review {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 1em 0;
-}
-
-.orderedBook__anchor {
+.bookCart__anchor {
   text-decoration: none;
 }
 
 @media screen and (min-width: 660px) {
-  .orderedBook__cover {
+  .bookCart__cover {
     display: block;
     margin-right: 1em;
     width: 225px;
     max-height: 225px;
   }
 
-  .orderedBook__infoContainer {
+  .bookCart__infoContainer {
     align-items: flex-end;
   }
 
-  .orderedBook__disc, .orderedBook__button {
+  .bookCart__disc, .bookCart__button {
     margin-top: 1em;
   }
 

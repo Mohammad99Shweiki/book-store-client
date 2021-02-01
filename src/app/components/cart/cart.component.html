@@ -1,0 +1,14 @@
+<app-loading-spinner *ngIf="!booksLoaded" color="#2B2D42"></app-loading-spinner>
+<div class="cart" *ngIf="booksLoaded">
+  <h1 class="cart__heading">
+    Your cart
+  </h1>
+  <p class="cart__disc" *ngIf="!cart.products.length">Your cart is empty</p>
+  <app-book-cart *ngFor="let product of cart.products" [book]="getBookById(product.id)" [qty]="product.qty" (productEdited)="editProductInCart($event)"></app-book-cart>
+  <p class="cart__disc" *ngIf="!loggedIn && cart.products.length">
+    You are not logged in, you can place order but you will not have access to order history, and you will can not review books that you bought. Please consider registering.
+  </p>
+  <button [disabled]="!cart.products.length" type="button" (click)="placeOrder()" class="cart__button">
+    Order & Pay
+  </button>
+</div>

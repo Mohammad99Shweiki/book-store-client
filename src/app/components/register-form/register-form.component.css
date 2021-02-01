@@ -27,6 +27,7 @@
 
 .registerForm__submit[disabled] {
   background-color: #D9042999;
+  cursor: unset;
 }
 
 .registerForm__customError {

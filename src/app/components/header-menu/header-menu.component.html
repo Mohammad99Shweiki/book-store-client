@@ -3,9 +3,9 @@
     <img class="header__logo" alt="BookStore logo" src="assets/logo.png"/>
   </a>
   <nav class="nav">
-    <div class="nav__iconContainer nav__icon--tablet">
+    <div class="nav__iconContainer nav__icon--tablet" routerLink="/cart">
       <app-number-indicator *ngIf="basketCounter > 0" [value]="basketCounter"></app-number-indicator>
-      <fa-icon class="nav__icon nav__icon--tablet" routerLink="" [icon]="faShoppingBasket" size="2x"></fa-icon>
+      <fa-icon class="nav__icon nav__icon--tablet" [icon]="faShoppingBasket" size="2x"></fa-icon>
     </div>
     <fa-icon class="nav__icon nav__icon--tablet" routerLink="/user" [icon]="faUser" size="2x"></fa-icon>
     <fa-icon (click)="toggleMenu()" class="nav__icon nav__icon--hamburger" [icon]="menuIcon" size="2x"></fa-icon>
@@ -29,9 +29,9 @@
         Contact
       </a>
       <div class="nav__iconsContainer">
-        <div class="nav__iconContainer nav__icon--mobile">
+        <div class="nav__iconContainer nav__icon--mobile" routerLink="/cart">
           <app-number-indicator *ngIf="basketCounter > 0" [value]="basketCounter"></app-number-indicator>
-          <fa-icon class="nav__icon nav__icon--mobile" routerLink="" [icon]="faShoppingBasket" size="2x"></fa-icon>
+          <fa-icon class="nav__icon nav__icon--mobile" [icon]="faShoppingBasket" size="2x"></fa-icon>
         </div>
         <fa-icon class="nav__icon nav__icon--mobile" routerLink="/user" [icon]="faUser" size="2x"></fa-icon>
       </div>

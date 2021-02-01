@@ -1,0 +1,42 @@
+.cart {
+  max-width: 1200px;
+  padding: 25px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.cart__heading {
+  color: #2b2d42;
+  font-size: 1.6em;
+  font-weight: 600;
+  margin-bottom: 0.8em;
+}
+
+.cart__disc {
+  color: #444;
+  font-size: 0.8em;
+  text-align: center;
+}
+
+.cart__button {
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  margin: 2em 0;
+  padding: 10px;
+  font-weight: 500;
+  border: 0;
+  font-size: 1.125em;
+  color: white;
+  border-radius: 0;
+  width: 100%;
+  max-width: 170px;
+  background-color: #2b2d42;
+  align-self: flex-end;
+}
+
+.cart__button[disabled] {
+  background-color: #2b2d4299;
+  cursor: unset;
+}

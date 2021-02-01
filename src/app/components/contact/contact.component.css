@@ -44,6 +44,7 @@
 
 .contact__submit[disabled] {
   background-color: #2b2d4299;
+  cursor: unset;
 }
 
 .contact__error {

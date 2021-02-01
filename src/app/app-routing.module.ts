@@ -9,6 +9,7 @@ import {UserComponent} from './components/user/user.component';
 import {AuthGuard} from './guards/auth/auth.guard';
 import {UserResolveComponent} from './components/user-resolve/user-resolve.component';
 import {NotLoggedGuard} from './guards/not-logged/not-logged.guard';
+import {CartComponent} from './components/cart/cart.component';
 
 const routes: Routes = [
   {path: '', component: MainPageComponent},
@@ -21,6 +22,7 @@ const routes: Routes = [
   {path: 'contact', component: ContactComponent},
   {path: 'user', component: UserComponent, canActivate: [AuthGuard]},
   {path: 'getUser', component: UserResolveComponent, canActivate: [NotLoggedGuard]},
+  {path: 'cart', component: CartComponent},
   {path: '**', component: MainPageComponent}
 ];
 
