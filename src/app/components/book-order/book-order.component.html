@@ -18,6 +18,9 @@
     <p class="orderedBook__info">
       Number of pages: {{book.pages}}
     </p>
+    <p class="orderedBook__info">
+      Qty: {{qty}}
+    </p>
     <button *ngIf="!review && !reviewTextareaVisible"
             (click)="reviewTextareaVisible = true"
             class="orderedBook__button"
