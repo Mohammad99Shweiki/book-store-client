@@ -5,4 +5,10 @@
 
 .main {
   min-height: calc(100vh - 257px);
+  transition: 0.5s;
+  filter: blur(0);
+}
+
+.footerContainer {
+  transition: 0.5s;
 }

@@ -1,6 +1,8 @@
-<app-header-menu class="headerComponent"></app-header-menu>
-<main class="main">
+<app-header-menu [(navSidebarOpened)]="sidebarOpened" class="headerComponent"></app-header-menu>
+<main class="main" [ngStyle]="{transform: sidebarOpened ? 'translateX(-300px)' : undefined}">
   <router-outlet></router-outlet>
 </main>
 <app-scroll-top></app-scroll-top>
-<app-footer></app-footer>
+<div class="footerContainer" [ngStyle]="{transform: sidebarOpened ? 'translateX(-300px)' : undefined}">
+  <app-footer></app-footer>
+</div>

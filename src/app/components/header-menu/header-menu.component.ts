@@ -1,4 +1,4 @@
-import {Component, HostListener, OnInit} from '@angular/core';
+import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
 import {faBars, faShoppingBasket, faUser, faTimes, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {NavigationStart, Router, RouterEvent} from '@angular/router';
 import {filter} from 'rxjs/operators';
@@ -10,10 +10,12 @@ import {CartService} from '../../services/cart/cart.service';
   styleUrls: ['./header-menu.component.css']
 })
 export class HeaderMenuComponent implements OnInit {
+  @Input() navSidebarOpened: boolean;
+  @Output() navSidebarOpenedChange: EventEmitter<boolean> = new EventEmitter<boolean>();
+
   height: number = 100;
   faShoppingBasket: IconDefinition = faShoppingBasket;
   faUser: IconDefinition = faUser;
-  sidebarOpened: boolean = false;
   navTransformString: string = '';
   menuIcon: IconDefinition = faBars;
   basketCounter: number = 5;
@@ -35,20 +37,21 @@ export class HeaderMenuComponent implements OnInit {
   @HostListener('window:resize', [])
   onResize(): void {
     const windowWidth: number = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    if (windowWidth > 1200 && this.sidebarOpened) {
+    if (windowWidth > 1200 && this.navSidebarOpened) {
       this.toggleMenu();
     }
   }
 
   toggleMenu(): void {
-    this.sidebarOpened = !this.sidebarOpened;
-    this.menuIcon = this.sidebarOpened ? faTimes : faBars;
-    this.navTransformString = this.sidebarOpened ? 'translateX(-300px)' : '';
+    this.navSidebarOpened = !this.navSidebarOpened;
+    this.navSidebarOpenedChange.emit(this.navSidebarOpened);
+    this.menuIcon = this.navSidebarOpened ? faTimes : faBars;
+    this.navTransformString = this.navSidebarOpened ? 'translateX(-300px)' : '';
   }
 
   subscribeTouRouting(): void {
     this.router.events.pipe(filter((event: RouterEvent) => event instanceof NavigationStart)).subscribe(() => {
-      if (this.sidebarOpened) {
+      if (this.navSidebarOpened) {
         this.toggleMenu();
       }
     });
