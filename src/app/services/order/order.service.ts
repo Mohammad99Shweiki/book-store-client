@@ -13,6 +13,7 @@ export class OrderService {
   }
 
   placeOrder(cart: Cart, value: number): Observable<boolean> {
-    return this.http.post<boolean>(environment.serverUrL + 'placeOrder', {cart, value});
+    return this.http.post<boolean>(environment.serverUrL + 'placeOrder',
+      {cart, value, userData: JSON.parse(localStorage.getItem('userData'))});
   }
 }

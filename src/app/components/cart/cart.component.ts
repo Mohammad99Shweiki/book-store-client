@@ -6,6 +6,7 @@ import {UserData} from '../../models/userData';
 import {Book} from '../../models/book';
 import {BooksService} from '../../services/books/books.service';
 import {OrderService} from '../../services/order/order.service';
+import {ToastrService} from 'ngx-toastr';
 
 @Component({
   selector: 'app-cart',
@@ -19,12 +20,14 @@ export class CartComponent implements OnInit {
   books: Array<Book> = [];
   booksLoaded: boolean = false;
   cartValue: number = 0;
+  onGoingRequest: boolean = false;
 
   constructor(
     private cartService: CartService,
     private userService: UserService,
     private booksService: BooksService,
-    private orderService: OrderService
+    private orderService: OrderService,
+    private toastr: ToastrService
   ) {
   }
 
@@ -63,19 +66,15 @@ export class CartComponent implements OnInit {
   }
 
   setCartValue(): void {
-    this.cartValue = parseFloat(this.cart.products.reduce((acc: number, product: { id: number, qty: number }) => {
-      return acc + (this.getBookById(product.id).discountedPrice ?? this.getBookById(product.id).price) * product.qty;
-    }, 0).toFixed(2));
+    this.cartValue = this.cart.products.reduce((acc: number, product: { id: number, qty: number }) => {
+      return acc + (this.getBookById(product.id).discountedPrice ?? this.getBookById(product.id).price) * product.qty * 100;
+    }, 0) / 100;
   }
 
   editProductInCart(productUpdate: { id: number, qty: number, type: 'update' | 'delete' }): void {
     if (productUpdate.type === 'update') {
-      this.cart.products[this.cart.products.findIndex((cartProduct: { id: number, qty: number }) => cartProduct.id === productUpdate.id)] =
-        {
-          id: productUpdate.id,
-          qty: productUpdate.qty
-        };
       this.cartService.modifyProductInCart(productUpdate.id, productUpdate.qty);
+      this.cart = this.cartService.getCart();
     } else if (productUpdate.type === 'delete') {
       this.cartService.removeProductFromCart(productUpdate.id);
     }
@@ -83,8 +82,17 @@ export class CartComponent implements OnInit {
   }
 
   placeOrder(): void {
+    this.onGoingRequest = true;
     this.orderService.placeOrder(this.cart, this.cartValue).subscribe((response: boolean) => {
-      console.log(response);
+      this.onGoingRequest = false;
+      if (response) {
+        this.toastr.success('Your order was correctly placed, thank you!');
+        this.cartService.removeCart();
+        this.cart = this.cartService.getCart();
+        this.setCartValue();
+      } else {
+        this.toastr.error('Error while processing your order, try again later');
+      }
     });
   }
 }
