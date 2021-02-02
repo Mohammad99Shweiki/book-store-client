@@ -1,6 +1,5 @@
 import {Component, HostListener, OnInit} from '@angular/core';
 import {faBars, faShoppingBasket, faUser, faTimes, IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {NavService} from '../../services/nav/nav.service';
 import {NavigationStart, Router, RouterEvent} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {CartService} from '../../services/cart/cart.service';
@@ -19,7 +18,7 @@ export class HeaderMenuComponent implements OnInit {
   menuIcon: IconDefinition = faBars;
   basketCounter: number = 5;
 
-  constructor(private navService: NavService, private router: Router, private cartService: CartService) {
+  constructor(private router: Router, private cartService: CartService) {
   }
 
   ngOnInit(): void {
@@ -45,7 +44,6 @@ export class HeaderMenuComponent implements OnInit {
     this.sidebarOpened = !this.sidebarOpened;
     this.menuIcon = this.sidebarOpened ? faTimes : faBars;
     this.navTransformString = this.sidebarOpened ? 'translateX(-300px)' : '';
-    this.navService.changeSidebarStatus(this.sidebarOpened);
   }
 
   subscribeTouRouting(): void {

@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {BooksService} from '../../services/books/books.service';
 import {Book} from '../../models/book';
@@ -8,8 +8,6 @@ import {detailsMapping} from '../../helpers/detailsMapping/detailsMapping';
 import {DetailMapping} from '../../models/detailMapping';
 import {Detail} from '../../models/detail';
 import {Title} from '@angular/platform-browser';
-import {NavService} from '../../services/nav/nav.service';
-import {Subscription} from 'rxjs';
 import {CartService} from '../../services/cart/cart.service';
 
 @Component({
@@ -17,7 +15,7 @@ import {CartService} from '../../services/cart/cart.service';
   templateUrl: './book-details.component.html',
   styleUrls: ['./book-details.component.css'],
 })
-export class BookDetailsComponent implements OnInit, OnDestroy {
+export class BookDetailsComponent implements OnInit {
   book: Book;
   reviews: Array<Review> = [];
   activeTab: 'description' | 'details' | 'reviews' = 'description';
@@ -28,8 +26,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
   details: Array<Detail>;
   recommendedBooks: Array<Book> = [];
   title: string = ' - BookStore';
-  sidebarOpenedSubscription: Subscription;
-  transformString: string;
 
   constructor(
     private route: ActivatedRoute,
@@ -37,7 +33,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     private reviewsService: ReviewsService,
     private router: Router,
     private titleService: Title,
-    private navService: NavService,
     private cartService: CartService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
@@ -48,7 +43,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
     this.getBook();
     this.getNumberOfReviews();
     this.getRecommendedBooks();
-    this.setupSubscription();
   }
 
   getBook(): void {
@@ -91,16 +85,6 @@ export class BookDetailsComponent implements OnInit, OnDestroy {
 
   getRecommendedBooks(): void {
     this.booksService.getRecommendedBooks(this.id).subscribe((books: Array<Book>) => this.recommendedBooks = books);
-  }
-
-  setupSubscription(): void {
-    this.sidebarOpenedSubscription = this.navService.isSidebarOpened$.subscribe((status: boolean) => {
-      this.transformString = status ? 'translateX(-300px)' : '';
-    });
-  }
-
-  ngOnDestroy(): void {
-    this.sidebarOpenedSubscription.unsubscribe();
   }
 
   addToBasket(id: number): void {

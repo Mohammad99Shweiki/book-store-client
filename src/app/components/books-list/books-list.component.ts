@@ -2,7 +2,6 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {BooksService} from '../../services/books/books.service';
 import {Book} from '../../models/book';
 import {Subscription} from 'rxjs';
-import {NavService} from '../../services/nav/nav.service';
 import {BooksFilter} from '../../models/booksFilter';
 import {FilterService} from '../../services/filter/filter.service';
 import {ActivatedRoute, Router} from '@angular/router';
@@ -17,8 +16,6 @@ export class BooksListComponent implements OnInit, OnDestroy {
   books: Book[] = [];
   limit: number = 12;
   skip: number = 0;
-  sidebarOpenedSubscription: Subscription;
-  sidebarTransformString: string;
   filtersOpened: boolean;
   noBooks: boolean = false;
   booksFilter: BooksFilter = {
@@ -36,7 +33,6 @@ export class BooksListComponent implements OnInit, OnDestroy {
   title: string = '';
 
   constructor(private booksService: BooksService,
-              private navService: NavService,
               private filterService: FilterService,
               private router: Router,
               private titleService: Title,
@@ -80,12 +76,6 @@ export class BooksListComponent implements OnInit, OnDestroy {
   }
 
   setupSubscription(): void {
-    this.sidebarOpenedSubscription = this.navService.isSidebarOpened$.subscribe((status: boolean) => {
-      if (status && this.filtersOpened) {
-        this.toggleFilters();
-      }
-      this.sidebarTransformString = status ? 'translateX(-300px)' : '';
-    });
     this.booksFilterSubscription = this.filterService.filter$.subscribe((filter: BooksFilter) => {
       this.books = [];
       this.booksFilter = filter;
@@ -99,7 +89,6 @@ export class BooksListComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.sidebarOpenedSubscription.unsubscribe();
     this.booksFilterSubscription.unsubscribe();
   }
 
