@@ -70,6 +70,22 @@
   text-decoration: none;
 }
 
+.bookCart__price {
+  font-size: 1.2em;
+  margin: 0.25em 0;
+}
+
+.bookCart__price--discounted {
+  text-decoration: line-through;
+  font-size: 0.95em;
+}
+
+.bookCart__pricePromo {
+  font-weight: 600;
+  font-size: 1.05em;
+  color: #ef233c;
+}
+
 @media screen and (min-width: 660px) {
   .bookCart__cover {
     display: block;

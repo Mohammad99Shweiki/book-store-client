@@ -18,6 +18,11 @@
     <p class="bookCart__info">
       Number of pages: {{book.pages}}
     </p>
+    <p class="bookCart__price">
+      <span
+        [class.bookCart__price--discounted]="book.discountedPrice">{{book.price | currency:'&nbsp;'}}&nbsp;PLN</span>
+      <span class="bookCart__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:'&nbsp;'}}&nbsp;PLN</span>
+    </p>
     <p class="bookCart__qty">
       Qty:
       <fa-icon (click)="changeQty(-1)" class="bookCart__icon" *ngIf="qty > 1" [icon]="faMinusSquare"></fa-icon>
