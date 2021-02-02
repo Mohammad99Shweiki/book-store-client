@@ -2,7 +2,7 @@
 <main class="main" [ngStyle]="{transform: sidebarOpened ? 'translateX(-300px)' : undefined}">
   <router-outlet></router-outlet>
 </main>
-<app-scroll-top></app-scroll-top>
-<div class="footerContainer" [ngStyle]="{transform: sidebarOpened ? 'translateX(-300px)' : undefined}">
+<app-scroll-top [footerHeight]="footerHeight"></app-scroll-top>
+<div class="footerContainer" #footer [ngStyle]="{transform: sidebarOpened ? 'translateX(-300px)' : undefined}">
   <app-footer></app-footer>
 </div>
