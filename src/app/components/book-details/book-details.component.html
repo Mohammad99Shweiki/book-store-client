@@ -20,7 +20,7 @@
       <button (click)="addToBasket(book.id)" class="product__button product__button--basket">
         Add to cart
       </button>
-      <button class="product__button product__button--buy">
+      <button (click)="addToBasket(book.id, true)" class="product__button product__button--buy">
         Buy now
       </button>
     </div>
