@@ -50,5 +50,6 @@ export class CartService {
     localStorage.removeItem('userCart');
     this.cart = {products: []};
     this.setCartToLocalStorage();
+    this.countCartProductsLength();
   }
 }
