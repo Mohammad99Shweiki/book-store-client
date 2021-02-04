@@ -7,6 +7,7 @@ import {Book} from '../../models/book';
 import {BooksService} from '../../services/books/books.service';
 import {OrderService} from '../../services/order/order.service';
 import {ToastrService} from 'ngx-toastr';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cart',
@@ -27,12 +28,14 @@ export class CartComponent implements OnInit {
     private userService: UserService,
     private booksService: BooksService,
     private orderService: OrderService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private title: Title
   ) {
   }
 
   ngOnInit(): void {
     this.cart = this.cartService.getCart();
+    this.title.setTitle('Cart - BookStore');
     this.checkIfLoggedIn();
     this.getBooksInfo();
   }

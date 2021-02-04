@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, Validators} from '@angular/forms';
 import {ContactService} from '../../services/contact/contact.service';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',
@@ -13,10 +14,11 @@ export class ContactComponent implements OnInit {
   sendingError: boolean = false;
   requestInProgress: boolean = false;
 
-  constructor(private contactService: ContactService) {
+  constructor(private contactService: ContactService, private title: Title) {
   }
 
   ngOnInit(): void {
+    this.title.setTitle('Contact - BookStore');
   }
 
   sendContactData(): void {

@@ -22,7 +22,6 @@ export class BookCartComponent implements OnInit {
   }
 
   removeBook(): void {
-    console.log('usuwam książkę x1');
     this.productEdited.emit({id: this.book.id, qty: this.qty, type: 'delete'});
   }
 
