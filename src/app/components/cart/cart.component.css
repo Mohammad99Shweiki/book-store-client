@@ -48,3 +48,9 @@
   align-self: flex-end;
   margin: 0.5em 0;
 }
+
+.cart__valueTitle {
+  color: #2b2d42;
+  font-size: 0.9em;
+  font-weight: 600;
+}

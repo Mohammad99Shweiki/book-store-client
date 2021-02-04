@@ -16,7 +16,7 @@ import {ToastrService} from 'ngx-toastr';
 export class CartComponent implements OnInit {
   cart: Cart;
   userData: UserData;
-  loggedIn: boolean = true;
+  loggedIn: boolean = false;
   books: Array<Book> = [];
   booksLoaded: boolean = false;
   cartValue: number = 0;
