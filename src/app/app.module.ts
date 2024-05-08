@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {BooksListComponent} from './components/books-list/books-list.component';
-import {HttpClientModule} from '@angular/common/http';
+import {HTTP_INTERCEPTORS, HttpClientModule} from '@angular/common/http';
 import {InfiniteScrollModule} from 'ngx-infinite-scroll';
 import {BookDetailsComponent} from './components/book-details/book-details.component';
 import {RatingComponent} from './components/rating/rating.component';
@@ -44,6 +44,7 @@ import { BookOrderComponent } from './components/book-order/book-order.component
 import { RatingSelectorComponent } from './components/rating-selector/rating-selector.component';
 import { CartComponent } from './components/cart/cart.component';
 import { BookCartComponent } from './components/book-cart/book-cart.component';
+import { RequestInterceptor } from './interceptors/request.interceptor';
 
 @NgModule({
   declarations: [
@@ -97,7 +98,8 @@ import { BookCartComponent } from './components/book-cart/book-cart.component';
     ToastrModule.forRoot()
   ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+    {provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true}
   ],
   bootstrap: [AppComponent],
 })

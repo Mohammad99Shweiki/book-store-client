@@ -8,6 +8,7 @@ import {AuthResponse} from '../../models/authResponse';
 import {LoginResponse} from '../../models/loginResponse';
 import {map} from 'rxjs/operators';
 import {Router, UrlTree} from '@angular/router';
+import { END_POINTS } from 'src/app/app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -32,10 +33,10 @@ export class AuthService {
   }
 
   registerUser(data: RegisterData): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(environment.serverUrL + 'register', data);
+    return this.http.post<AuthResponse>(END_POINTS.AUTH.SIGN_UP, data);
   }
 
   loginUser(data: LoginData): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(environment.serverUrL + 'login', data);
+    return this.http.post<LoginResponse>(END_POINTS.AUTH.LOG_IN, data);
   }
 }
