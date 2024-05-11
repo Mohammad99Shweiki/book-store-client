@@ -37,7 +37,6 @@ import { ContactComponent } from './components/contact/contact.component';
 import { SocialsComponent } from './components/shared/socials/socials.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
-import { UserResolveComponent } from './components/user-resolve/user-resolve.component';
 import { UserComponent } from './components/user/user.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BookOrderComponent } from './components/book-order/book-order.component';
@@ -71,7 +70,6 @@ import { MatIconModule } from '@angular/material/icon'
     SocialsComponent,
     LoginFormComponent,
     RegisterFormComponent,
-    UserResolveComponent,
     UserComponent,
     BookOrderComponent,
     RatingSelectorComponent,

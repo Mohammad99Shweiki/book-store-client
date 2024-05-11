@@ -1,5 +1,5 @@
 <div class="container d-flex justify-content-center">
-  <form class="registerForm w-100 mb-4" #form="ngForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <form class="registerForm w-100 mb-4" #form="ngForm" [formGroup]="registerForm" (ngSubmit)="registerUser()">
     <h2 class="mb-4">Register</h2>
     <div class="col-12 d-flex gap-2">
       <mat-form-field appearance="outline" class="col-6">
@@ -30,6 +30,7 @@
       <mat-label>Password</mat-label>
       <input formControlName="password" type="password" matInput>
       <mat-error *ngIf="registerForm.controls.password.errors?.required">This field is required</mat-error>
+      <mat-error *ngIf="registerForm.controls.password.errors?.minlength">Password must be at least 6 characters</mat-error>
       <mat-error
         *ngIf="!registerForm.controls.password.errors?.required && registerForm.controls.password.errors?.passwordValidator">
         Password should contain at least 8 characters, capital and small letter, number and special character.
@@ -47,10 +48,11 @@
     <mat-form-field appearance="outline" class="col-12">
       <mat-label>Role</mat-label>
       <mat-select formControlName="role">
-        <mat-option value="customer">Customer</mat-option>
-        <mat-option value="author">Author</mat-option>
-        <mat-option value="publisher">Publisher</mat-option>
+        <mat-option value="CUSTOMER">Customer</mat-option>
+        <mat-option value="AUTHOR">Author</mat-option>
+        <mat-option value="PUBLISHER">Publisher</mat-option>
       </mat-select>
+      <mat-error>This field is required</mat-error>
     </mat-form-field>
     <button class="w-100 py-1 mb-4" mat-raised-button color="primary" [disabled]="!registerForm.valid"
       type="submit">Register</button>

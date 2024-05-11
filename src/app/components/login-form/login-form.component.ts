@@ -36,33 +36,15 @@ export class LoginFormComponent implements OnInit {
 
   loginUser(): void {
     const data = this.loginForm.value;
-    this.authService.loginUser(data).subscribe((response: any) => {
-      if (response.token) {
+    this.authService.loginUser(data).subscribe({
+      next: (response: any) => {
         this.authService.loggedInChange.next(true)
-        this.toastr.success('Logged in successfully, redirecting');
+        this.toastr.success('Logged in successfully', '', { positionClass: 'toast-top-center', closeButton: true });
         localStorage.setItem('userData', JSON.stringify(response));
         this.router.navigate(['/user']);
-      } else {
-        let errorMessage: string;
-        switch (response.message) {
-          case 'password error': {
-            errorMessage = 'Wrong password, try again';
-            break;
-          }
-          case 'unexpected error': {
-            errorMessage = 'Unexpected error, try again later';
-            break;
-          }
-          case 'user does not exist': {
-            errorMessage = 'User does not exist, try again';
-            break;
-          }
-          default: {
-            errorMessage = 'Unexpected error, try again later';
-            break;
-          }
-        }
-        this.toastr.error(errorMessage);
+      },
+      error: () => {
+        this.toastr.error('Wrong username or password')
       }
     });
   }
