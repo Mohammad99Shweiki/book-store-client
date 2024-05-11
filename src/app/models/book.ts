@@ -1,18 +1,20 @@
+import { Rating } from "./rating";
+
 export interface Book {
-  _id: string;
-  author: string;
+  isbn: string;
   title: string;
-  description: string;
-  genre: Array<string>;
+  authors: string[];
+  genres: string[];
   price: number;
-  discountedPrice?: number;
-  minPrice: number;
-  coverPhoto: string;
-  pages: number;
-  publication: string;
+  description: string;
+  publicationDate: string;
+  ratings: Rating[];
+  awards: string[];
   publisher: string;
-  ISBN: string;
-  bestseller: boolean;
-  new: boolean;
-  id: number;
+  language: string;
+  pages: number;
+  available: number;
+  sold: number;
+  imageLink: string;
+  fileLink: string
 }

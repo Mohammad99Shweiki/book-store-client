@@ -1,3 +1,3 @@
 export interface Cart {
-  products: Array<{id: number, qty: number}>;
+  products: Array<{id: string, qty: number}>;
 }

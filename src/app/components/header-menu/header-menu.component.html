@@ -1,5 +1,5 @@
 <header class="header" [ngStyle]="{height: height + 'px', transform: navTransformString}">
-  <a class="header__logoContainer" routerLink="">
+  <a class="header__logoContainer">
     <img class="header__logo" alt="BookStore logo" src="assets/logo.png"/>
   </a>
   <nav class="nav">
@@ -22,6 +22,12 @@
       <a class="nav__link" routerLinkActive="nav__link--active" routerLink="/contact">
         Contact
       </a>
+      <div *ngIf="loggedIn" class="d-flex align-items-center">
+        <button mat-raised-button color="primary">
+          Recommend me
+          <mat-icon>stars</mat-icon>
+        </button>
+      </div>
       <div class="nav__iconsContainer">
         <div class="nav__iconContainer nav__icon--mobile" routerLink="/cart">
           <app-number-indicator *ngIf="basketCounter > 0" [value]="basketCounter"></app-number-indicator>

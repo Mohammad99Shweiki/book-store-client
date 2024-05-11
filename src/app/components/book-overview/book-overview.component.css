@@ -7,8 +7,6 @@
   width: 100%;
   max-width: 360px;
   margin: 0 auto;
-  box-shadow: 10px 10px 5px 0 rgba(70, 70, 70, 0.4);
-  background-color: #EDF2F4;
 }
 
 .product__imgContainer {
@@ -96,6 +94,7 @@
 @media screen and (min-width: 920px) {
   .product {
     position: relative;
+    /* display: flex; */
   }
 
   .product__box {
@@ -106,22 +105,22 @@
     display: none;
   }
 
-  .product:hover .product__box {
+  .product__box {
     position: absolute;
     top: 0;
     left: 0;
     box-shadow: 10px 10px 5px 0 rgba(26, 26, 26, 0.6);
   }
 
-  .product:hover {
+  /* .product:hover {
     width: 110%;
     height: 110%;
     z-index: 5;
     bottom: 5%;
     right: 5%;
-  }
+  } */
 
-  .product:hover .product__buttons {
+  .product__buttons {
     display: flex;
   }
 }

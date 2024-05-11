@@ -1,17 +1,22 @@
-<form class="loginForm"
-      #form="ngForm"
-      [formGroup]="loginForm"
-      (ngSubmit)="onSubmit()">
-  <mat-form-field class="loginForm__field">
-    <mat-label>Email address</mat-label>
-    <input formControlName="email" type="email" matInput>
-    <mat-error *ngIf="loginForm.controls.email.errors?.required">This field is required</mat-error>
-    <mat-error *ngIf="loginForm.controls.email.errors?.email">Please enter proper email address</mat-error>
-  </mat-form-field>
-  <mat-form-field class="loginForm__field">
-    <mat-label>Password</mat-label>
-    <input formControlName="password" type="password" matInput>
-    <mat-error *ngIf="loginForm.controls.password.errors?.required">This field is required</mat-error>
-  </mat-form-field>
-  <button [disabled]="!loginForm.valid || onGoingRequest" class="loginForm__submit" type="submit">Login</button>
-</form>
+<div class="container d-flex justify-content-center">
+  <form class="loginForm w-100" #form="ngForm" [formGroup]="loginForm" (ngSubmit)="loginUser()">
+    <h2 class="mb-4">Login</h2>
+    <mat-form-field appearance="outline" class="loginForm__field">
+      <mat-label>Username</mat-label>
+      <input formControlName="username" type="text" matInput>
+      <mat-error *ngIf="loginForm.controls.username.errors?.required">This field is required</mat-error>
+      <mat-error *ngIf="loginForm.controls.username.errors?.email">Please enter proper email address</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="loginForm__field">
+      <mat-label>Password</mat-label>
+      <input formControlName="password" type="password" matInput>
+      <mat-error *ngIf="loginForm.controls.password.errors?.required">This field is required</mat-error>
+    </mat-form-field>
+    <button class="w-100 py-1 mb-4" mat-raised-button color="primary" [disabled]="!loginForm.valid || onGoingRequest"
+      type="submit">Login</button>
+      <div>
+        Don't have an account? <a routerLink="/register" class="fw-bold text-decoration-none">Create Account</a>
+      </div>
+  </form>
+
+</div>

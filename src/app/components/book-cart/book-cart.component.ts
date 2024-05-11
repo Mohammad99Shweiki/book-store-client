@@ -22,11 +22,11 @@ export class BookCartComponent implements OnInit {
   }
 
   removeBook(): void {
-    this.productEdited.emit({id: this.book.id, qty: this.qty, type: 'delete'});
+    this.productEdited.emit({id: +this.book.isbn, qty: this.qty, type: 'delete'});
   }
 
   changeQty(value): void {
     this.qty += value;
-    this.productEdited.emit({id: this.book.id, qty: this.qty, type: 'update'});
+    this.productEdited.emit({id: +this.book.isbn, qty: this.qty, type: 'update'});
   }
 }

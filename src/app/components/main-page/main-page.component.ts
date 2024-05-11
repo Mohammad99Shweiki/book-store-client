@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {BooksService} from '../../services/books/books.service';
 import {Book} from '../../models/book';
 import {Title} from '@angular/platform-browser';
+import { BooksResponse } from 'src/app/models/books-response';
 
 @Component({
   selector: 'app-main-page',
@@ -18,16 +19,16 @@ export class MainPageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.getBestsellers();
-    this.getNew();
-    this.getSales();
-    this.titleService.setTitle('BookStore');
+    this.getBooks();
+    // this.getNew();
+    // this.getSales();
+    // this.titleService.setTitle('BookStore');
   }
 
-  getBestsellers(): void {
-    this.booksService.getBestsellers().subscribe((books: Array<Book>) => {
-      this.bestsellers = books;
-      this.booksLoaded += books.length;
+  getBooks(): void {
+    this.booksService.getBooks().subscribe((res: Book[]) => {
+      this.bestsellers = res;
+      // this.booksLoaded += res.size;
     });
   }
 

@@ -3,6 +3,7 @@ import {faBars, faShoppingBasket, faUser, faTimes, IconDefinition} from '@fortaw
 import {NavigationStart, Router, RouterEvent} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {CartService} from '../../services/cart/cart.service';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -19,8 +20,14 @@ export class HeaderMenuComponent implements OnInit {
   navTransformString: string = '';
   menuIcon: IconDefinition = faBars;
   basketCounter: number = 5;
+  loggedIn: boolean = false;
 
-  constructor(private router: Router, private cartService: CartService) {
+  constructor(
+    private router: Router, 
+    private cartService: CartService,
+    private authService: AuthService
+  ) {
+    this.authService.loggedInChange.subscribe(res => this.loggedIn = res)
   }
 
   ngOnInit(): void {

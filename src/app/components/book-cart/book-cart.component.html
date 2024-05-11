@@ -1,27 +1,26 @@
 <div class="bookCart">
-  <a class="bookCart__anchor" routerLink="/book/{{book.id}}">
-    <img class="bookCart__cover" src="{{book.coverPhoto}}" [alt]="book.title">
+  <a class="bookCart__anchor" routerLink="/book/{{book.isbn}}">
+    <img class="bookCart__cover" src="{{book.imageLink}}" [alt]="book.title">
   </a>
   <div class="bookCart__infoContainer">
-    <a class="bookCart__anchor" routerLink="/book/{{book.id}}">
+    <a class="bookCart__anchor" routerLink="/book/{{book.isbn}}">
       <h4 class="bookCart__title">{{book.title}}</h4>
     </a>
     <p class="bookCart__info">
-      ISBN: {{book.ISBN}}
+      ISBN: {{book.isbn}}
     </p>
     <p class="bookCart__info">
       Publisher: {{book.publisher}}
     </p>
     <p class="bookCart__info">
-      Publication: {{book.publication | date: 'dd/MM/YYYY'}}
+      Publication: {{book.publicationDate | date: 'dd/MM/YYYY'}}
     </p>
     <p class="bookCart__info">
       Number of pages: {{book.pages}}
     </p>
     <p class="bookCart__price">
-      <span
-        [class.bookCart__price--discounted]="book.discountedPrice">{{book.price | currency:'&nbsp;'}}&nbsp;PLN</span>
-      <span class="bookCart__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:'&nbsp;'}}&nbsp;PLN</span>
+      <span [class.bookCart__price--discounted]="book.price">{{book.price | currency:'&nbsp;'}}&nbsp;$</span>
+      <span class="bookCart__pricePromo" *ngIf="book.price"> {{book.discountedPrice | currency:'&nbsp;'}}&nbsp;$</span>
     </p>
     <p class="bookCart__qty">
       Qty:
@@ -29,9 +28,7 @@
       {{qty}}
       <fa-icon (click)="changeQty(1)" class="bookCart__icon" [icon]="faPlusSquare"></fa-icon>
     </p>
-    <button (click)="removeBook()"
-            class="bookCart__button"
-            type="button">
+    <button (click)="removeBook()" class="bookCart__button" type="button">
       Remove
     </button>
   </div>

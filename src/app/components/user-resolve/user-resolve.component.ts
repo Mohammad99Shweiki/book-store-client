@@ -54,37 +54,4 @@ export class UserResolveComponent implements OnInit {
       this.onGoingRequest = false;
     });
   }
-
-  loginUser(data: LoginData): void {
-    this.onGoingRequest = true;
-    this.authService.loginUser(data).subscribe((response: LoginResponse) => {
-      this.onGoingRequest = false;
-      if (response.success) {
-        this.toastr.success('Logged in successfully, redirecting');
-        localStorage.setItem('userData', JSON.stringify(response.data));
-        this.router.navigate(['/user']);
-      } else {
-        let errorMessage: string;
-        switch (response.message) {
-          case 'password error': {
-            errorMessage = 'Wrong password, try again';
-            break;
-          }
-          case 'unexpected error': {
-            errorMessage = 'Unexpected error, try again later';
-            break;
-          }
-          case 'user does not exist': {
-            errorMessage = 'User does not exist, try again';
-            break;
-          }
-          default: {
-            errorMessage = 'Unexpected error, try again later';
-            break;
-          }
-        }
-        this.toastr.error(errorMessage);
-      }
-    });
-  }
 }

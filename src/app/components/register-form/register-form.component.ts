@@ -14,8 +14,12 @@ export class RegisterFormComponent implements OnInit {
   @ViewChild('form') form: FormGroupDirective;
 
   registerForm: FormGroup = new FormGroup({
+    username: new FormControl('', Validators.required),
+    firstName: new FormControl('', Validators.required),
+    lastName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, passwordValidator()]),
+    password: new FormControl('', [Validators.required]),
+    role: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', [Validators.required])
   });
 

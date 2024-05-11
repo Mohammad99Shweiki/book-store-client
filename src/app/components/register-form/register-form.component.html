@@ -1,33 +1,61 @@
-<form class="registerForm"
-      #form="ngForm"
-      [formGroup]="registerForm"
-      (ngSubmit)="onSubmit()">
-  <mat-form-field class="registerForm__field">
-    <mat-label>Email address</mat-label>
-    <input formControlName="email" type="email" matInput>
-    <mat-error *ngIf="registerForm.controls.email.errors?.required">This field is required</mat-error>
-    <mat-error *ngIf="registerForm.controls.email.errors?.email">Please enter proper email address</mat-error>
-  </mat-form-field>
-  <mat-form-field class="registerForm__field"
-                  [ngStyle]="{marginBottom:
+<div class="container d-flex justify-content-center">
+  <form class="registerForm w-100 mb-4" #form="ngForm" [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <h2 class="mb-4">Register</h2>
+    <div class="col-12 d-flex gap-2">
+      <mat-form-field appearance="outline" class="col-6">
+        <mat-label>First Name</mat-label>
+        <input formControlName="firstName" type="text" matInput>
+        <mat-error *ngIf="registerForm.controls.firstName.errors?.required">This field is required</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-6">
+        <mat-label>Last Name</mat-label>
+        <input formControlName="lastName" type="text" matInput>
+        <mat-error *ngIf="registerForm.controls.lastName.errors?.required">This field is required</mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field appearance="outline" class="col-12">
+      <mat-label>Username</mat-label>
+      <input formControlName="username" type="text" matInput>
+      <mat-error *ngIf="registerForm.controls.username.errors?.required">This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="registerForm__field">
+      <mat-label>Email address</mat-label>
+      <input formControlName="email" type="email" matInput>
+      <mat-error *ngIf="registerForm.controls.email.errors?.required">This field is required</mat-error>
+      <mat-error *ngIf="registerForm.controls.email.errors?.email">Please enter proper email address</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="registerForm__field" [ngStyle]="{marginBottom:
                   (registerForm.controls.password.touched && registerForm.controls.password.dirty && !registerForm.controls.password.errors?.required && registerForm.controls.password.errors?.passwordValidator) ?
                   '28px' : null}">
-    <mat-label>Password</mat-label>
-    <input formControlName="password" type="password" matInput>
-    <mat-error *ngIf="registerForm.controls.password.errors?.required">This field is required</mat-error>
-    <mat-error
-      *ngIf="!registerForm.controls.password.errors?.required && registerForm.controls.password.errors?.passwordValidator">
-      Password should contain at least 8 characters, capital and small letter, number and special character.
+      <mat-label>Password</mat-label>
+      <input formControlName="password" type="password" matInput>
+      <mat-error *ngIf="registerForm.controls.password.errors?.required">This field is required</mat-error>
+      <mat-error
+        *ngIf="!registerForm.controls.password.errors?.required && registerForm.controls.password.errors?.passwordValidator">
+        Password should contain at least 8 characters, capital and small letter, number and special character.
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="registerForm__field">
+      <mat-label>Confirm password</mat-label>
+      <input formControlName="confirmPassword" type="password" matInput>
+      <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.required">This field is required</mat-error>
+    </mat-form-field>
+    <mat-error class="registerForm__customError"
+      *ngIf="registerForm.errors?.passwordMatches && registerForm.controls.password.dirty && registerForm.controls.confirmPassword.dirty">
+      Passwords are different
     </mat-error>
-  </mat-form-field>
-  <mat-form-field class="registerForm__field">
-    <mat-label>Confirm password</mat-label>
-    <input formControlName="confirmPassword" type="password" matInput>
-    <mat-error *ngIf="registerForm.controls.confirmPassword.errors?.required">This field is required</mat-error>
-  </mat-form-field>
-  <mat-error class="registerForm__customError"
-             *ngIf="registerForm.errors?.passwordMatches && registerForm.controls.password.dirty && registerForm.controls.confirmPassword.dirty">
-    Passwords are different
-  </mat-error>
-  <button [disabled]="!registerForm.valid || onGoingRequest" class="registerForm__submit" type="submit">Register</button>
-</form>
+    <mat-form-field appearance="outline" class="col-12">
+      <mat-label>Role</mat-label>
+      <mat-select formControlName="role">
+        <mat-option value="customer">Customer</mat-option>
+        <mat-option value="author">Author</mat-option>
+        <mat-option value="publisher">Publisher</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <button class="w-100 py-1 mb-4" mat-raised-button color="primary" [disabled]="!registerForm.valid"
+      type="submit">Register</button>
+      <div>
+        Already have an account? <a routerLink="/login" class="fw-bold text-decoration-none create-account">Login</a>
+      </div>
+  </form>
+</div>

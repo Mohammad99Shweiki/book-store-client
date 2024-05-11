@@ -8,6 +8,7 @@ import {Router} from '@angular/router';
 import {Review} from '../../models/review';
 import {faPlusSquare, faMinusSquare, IconDefinition} from '@fortawesome/free-solid-svg-icons';
 import {Title} from '@angular/platform-browser';
+import { AuthService } from 'src/app/services/auth/auth.service';
 
 @Component({
   selector: 'app-user',
@@ -21,8 +22,12 @@ export class UserComponent implements OnInit {
   faMinusSquare: IconDefinition = faMinusSquare;
   orderVisibility: Array<boolean> = [];
 
-  constructor(private userService: UserService, private booksService: BooksService, private router: Router, private titleService: Title) {
-  }
+  constructor(
+    private userService: UserService, 
+    private booksService: BooksService, 
+    private router: Router, private titleService: Title,
+    private authService: AuthService
+  ) { }
 
   ngOnInit(): void {
     this.getUserData();
@@ -32,18 +37,18 @@ export class UserComponent implements OnInit {
   getUserData(): void {
     this.userService.getUserData().subscribe((userData: UserData) => {
       this.userData = userData;
-      userData.orders.forEach((val: Order, index: number) => {
-        this.orderVisibility[index] = false;
-      });
+      // userData.orders.forEach((val: Order, index: number) => {
+      //   this.orderVisibility[index] = false;
+      // });
       this.getBooksData();
     });
   }
 
   getBooksData(): void {
-    const booksIds: Set<number> = new Set();
-    this.userData.orders.forEach((order: Order) => {
-      order.products.forEach((product: { id: number, qty: number }) => {
-        booksIds.add(product.id);
+    const booksIds: Set<string> = new Set();
+    this.userData?.orders?.forEach((order: Order) => {
+      order.items.forEach((product) => {
+        booksIds.add(product.bookId);
       });
     });
     if (booksIds.size) {
@@ -54,16 +59,17 @@ export class UserComponent implements OnInit {
   }
 
   getBookById(id): Book {
-    return this.booksData.find((val: Book) => val.id === id);
+    return this.booksData.find((val: Book) => val.isbn === id);
   }
 
-  isBookReviewed(id): boolean {
-    return this.userData.reviews.filter((review: Review) => review.bookId === id).length > 0;
+  isBookReviewed(id) {
+    // return this.userData.reviews.filter((review: Review) => review.bookId === id).length > 0;
   }
 
   logout(): void {
     localStorage.removeItem('userData');
     this.router.navigate(['/']);
+    this.authService.loggedInChange.next(false)
   }
 
   toggleOrderVisibility(i: number): void {
@@ -71,6 +77,6 @@ export class UserComponent implements OnInit {
   }
 
   addReview($event: Review): void {
-    this.userData.reviews.push($event);
+    // this.userData.reviews.push($event);
   }
 }

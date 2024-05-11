@@ -1,10 +1,23 @@
-import {Order} from './order';
-import {Review} from './review';
+import { CartItem } from './cart-item';
+import { Order } from './order';
 
 export interface UserData {
-  createdAt: number;
+  userId: string;
+  username: string;
+  firstName: string;
+  lastName: string;
   email: string;
-  ordersSum: number;
-  orders: Array<Order>;
-  reviews: Array<Review>;
+  wishlist: string[],
+  cart: CartItem[],
+  orders: Order[],
+  favoriteGenres: string[],
+  accountNonExpired: boolean,
+  accountNonLocked: boolean,
+  credentialsNonExpired: boolean,
+  enabled: boolean,
+  authorities: [
+    {
+      authority: string
+    }
+  ]
 }

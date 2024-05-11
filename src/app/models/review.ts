@@ -1,6 +1,6 @@
 export interface Review {
   _id?: string;
-  bookId: number;
+  bookId: string;
   reviewText: string;
   rating: number;
   reviewDate: number;
