@@ -1,24 +1,23 @@
 <div class="product">
-  <a routerLink="/book/{{book.id}}" class="product__imgContainer">
-    <app-book-labels class="product__labels" [book]="book"></app-book-labels>
-    <img [alt]="book.title" class="product__img" [src]="book.coverPhoto">
+  <a class="product__imgContainer">
+    <img [alt]="book.title" class="product__img" [src]="book.imageLink">
   </a>
   <p class="product__name">
     {{book.title}}
   </p>
   <p class="product__author">
-    {{book.author}}
+    {{book.authors}}
   </p>
   <p class="product__price">
-    <span [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:' '}} PLN</span>
-    <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice | currency:' '}}
-      PLN</span>
+    <span [class.product__price--discounted]="book.price">{{book.price}} $</span>
+    <span class="product__pricePromo" *ngIf="book.price"> {{book.price}}
+      $</span>
   </p>
-  <div class="product__buttons">
-    <a routerLink="/book/{{book.id}}" class="product__button product__button--seeMore">
+  <div class="product__buttons gap-2">
+    <button mat-stroked-button routerLink="/book/{{book.isbn}}" class="w-100">
       See more
-    </a>
-    <button (click)="addToBasket(book.id)" class="product__button product__button--basket">
+    </button>
+    <button mat-stroked-button (click)="addToBasket(book.isbn)" class="product__button product__button--basket">
       <fa-icon [icon]="faShoppingBasket"></fa-icon>
     </button>
   </div>

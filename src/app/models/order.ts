@@ -1,6 +1,12 @@
+import { CartItem } from "./cart-item";
+
 export interface Order {
-  _id: string;
-  products: Array<{id: number, qty: number}>;
-  time: number;
-  value: number;
+  orderId: string;
+  localDate: string;
+  items: CartItem[];
+  totalPrice: number;
+  shippingAddress: string;
+  status: string;
+  address: string;
+  phoneNo: string;
 }

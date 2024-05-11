@@ -51,6 +51,7 @@ export class BooksFilterComponent implements OnInit {
     if (this.timeout !== null) {
       clearTimeout(this.timeout);
     }
+    //@ts-ignore
     this.timeout = setTimeout(() => {
       this.filterService.changeFilter(this.booksFilter);
     }, 1000);

@@ -1,13 +1,13 @@
-import {Component, OnInit} from '@angular/core';
-import {CartService} from '../../services/cart/cart.service';
-import {Cart} from '../../models/cart';
-import {UserService} from '../../services/user/user.service';
-import {UserData} from '../../models/userData';
-import {Book} from '../../models/book';
-import {BooksService} from '../../services/books/books.service';
-import {OrderService} from '../../services/order/order.service';
-import {ToastrService} from 'ngx-toastr';
-import {Title} from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { CartService } from '../../services/cart/cart.service';
+import { Cart } from '../../models/cart';
+import { UserService } from '../../services/user/user.service';
+import { UserData } from '../../models/userData';
+import { Book } from '../../models/book';
+import { BooksService } from '../../services/books/books.service';
+import { OrderService } from '../../services/order/order.service';
+import { ToastrService } from 'ngx-toastr';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-cart',
@@ -42,15 +42,15 @@ export class CartComponent implements OnInit {
 
   checkIfLoggedIn(): void {
     this.userService.getUserData().subscribe((val: UserData) => {
-      if (val.createdAt) {
+      if (val.userId) {
         this.loggedIn = true;
       }
     });
   }
 
   getBooksInfo(): void {
-    const booksIds: Set<number> = new Set();
-    this.cart.products.forEach((product: { id: number, qty: number }) => {
+    const booksIds: Set<string> = new Set();
+    this.cart.products.forEach((product: { id: string, qty: number }) => {
       booksIds.add(product.id);
     });
     if (booksIds.size) {
@@ -65,16 +65,16 @@ export class CartComponent implements OnInit {
   }
 
   getBookById(id): Book {
-    return this.books.find((val: Book) => val.id === id);
+    return this.books.find((val: Book) => val.isbn === id);
   }
 
   setCartValue(): void {
-    this.cartValue = this.cart.products.reduce((acc: number, product: { id: number, qty: number }) => {
-      return acc + (this.getBookById(product.id).discountedPrice ?? this.getBookById(product.id).price) * product.qty * 100;
+    this.cartValue = this.cart.products.reduce((acc: number, product: { id: string, qty: number }) => {
+      return acc + (this.getBookById(product.id).price ?? this.getBookById(product.id).price) * product.qty * 100;
     }, 0) / 100;
   }
 
-  editProductInCart(productUpdate: { id: number, qty: number, type: 'update' | 'delete' }): void {
+  editProductInCart(productUpdate: { id: string, qty: number, type: 'update' | 'delete' }): void {
     if (productUpdate.type === 'update') {
       this.cartService.modifyProductInCart(productUpdate.id, productUpdate.qty);
       this.cart = this.cartService.getCart();

@@ -1,41 +1,46 @@
-import {Injectable} from '@angular/core';
-import {Observable, of} from 'rxjs';
-import {HttpClient} from '@angular/common/http';
-import {environment} from '../../../environments/environment';
-import {RegisterData} from '../../models/registerData';
-import {LoginData} from '../../models/loginData';
-import {AuthResponse} from '../../models/authResponse';
-import {LoginResponse} from '../../models/loginResponse';
-import {map} from 'rxjs/operators';
-import {Router, UrlTree} from '@angular/router';
+import { Injectable } from '@angular/core';
+import { Observable, Subject, of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { RegisterData } from '../../models/registerData';
+import { LoginData } from '../../models/loginData';
+import { AuthResponse } from '../../models/authResponse';
+import { LoginResponse } from '../../models/loginResponse';
+import { Router, UrlTree } from '@angular/router';
+import { END_POINTS } from 'src/app/app.constants';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  loggedIn: boolean = false;
+  loggedInChange: Subject<boolean> = new Subject();
 
   constructor(private http: HttpClient, private router: Router) {
+    this.loggedInChange.subscribe(val => this.loggedIn = val)
   }
 
   checkUserData(): Observable<boolean | UrlTree> {
-    const data: {jwt: string, userId: string} = JSON.parse(localStorage.getItem('userData'));
+    const data: { token: string, id: string } = JSON.parse(localStorage.getItem('userData'));
     if (data) {
-      return this.http.post<boolean>(environment.serverUrL + 'authenticate', data).pipe(map((value: boolean) => {
-        if (!value) {
-          localStorage.removeItem('userData');
-        }
-        return value || this.router.createUrlTree(['/getUser']);
-      }));
+      this.loggedInChange.next(true)
+      return of(true);
+      // return this.http.post<boolean>(environment.serverUrL + 'authenticate', data).pipe(map((value: boolean) => {
+      //   if (!value) {
+      //     localStorage.removeItem('userData');
+      //   }
+      //   return value || this.router.createUrlTree(['/login']);
+      // }));
     } else {
-      return of(this.router.createUrlTree(['/getUser']));
+      this.loggedInChange.next(false)
+      return of(this.router.createUrlTree(['/login']));
     }
   }
 
   registerUser(data: RegisterData): Observable<AuthResponse> {
-    return this.http.post<AuthResponse>(environment.serverUrL + 'register', data);
+    return this.http.post<AuthResponse>(END_POINTS.AUTH.SIGN_UP, data);
   }
 
   loginUser(data: LoginData): Observable<LoginResponse> {
-    return this.http.post<LoginResponse>(environment.serverUrL + 'login', data);
+    return this.http.post<LoginResponse>(END_POINTS.AUTH.LOG_IN, data);
   }
 }

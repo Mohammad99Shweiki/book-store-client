@@ -50,17 +50,6 @@
 
 .userData__logout {
   cursor: pointer;
-  font-family: 'Raleway', sans-serif;
-  margin: 2em 0;
-  padding: 10px;
-  font-weight: 500;
-  border: 0;
-  font-size: 1.125em;
-  color: white;
-  border-radius: 0;
-  width: 100%;
-  max-width: 170px;
-  background-color: #D90429;
   align-self: flex-end;
 }
 

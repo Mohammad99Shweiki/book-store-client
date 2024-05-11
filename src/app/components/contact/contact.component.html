@@ -1,23 +1,24 @@
 <div class="contact">
-  <h1 class="contact__header">
+  <h1 class="contact__header mb-4">
     Contact with us
   </h1>
-  <mat-form-field class="contact__field">
-    <mat-label>Your email address (let us answer you)</mat-label>
-    <input [formControl]="emailControl" type="email" matInput>
-    <mat-error *ngIf="emailControl.errors?.required">This field is required</mat-error>
-    <mat-error *ngIf="emailControl.errors?.email">Please enter proper email address</mat-error>
-  </mat-form-field>
-  <mat-form-field class="contact__field">
-    <mat-label>Your message</mat-label>
-    <textarea [formControl]="messageControl" class="contact__textarea" matInput></textarea>
-    <mat-error *ngIf="messageControl.errors?.required">This field is required</mat-error>
-  </mat-form-field>
-  <p *ngIf="sendingError" class="contact__error">Unexpected error, try again later</p>
-  <button [ngStyle]="{cursor: requestInProgress ? 'wait' : undefined}"
-          [disabled]="!emailControl.valid || !messageControl.valid || requestInProgress"
-          (click)="sendContactData()"
-          class="contact__submit">
-    Submit
-  </button>
+  <form class="d-flex flex-column align-items-center contact__form">
+    <mat-form-field appearance="outline" class="contact__field">
+      <mat-label>Your email address (let us answer you)</mat-label>
+      <input [formControl]="emailControl" type="email" matInput>
+      <mat-error *ngIf="emailControl.errors?.required">This field is required</mat-error>
+      <mat-error *ngIf="emailControl.errors?.email">Please enter proper email address</mat-error>
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="contact__field">
+      <mat-label>Your message</mat-label>
+      <textarea [formControl]="messageControl" class="contact__textarea" matInput></textarea>
+      <mat-error *ngIf="messageControl.errors?.required">This field is required</mat-error>
+    </mat-form-field>
+    <p *ngIf="sendingError" class="contact__error">Unexpected error, try again later</p>
+    <button mat-raised-button [ngStyle]="{cursor: requestInProgress ? 'wait' : undefined}"
+      [disabled]="!emailControl.valid || !messageControl.valid || requestInProgress" (click)="sendContactData()"
+      class="w-100">
+      Submit
+    </button>
+  </form>
 </div>

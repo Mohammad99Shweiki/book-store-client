@@ -3,7 +3,6 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
-  HostListener,
   ViewChild
 } from '@angular/core';
 
@@ -21,16 +20,6 @@ export class AppComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    this.setFooterHeight();
     this.ref.detectChanges();
-  }
-
-  setFooterHeight(): void {
-    this.footerHeight = this.footer.nativeElement.getBoundingClientRect().height;
-  }
-
-  @HostListener('window:resize', [])
-  onResize(): void {
-    this.setFooterHeight();
   }
 }

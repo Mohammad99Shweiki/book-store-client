@@ -29,7 +29,7 @@ export class BookOrderComponent implements OnInit {
   addReview(): void {
     this.onGoingRequest = true;
     const review: Review = {
-      bookId: this.book.id,
+      bookId: this.book.isbn,
       reviewText: this.reviewTextControl.value,
       rating: this.reviewRating,
       reviewDate: Date.now(),

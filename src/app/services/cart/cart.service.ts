@@ -13,21 +13,21 @@ export class CartService {
     this.countCartProductsLength();
   }
 
-  addProductToCart(bookId: number): void {
-    const bookIndex: number = this.cart.products.findIndex((element: {id: number, qty: number}) => element.id === bookId);
+  addProductToCart(bookId: string): void {
+    const bookIndex: number = this.cart.products.findIndex((element: {id: string, qty: number}) => element.id === bookId);
     bookIndex !== -1 ? this.cart.products[bookIndex].qty++ : this.cart.products.push({id: bookId, qty: 1});
     this.countCartProductsLength();
     this.setCartToLocalStorage();
   }
 
-  modifyProductInCart(bookId: number, qty: number): void {
-    this.cart.products[this.cart.products.findIndex((element: {id: number, qty: number}) => element.id === bookId)].qty = qty;
+  modifyProductInCart(bookId: string, qty: number): void {
+    this.cart.products[this.cart.products.findIndex((element: {id: string, qty: number}) => element.id + '' === bookId)].qty = qty;
     this.countCartProductsLength();
     this.setCartToLocalStorage();
   }
 
-  removeProductFromCart(bookId: number): void {
-    this.cart.products.splice(this.cart.products.findIndex((element: {id: number, qty: number}) => element.id === bookId), 1);
+  removeProductFromCart(bookId: string): void {
+    this.cart.products.splice(this.cart.products.findIndex((element: {id: string, qty: number}) => element.id === bookId), 1);
     this.countCartProductsLength();
     this.setCartToLocalStorage();
   }
@@ -37,7 +37,7 @@ export class CartService {
   }
 
   countCartProductsLength(): void {
-    this.cartLengthSource.next(this.cart.products.reduce((accumulator: number, next: {id: number, qty: number}) => {
+    this.cartLengthSource.next(this.cart.products.reduce((accumulator: number, next: {id: string, qty: number}) => {
       return accumulator + next.qty;
     }, 0));
   }

@@ -8,6 +8,9 @@
   margin-bottom: 100px;
 }
 
+.contact__form {
+  width: 500px;
+}
 .contact__header {
   font-size: 1.75em;
   font-weight: 600;
