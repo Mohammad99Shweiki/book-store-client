@@ -5,7 +5,7 @@ export const SERVER_API_URL = environment.serverUrL;
 export const END_POINTS = {
   AUTH: {
     LOG_IN: "/auth/login",
-    SIGN_UP: "/auth/signup"
+    SIGN_UP: "/auth/register"
   },
   BOOKS: "/books",
   USERS: {

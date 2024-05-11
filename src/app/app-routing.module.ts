@@ -7,7 +7,6 @@ import { AboutUsComponent } from './components/about-us/about-us.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { UserComponent } from './components/user/user.component';
 import { AuthGuard } from './guards/auth/auth.guard';
-import { UserResolveComponent } from './components/user-resolve/user-resolve.component';
 import { NotLoggedGuard } from './guards/not-logged/not-logged.guard';
 import { CartComponent } from './components/cart/cart.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
