@@ -1,21 +1,8 @@
 <app-loading-spinner class="main_spinner" *ngIf="!bestsellers.length" color="#2B2D42"></app-loading-spinner>
 <div class="main">
-  <!-- <a routerLink="/sales">
-    <img class="main__banner" alt="Sales up to 50%, BookStore" src="assets/banner.png">
-  </a> -->
   <p class="main__carouselTitle main__carouselTitle--bestseller">
-    Bestsellers
+    Explore our books
   </p>
   <app-book-carousel *ngIf="bestsellers.length" class="main__carousel" [books]="bestsellers"
-                     size="lg"></app-book-carousel>
-  <p class="main__carouselTitle main__carouselTitle--sale">
-    Sales
-  </p>
-  <!-- <app-book-carousel *ngIf="sales.length" class="main__carousel" [books]="sales" size="lg"></app-book-carousel> -->
-  <img class="main_subBanner" alt="Reliable shopping, BookStore" src="assets/subbanner.png">
-  <p class="main__carouselTitle main__carouselTitle--new">
-    New
-  </p>
-  <!-- <app-book-carousel *ngIf="new.length" class="main__carousel" [books]="new" size="lg"></app-book-carousel> -->
+    size="lg"></app-book-carousel>
 </div>
-

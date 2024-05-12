@@ -64,12 +64,11 @@ export class BooksListComponent implements OnInit, OnDestroy {
   }
 
   onScroll(): void {
-    this.getBooks();
   }
 
   getBooks(): void {
     this.noBooks = false;
-    this.booksService.getBooks(true).subscribe((res: Book[]) => {
+    this.booksService.getBooksSales().subscribe((res: Book[]) => {
       this.books.push(...res);
       if (!this.books.length) {
         this.noBooks = true;

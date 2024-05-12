@@ -68,8 +68,8 @@ export class UserComponent implements OnInit {
 
   logout(): void {
     localStorage.removeItem('userData');
-    this.router.navigate(['/']);
     this.authService.loggedInChange.next(false)
+    this.router.navigate(['/']);
   }
 
   toggleOrderVisibility(i: number): void {

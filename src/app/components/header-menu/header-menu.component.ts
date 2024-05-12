@@ -4,6 +4,7 @@ import {NavigationStart, Router, RouterEvent} from '@angular/router';
 import {filter} from 'rxjs/operators';
 import {CartService} from '../../services/cart/cart.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
+import { UserService } from 'src/app/services/user/user.service';
 
 @Component({
   selector: 'app-header-menu',
@@ -25,12 +26,14 @@ export class HeaderMenuComponent implements OnInit {
   constructor(
     private router: Router, 
     private cartService: CartService,
-    private authService: AuthService
+    private authService: AuthService,
+    private userService: UserService
   ) {
-    this.authService.loggedInChange.subscribe(res => this.loggedIn = res)
+    // this.loggedIn = this.authService.loggedIn();
   }
-
+  
   ngOnInit(): void {
+    this.authService.loggedInChange.subscribe(res => this.loggedIn = res)
     this.subscribeTouRouting();
     this.subscribeToBasketCounter();
   }
@@ -69,5 +72,9 @@ export class HeaderMenuComponent implements OnInit {
     this.cartService.cartLengthSource.subscribe((val: number) => {
       this.basketCounter = val;
     });
+  }
+
+  onRecommendClick(){
+    this.userService.recommend().subscribe
   }
 }

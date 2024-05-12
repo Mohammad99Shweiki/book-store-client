@@ -29,8 +29,8 @@ export class BooksService {
     return this.http.post(END_POINTS.BOOKS, book);
   }
 
-  updateBook() {
-
+  getSimilarBooks(bookId: number): Observable<Book[]>{
+    return this.http.get<Book[]>(END_POINTS.BOOKS_SIMILAR + '/' + bookId);
   }
 
   getRecommendedBooks(id: number): Observable<Array<Book>> {
@@ -38,8 +38,8 @@ export class BooksService {
     return this.http.get<Array<Book>>(environment.serverUrL + 'getRecommendedBooks', this.httpOptions);
   }
 
-  getSales(): Observable<Array<Book>> {
-    return this.http.get<Array<Book>>(environment.serverUrL + 'getSales', { headers: new HttpHeaders({ 'Content-Type': 'application/json' }) });
+  getBooksSales(): Observable<Array<Book>> {
+    return this.http.get<Array<Book>>(END_POINTS.BOOKS_SALES).pipe(map((res: any) => res.content));;
   }
 
   getNew(): Observable<Array<Book>> {

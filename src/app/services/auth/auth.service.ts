@@ -12,11 +12,12 @@ import { END_POINTS } from 'src/app/app.constants';
   providedIn: 'root'
 })
 export class AuthService {
-  loggedIn: boolean = false;
+  _loggedIn: boolean = false;
   loggedInChange: Subject<boolean> = new Subject();
 
   constructor(private http: HttpClient, private router: Router) {
-    this.loggedInChange.subscribe(val => this.loggedIn = val)
+    this.loggedInChange.subscribe(val => this._loggedIn = val)
+    this.checkUserData()
   }
 
   checkUserData(): Observable<boolean | UrlTree> {
@@ -34,6 +35,10 @@ export class AuthService {
       this.loggedInChange.next(false)
       return of(this.router.createUrlTree(['/login']));
     }
+  }
+
+  loggedIn(){
+    return this._loggedIn;
   }
 
   registerUser(data: RegisterData): Observable<AuthResponse> {
