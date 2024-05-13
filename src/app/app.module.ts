@@ -45,7 +45,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { BookCartComponent } from './components/book-cart/book-cart.component';
 import { RequestInterceptor } from './interceptors/request.interceptor';
 import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon'
+import { MatIconModule } from '@angular/material/icon';
+import { RecommendationsComponent } from './components/recommendations/recommendations.component'
 @NgModule({
   declarations: [
     AppComponent,
@@ -74,7 +75,8 @@ import { MatIconModule } from '@angular/material/icon'
     BookOrderComponent,
     RatingSelectorComponent,
     CartComponent,
-    BookCartComponent
+    BookCartComponent,
+    RecommendationsComponent
   ],
   imports: [
     BrowserModule,

@@ -1,14 +1,14 @@
-import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute, Router} from '@angular/router';
-import {BooksService} from '../../services/books/books.service';
-import {Book} from '../../models/book';
-import {Review} from '../../models/review';
-import {ReviewsService} from '../../services/reviews/reviews.service';
-import {detailsMapping} from '../../helpers/detailsMapping/detailsMapping';
-import {DetailMapping} from '../../models/detailMapping';
-import {Detail} from '../../models/detail';
-import {Title} from '@angular/platform-browser';
-import {CartService} from '../../services/cart/cart.service';
+import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { BooksService } from '../../services/books/books.service';
+import { Book } from '../../models/book';
+import { Review } from '../../models/review';
+import { ReviewsService } from '../../services/reviews/reviews.service';
+import { detailsMapping } from '../../helpers/detailsMapping/detailsMapping';
+import { DetailMapping } from '../../models/detailMapping';
+import { Detail } from '../../models/detail';
+import { Title } from '@angular/platform-browser';
+import { CartService } from '../../services/cart/cart.service';
 
 @Component({
   selector: 'app-book-details',
@@ -24,7 +24,7 @@ export class BookDetailsComponent implements OnInit {
   reviewsNumber: number;
   id: number;
   details: Array<Detail>;
-  recommendedBooks: Array<Book> = [];
+  similarBooks: Array<Book> = [];
   title: string = ' - BookStore';
 
   constructor(
@@ -41,8 +41,8 @@ export class BookDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.id = Number(this.route.snapshot.paramMap.get('id'));
     this.getBook();
-    this.getNumberOfReviews();
-    this.getRecommendedBooks();
+    // this.getNumberOfReviews();
+    this.getSimilarBooks();
   }
 
   getBook(): void {
@@ -78,13 +78,13 @@ export class BookDetailsComponent implements OnInit {
   mapDetails(book): Array<Detail> {
     const detailsMapped: Array<Detail> = [];
     detailsMapping.forEach((val: DetailMapping) => {
-      detailsMapped.push({key: val.key, label: val.label, value: book[val.key], customPipe: val.customPipe});
+      detailsMapped.push({ key: val.key, label: val.label, value: book[val.key], customPipe: val.customPipe });
     });
     return detailsMapped;
   }
 
-  getRecommendedBooks(): void {
-    this.booksService.getRecommendedBooks(this.id).subscribe((books: Array<Book>) => this.recommendedBooks = books);
+  getSimilarBooks(): void {
+    this.booksService.getSimilarBooks(this.id).subscribe((books: Array<Book>) => this.similarBooks = books);
   }
 
   addToBasket(id: string, redirect?: boolean): void {

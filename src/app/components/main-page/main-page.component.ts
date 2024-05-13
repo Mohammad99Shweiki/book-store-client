@@ -33,7 +33,7 @@ export class MainPageComponent implements OnInit {
   }
 
   getSales(): void {
-    this.booksService.getSales().subscribe((books: Array<Book>) => {
+    this.booksService.getBooksSales().subscribe((books: Array<Book>) => {
       this.sales = books;
       this.booksLoaded += books.length;
     });

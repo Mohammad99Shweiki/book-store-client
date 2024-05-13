@@ -11,6 +11,7 @@ import { NotLoggedGuard } from './guards/not-logged/not-logged.guard';
 import { CartComponent } from './components/cart/cart.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
+import { RecommendationsComponent } from './components/recommendations/recommendations.component';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'browse', component: BooksListComponent, data: { type: 'browse' } },
   { path: 'book/:id', component: BookDetailsComponent },
   { path: 'about-us', component: AboutUsComponent },
+  { path: 'recommendations', component: RecommendationsComponent, canActivate: [AuthGuard] },
   { path: 'contact', component: ContactComponent },
   { path: 'user', component: UserComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginFormComponent },

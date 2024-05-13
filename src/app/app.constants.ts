@@ -8,9 +8,11 @@ export const END_POINTS = {
     SIGN_UP: "/auth/register"
   },
   BOOKS: "/books",
+  BOOKS_SIMILAR: "/books/similar",
+  BOOKS_SALES: "/books/onSale",
   USERS: {
     RECOMMEND: "/users/recommend",
-    index: "/users"
+    index: "/users",
   }
 }
 

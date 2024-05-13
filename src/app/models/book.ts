@@ -16,5 +16,7 @@ export interface Book {
   available: number;
   sold: number;
   imageLink: string;
-  fileLink: string
+  fileLink: string;
+  salePrice: number;
+  onSale: boolean;
 }

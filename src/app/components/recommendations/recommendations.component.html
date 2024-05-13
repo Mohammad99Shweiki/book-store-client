@@ -1,0 +1,5 @@
+<div class="grid-container">
+  <app-book-overview class="book" *ngFor="let book of books" [book]="book">
+  </app-book-overview>
+  <div *ngIf="!loggedIn">Please login</div>
+</div>

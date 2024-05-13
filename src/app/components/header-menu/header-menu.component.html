@@ -1,5 +1,5 @@
 <header class="header" [ngStyle]="{height: height + 'px', transform: navTransformString}">
-  <a class="header__logoContainer">
+  <a routerLink="/" class="header__logoContainer">
     <img class="header__logo" alt="BookStore logo" src="assets/logo.png"/>
   </a>
   <nav class="nav">
@@ -10,24 +10,24 @@
     <fa-icon class="nav__icon nav__icon--tablet" routerLink="/user" [icon]="faUser" size="lg"></fa-icon>
     <fa-icon (click)="toggleMenu()" class="nav__icon nav__icon--hamburger" [icon]="menuIcon" size="lg"></fa-icon>
     <div class="nav__links">
-      <a class="nav__link" routerLink="/bestsellers" routerLinkActive="nav__link--active">
+      <!-- <a class="nav__link" routerLink="/bestsellers" routerLinkActive="nav__link--active">
         Bestsellers
-      </a>
+      </a> -->
       <a class="nav__link" routerLink="/sales" routerLinkActive="nav__link--active">
         Sales
-      </a>
-      <a class="nav__link" routerLinkActive="nav__link--active" routerLink="/about-us">
-        About us
       </a>
       <a class="nav__link" routerLinkActive="nav__link--active" routerLink="/contact">
         Contact
       </a>
-      <div *ngIf="loggedIn" class="d-flex align-items-center">
-        <button mat-raised-button color="primary">
+      <a routerLink="/recommendations" class="nav__link" routerLinkActive="nav__link--active">
+        Recommendations
+      </a>
+      <!-- <div *ngIf="loggedIn" class="d-flex align-items-center">
+        <button (click)="onRecommendClick()" mat-raised-button color="primary">
           Recommend me
           <mat-icon>stars</mat-icon>
         </button>
-      </div>
+      </div> -->
       <div class="nav__iconsContainer">
         <div class="nav__iconContainer nav__icon--mobile" routerLink="/cart">
           <app-number-indicator *ngIf="basketCounter > 0" [value]="basketCounter"></app-number-indicator>

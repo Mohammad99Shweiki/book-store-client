@@ -170,8 +170,8 @@
 }
 
 .product__getReviews {
-  background-color: #D90429;
-  font-family: 'Raleway', sans-serif;
+  /* background-color: #D90429; */
+  /* font-family: 'Raleway', sans-serif;
   padding: 10px;
   font-weight: 500;
   border: 0;
@@ -179,7 +179,7 @@
   color: white;
   margin: 10px auto;
   display: block;
-  cursor: pointer;
+  cursor: pointer; */
 }
 
 .product__reviewsInfo {
