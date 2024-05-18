@@ -10,6 +10,7 @@ export const END_POINTS = {
   BOOKS: "/books",
   BOOKS_SIMILAR: "/books/similar",
   BOOKS_SALES: "/books/onSale",
+  BOOKS_SEARCH: "/books/search",
   USERS: {
     RECOMMEND: "/users/recommend",
     index: "/users",

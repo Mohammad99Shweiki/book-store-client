@@ -1,5 +1,8 @@
-<div class="grid-container">
-  <app-book-overview class="book" *ngFor="let book of books" [book]="book">
-  </app-book-overview>
-  <div *ngIf="!loggedIn">Please login</div>
+<app-loading-spinner *ngIf="!books.length && !noBooks" class="spinner" color="#2B2D42"></app-loading-spinner>
+<div class="px-4">
+  <app-book-carousel size="xs" [books]="books"></app-book-carousel>
+</div>
+<div *ngIf="!loggedIn">Please login</div>
+<div *ngIf="noBooks" class="booksWarning">
+  No books found
 </div>

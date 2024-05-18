@@ -159,7 +159,7 @@
 }
 
 .product__recommendedTitle {
-  background-color: #2B2D42;
+  background-color: var(--accent-color);
   color: white;
   font-family: 'Raleway', sans-serif;
   font-weight: 500;
@@ -227,6 +227,10 @@
   }
 }
 
+.font-sm {
+  font-size: 16px !important;
+}
+
 @media screen and (min-width: 1200px) {
   .product__container {
     width: 800px;
@@ -239,8 +243,8 @@
     left: calc(50% + 225px);
     flex-direction: column;
     padding: 30px 20px;
-    box-shadow: 10px 10px 5px 0 rgba(70, 70, 70, 0.4);
-    background-color: #EDF2F4;
+    /* box-shadow: 10px 10px 5px 0 rgba(70, 70, 70, 0.4); */
+    /* background-color: #EDF2F4; */
   }
 
   .product__name {

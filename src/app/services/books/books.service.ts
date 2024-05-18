@@ -25,11 +25,16 @@ export class BooksService {
     return this.http.get<BooksResponse>(END_POINTS.BOOKS).pipe(map((res: any) => res.content));
   }
 
+  searchBooks(filters: any): Observable<any> {
+    filters['search'] = 'hi';
+    return this.http.get<Book[]>(END_POINTS.BOOKS_SEARCH, { params: filters })
+  }
+
   addBook(book: any): Observable<any> {
     return this.http.post(END_POINTS.BOOKS, book);
   }
 
-  getSimilarBooks(bookId: number): Observable<Book[]>{
+  getSimilarBooks(bookId: number): Observable<Book[]> {
     return this.http.get<Book[]>(END_POINTS.BOOKS_SIMILAR + '/' + bookId);
   }
 

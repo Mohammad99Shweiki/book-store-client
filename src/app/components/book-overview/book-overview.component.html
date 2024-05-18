@@ -13,11 +13,12 @@
     <span class="product__pricePromo" *ngIf="book.onSale"> {{book.salePrice | currency}}</span>
   </p>
   <div class="product__buttons gap-2">
-    <button routerLink="/book/{{book.isbn}}" class="mat-stroked-button w-100">
+    <button mat-stroked-button routerLink="/book/{{book.isbn}}" class="w-100">
       See more
     </button>
-    <button (click)="addToBasket(book.isbn)" class="product__button product__button--basket">
-      <fa-icon [icon]="faShoppingBasket"></fa-icon>
+    <button mat-flat-button color="primary" (click)="addToBasket(book.isbn)">
+      <mat-icon>add_shopping_cart</mat-icon>
     </button>
   </div>
+
 </mat-card>

@@ -33,20 +33,6 @@
   font-weight: 500;
 }
 
-.booksFilter__button{
-  background-color: #D90429;
-  font-family: 'Raleway', sans-serif;
-  padding: 10px;
-  font-weight: 500;
-  border: 0;
-  font-size: 0.925em;
-  color: white;
-  margin: 10px auto;
-  display: block;
-  cursor: pointer;
-  width: 100%;
-}
-
 .booksFilter__checkbox {
   font-size: 0.935em;
 }

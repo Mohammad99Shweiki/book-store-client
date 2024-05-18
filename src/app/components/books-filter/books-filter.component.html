@@ -1,45 +1,53 @@
-<div class="booksFilter">
+<mat-card class="booksFilter">
   <p class="booksFilter__header">Find book for you</p>
-  <mat-form-field appearance="outline" class="booksFilter__searchContainer">
-    <mat-label>Search</mat-label>
-    <input (ngModelChange)="searchTermChange()" [(ngModel)]="booksFilter.searchPhrase" type="text" matInput>
-  </mat-form-field>
-  <p class="booksFilter__header booksFilter__header--sub">Filter results</p>
-  <p class="booksFilter__label">Publication date</p>
-  <div class="booksFilter__dateContainer">
-    <mat-form-field appearance="outline" class="booksFilter__datePicker">
-      <mat-label>From</mat-label>
-      <input #startInput matInput [matDatepicker]="startPicker" (dateChange)="changeDate(startInput.value, 'from')">
-      <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
-      <mat-datepicker #startPicker></mat-datepicker>
+  <form [formGroup]="filtersForm">
+    <mat-form-field appearance="outline" class="booksFilter__searchContainer col-12">
+      <mat-label>Search</mat-label>
+      <input formControlName="searchParam" type="text" matInput>
     </mat-form-field>
-    <mat-form-field appearance="outline" class="booksFilter__datePicker">
-      <mat-label>To</mat-label>
-      <input #endInput matInput [matDatepicker]="endPicker" (dateChange)="changeDate(endInput.value, 'to')">
-      <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
-      <mat-datepicker #endPicker></mat-datepicker>
+    <p class="booksFilter__header booksFilter__header--sub">Filter results</p>
+    <p class="booksFilter__label">Publication date</p>
+    <div class="booksFilter__dateContainer">
+      <mat-form-field appearance="outline" class="booksFilter__datePicker">
+        <mat-label>From</mat-label>
+        <input formControlName="fromDate" #startInput matInput [matDatepicker]="startPicker" (dateChange)="changeDate(startInput.value, 'from')">
+        <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+        <mat-datepicker #startPicker></mat-datepicker>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="booksFilter__datePicker">
+        <mat-label>To</mat-label>
+        <input formControlName="toDate" #endInput matInput [matDatepicker]="endPicker" (dateChange)="changeDate(endInput.value, 'to')">
+        <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+        <mat-datepicker #endPicker></mat-datepicker>
+      </mat-form-field>
+    </div>
+    <mat-form-field class="col-12" appearance="outline">
+      <mat-label>Genre</mat-label>
+      <mat-select formControlName="genres" multiple>
+        <mat-option *ngFor="let genre of genres" [value]="genre">
+          {{genre}}
+        </mat-option>
+      </mat-select>
     </mat-form-field>
-  </div>
-  <mat-form-field appearance="outline">
-    <mat-label>Genre</mat-label>
-    <mat-select [(ngModel)]="booksFilter.genres" multiple>
-      <mat-option *ngFor="let genre of genres" [value]="genre">
-        {{genre}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <mat-form-field appearance="outline">
-    <mat-label>Sort by</mat-label>
-    <mat-select [(ngModel)]="booksFilter.sortBy">
-      <mat-option *ngFor="let method of sortMethods" [value]="method.value">
-        {{method.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div class="d-flex justify-content-around">
-    <mat-checkbox *ngIf="type !== 'sale'" [(ngModel)]="booksFilter.sale" class="booksFilter__checkbox" color="primary">On sale</mat-checkbox>
-    <mat-checkbox *ngIf="type !== 'bestseller'" [(ngModel)]="booksFilter.bestseller" class="booksFilter__checkbox" color="primary">Bestsellers</mat-checkbox>
-    <mat-checkbox *ngIf="type !== 'new'" [(ngModel)]="booksFilter.new" class="booksFilter__checkbox" color="primary">New</mat-checkbox>
-  </div>
-  <button (click)="filterBooks()" class="booksFilter__button">Filter results</button>
-</div>
+    <mat-form-field class="col-12" appearance="outline">
+      <mat-label>Sort by</mat-label>
+      <mat-select>
+        <mat-option *ngFor="let method of sortMethods" [value]="method.value">
+          {{method.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+    <div class="d-flex justify-content-around">
+      <mat-checkbox formControlName="sale" *ngIf="type !== 'sale'" class="booksFilter__checkbox"
+        color="primary">On sale</mat-checkbox>
+      <mat-checkbox formControlName="bestSeller" *ngIf="type !== 'bestseller'" class="booksFilter__checkbox"
+        color="primary">Bestsellers</mat-checkbox>
+      <mat-checkbox formControlName="new" *ngIf="type !== 'new'" class="booksFilter__checkbox"
+        color="primary">New</mat-checkbox>
+    </div>
+    <div class="col-12 d-flex mt-4">
+      <button (keydown.enter)="filterBooks()" class="w-100" mat-raised-button (click)="filterBooks()"
+        color="primary">Filter results</button>
+    </div>
+  </form>
+</mat-card>

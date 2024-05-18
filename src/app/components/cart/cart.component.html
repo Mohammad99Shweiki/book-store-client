@@ -14,8 +14,10 @@
     You are not logged in, you can place order but you will not have access to order history, and you will can not
     review books that you bought. Please consider registering.
   </p>
-  <button [disabled]="!cart.products.length || onGoingRequest" type="button" (click)="placeOrder()"
-    class="cart__button">
-    Order & Pay
-  </button>
+  <div class="col-12 d-flex align-items-center justify-content-end">
+    <button class="d-flex align-items-center" mat-raised-button [disabled]="!cart.products.length || onGoingRequest" type="button" (click)="placeOrder()">
+      Order & Pay
+      <mat-icon>paid</mat-icon>
+    </button>
+  </div>
 </div>

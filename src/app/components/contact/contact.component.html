@@ -15,7 +15,7 @@
       <mat-error *ngIf="messageControl.errors?.required">This field is required</mat-error>
     </mat-form-field>
     <p *ngIf="sendingError" class="contact__error">Unexpected error, try again later</p>
-    <button mat-raised-button [ngStyle]="{cursor: requestInProgress ? 'wait' : undefined}"
+    <button mat-raised-button color="primary" [ngStyle]="{cursor: requestInProgress ? 'wait' : undefined}"
       [disabled]="!emailControl.valid || !messageControl.valid || requestInProgress" (click)="sendContactData()"
       class="w-100">
       Submit

@@ -22,7 +22,11 @@ export class BookCarouselComponent implements OnInit {
     loop: true,
     touch: true,
     velocity: 0.1,
-    speed: 500
+    speed: 500,
+    point: {
+      visible: true,
+      hideOnSingleSlide: true
+    }
   };
 
   faChevronLeft: IconDefinition = faChevronLeft;

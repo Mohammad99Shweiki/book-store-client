@@ -7,10 +7,9 @@
 .bookCarousel__button {
   position: absolute;
   top: 50%;
-  height: 35px;
-  width: 35px;
+  /* height: 35px; */
+  /* width: 35px; */
   border: none;
-  background-color: #2B2D42;
   color: white;
   z-index: 9;
 }

@@ -11,6 +11,7 @@ import { UserService } from 'src/app/services/user/user.service';
 export class RecommendationsComponent implements OnInit {
   books: Book[] = [];
   loggedIn: boolean = false;
+  noBooks: boolean = false;
   constructor(
     private userService: UserService,
     private authService: AuthService
@@ -18,11 +19,12 @@ export class RecommendationsComponent implements OnInit {
     this.loggedIn = this.authService.loggedIn();
     this.userService.recommend().subscribe(res => {
       this.books = res;
+      if (!this.books.length) {
+        this.noBooks = true;
+      }
     })
   }
 
   ngOnInit(): void {
-    console.log(this.books)
   }
-
 }

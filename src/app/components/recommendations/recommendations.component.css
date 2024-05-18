@@ -8,4 +8,12 @@
 
 .book{
   width: 300px;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.book:hover{
+  transition: 0.3s ease-in-out;
+  scale: calc(1.05);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }

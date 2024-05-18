@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BooksListComponent } from './components/books-list/books-list.component';
@@ -25,7 +24,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MAT_DATE_LOCALE, MatNativeDateModule, MatOptionModule } from '@angular/material/core';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';
 import { MatSelectModule } from '@angular/material/select';
@@ -44,9 +42,9 @@ import { RatingSelectorComponent } from './components/rating-selector/rating-sel
 import { CartComponent } from './components/cart/cart.component';
 import { BookCartComponent } from './components/book-cart/book-cart.component';
 import { RequestInterceptor } from './interceptors/request.interceptor';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component'
+import { MaterialModule } from './material.module';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -89,19 +87,15 @@ import { RecommendationsComponent } from './components/recommendations/recommend
     MatFormFieldModule,
     MatInputModule,
     MatDatepickerModule,
-    MatNativeDateModule,
     MatCheckboxModule,
     MatButtonModule,
-    MatOptionModule,
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MatCardModule,
-    MatIconModule,
+    MaterialModule,
     ToastrModule.forRoot()
   ],
   providers: [
-    { provide: MAT_DATE_LOCALE, useValue: 'en-GB' },
     { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }
   ],
   bootstrap: [AppComponent],

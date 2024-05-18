@@ -1,15 +1,21 @@
-import {Component, OnInit} from '@angular/core';
-import {UserService} from '../../services/user/user.service';
-import {UserData} from '../../models/userData';
-import {BooksService} from '../../services/books/books.service';
-import {Order} from '../../models/order';
-import {Book} from '../../models/book';
-import {Router} from '@angular/router';
-import {Review} from '../../models/review';
-import {faPlusSquare, faMinusSquare, IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {Title} from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { UserService } from '../../services/user/user.service';
+import { UserData } from '../../models/userData';
+import { BooksService } from '../../services/books/books.service';
+import { Order } from '../../models/order';
+import { Book } from '../../models/book';
+import { Router } from '@angular/router';
+import { Review } from '../../models/review';
+import { faPlusSquare, faMinusSquare, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/services/auth/auth.service';
-
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { MatChipInputEvent } from '@angular/material/chips';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+export interface Fruit {
+  name: string;
+}
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -21,13 +27,30 @@ export class UserComponent implements OnInit {
   faPlusSquare: IconDefinition = faPlusSquare;
   faMinusSquare: IconDefinition = faMinusSquare;
   orderVisibility: Array<boolean> = [];
-
+  userForm: FormGroup;
+  addOnBlur = true;
+  readonly separatorKeysCodes = [ENTER, COMMA] as const;
+  userGenres: string[] = [];
+  
   constructor(
-    private userService: UserService, 
-    private booksService: BooksService, 
-    private router: Router, private titleService: Title,
-    private authService: AuthService
-  ) { }
+    private userService: UserService,
+    private booksService: BooksService,
+    private router: Router,
+    private titleService: Title,
+    private authService: AuthService,
+    private fb: FormBuilder
+  ) {
+    this.userForm = this.fb.group({
+      userId: [{ value: '', disabled: true }],
+      username: [''],
+      firstName: [''],
+      lastName: [''],
+      email: ['', Validators.email],
+      password: [''],
+      genres: [''],
+      // genres1: ['']
+    });
+  }
 
   ngOnInit(): void {
     this.getUserData();
@@ -37,6 +60,10 @@ export class UserComponent implements OnInit {
   getUserData(): void {
     this.userService.getUserData().subscribe((userData: UserData) => {
       this.userData = userData;
+      this.userGenres = userData.favoriteGenres;
+      this.userForm.patchValue({
+        ...this.userData
+      });
       // userData.orders.forEach((val: Order, index: number) => {
       //   this.orderVisibility[index] = false;
       // });
@@ -58,17 +85,17 @@ export class UserComponent implements OnInit {
     }
   }
 
-  getBookById(id): Book {
+  getBookById(id: string): Book {
     return this.booksData.find((val: Book) => val.isbn === id);
   }
 
-  isBookReviewed(id) {
+  isBookReviewed(id: string) {
     // return this.userData.reviews.filter((review: Review) => review.bookId === id).length > 0;
   }
 
   logout(): void {
     localStorage.removeItem('userData');
-    this.authService.loggedInChange.next(false)
+    this.authService.loggedInChange.next(false);
     this.router.navigate(['/']);
   }
 
@@ -78,5 +105,25 @@ export class UserComponent implements OnInit {
 
   addReview($event: Review): void {
     // this.userData.reviews.push($event);
+  }
+
+  remove(genre: string): void {
+    const index = this.userGenres.indexOf(genre);
+
+    if (index >= 0) {
+      this.userGenres.splice(index, 1);
+    }
+  }
+
+  add(event: MatChipInputEvent): void {
+    const value = (event.value || '').trim();
+
+    // Add our fruit
+    if (value) {
+      this.userGenres.push(value);
+    }
+
+    // Clear the input value
+    event.input.value = ''
   }
 }

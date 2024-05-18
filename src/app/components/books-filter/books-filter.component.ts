@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {BooksFilter} from '../../models/booksFilter';
 import {FilterService} from '../../services/filter/filter.service';
+import { FormBuilder, FormGroup } from '@angular/forms';
+import { BooksService } from 'src/app/services/books/books.service';
 
 @Component({
   selector: 'app-books-filter',
@@ -17,6 +19,7 @@ export class BooksFilterComponent implements OnInit {
     {name: 'Publication date (asc)', value: {name: 'publication', direction: 'asc'}},
     {name: 'Publication date (desc)', value: {name: 'publication', direction: 'desc'}}
   ];
+  filtersForm: FormGroup
   timeout: number = null;
   @Input() booksFilter: BooksFilter = {
     searchPhrase: null,
@@ -30,7 +33,20 @@ export class BooksFilterComponent implements OnInit {
   };
   @Input() type: 'sale' | 'browse' | 'bestseller' | 'new';
 
-  constructor(private filterService: FilterService) {
+  constructor(
+    private filterService: FilterService,
+    private fb: FormBuilder,
+    private bookService: BooksService
+  ) {
+    this.filtersForm = this.fb.group({
+      searchParam: [''],
+      fromDate: [''],
+      toDate: [''],
+      genres: [''],
+      sale: [''],
+      new: [''],
+      bestSeller: ['']
+    })
   }
 
   ngOnInit(): void {
@@ -47,10 +63,17 @@ export class BooksFilterComponent implements OnInit {
     }
   }
 
+  onSearchChange(event: any) {
+    console.log(this.booksFilter.searchPhrase)
+    console.log(event)
+  }
+
   searchTermChange(): void {
+
     if (this.timeout !== null) {
       clearTimeout(this.timeout);
     }
+    //debouncing
     //@ts-ignore
     this.timeout = setTimeout(() => {
       this.filterService.changeFilter(this.booksFilter);
@@ -58,6 +81,8 @@ export class BooksFilterComponent implements OnInit {
   }
 
   filterBooks(): void {
-    this.filterService.changeFilter(this.booksFilter);
+    console.log(this.filtersForm.get('searchParam').value);
+    this.bookService.searchBooks({}).subscribe(res => console.log(res));
+    // this.filterService.changeFilter(this.booksFilter);
   }
 }

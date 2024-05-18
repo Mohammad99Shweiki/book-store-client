@@ -1,24 +1,32 @@
 /**
 * Generated theme by Material Theme Generator
 * https://materialtheme.arcsine.dev
+* Fork at: https://materialtheme.arcsine.dev/?c=YHBhbGV0dGU$YHByaW1hcnk$YF48IzQwNTFiNSIsIj9lcjwjYzZjYmU5IiwiO2VyPCMyYTM3OWR$LCIlPmBePCM4YzhmYTkiLCI~ZXI8I2RkZGRlNSIsIjtlcjwjNmY3Mjhmfiwid2Fybj5gXjwjZmY1NDQ5IiwiP2VyPCNmZmNjYzgiLCI7ZXI8I2ZmM2EzMX4sIj9UZXh0PCMwMDAwMDAiLCI~PTwjZmFmYWZhIiwiO1RleHQ8I2ZmZmZmZiIsIjs9PCMyYzJjMmN$LCJmb250cz5bYEA8KC00fixgQDwoLTN$LGBAPCgtMn4sYEA8KC0xfixgQDxoZWFkbGluZX4sYEA8dGl0bGV$LGBAPHN1YiktMn4sYEA8c3ViKS0xfixgQDxib2R5LTJ$LGBAPGJvZHktMX4sYEA8YnV0dG9ufixgQDxjYXB0aW9ufixgQDxpbnB1dCIsInNpemU$bnVsbH1dLCJpY29uczxGaWxsZWQiLCI~bmVzcz50cnVlLCJ2ZXJzaW9uPjExfQ==
 */
 
 @import '~@angular/material/theming';
 
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+
+// Fonts
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+     
 $fontConfig: (
-  display-4: mat-typography-level(112px, 112px, 300, 'Open Sans', -0.0134em),
-  display-3: mat-typography-level(56px, 56px, 400, 'Open Sans', -0.0089em),
-  display-2: mat-typography-level(45px, 48px, 400, 'Open Sans', 0.0000em),
-  display-1: mat-typography-level(34px, 40px, 400, 'Open Sans', 0.0074em),
-  headline: mat-typography-level(24px, 32px, 400, 'Open Sans', 0.0000em),
-  title: mat-typography-level(20px, 32px, 500, 'Open Sans', 0.0075em),
-  subheading-2: mat-typography-level(16px, 28px, 400, 'Open Sans', 0.0094em),
-  subheading-1: mat-typography-level(15px, 24px, 500, 'Open Sans', 0.0067em),
-  body-2: mat-typography-level(14px, 24px, 500, 'Open Sans', 0.0179em),
-  body-1: mat-typography-level(14px, 20px, 400, 'Open Sans', 0.0179em),
-  button: mat-typography-level(14px, 14px, 500, 'Open Sans', 0.0893em),
-  caption: mat-typography-level(12px, 20px, 400, 'Open Sans', 0.0333em),
-  input: mat-typography-level(inherit, 1.125, 400, 'Open Sans', 0.0333em)
+  display-4: mat-typography-level(112px, 112px, 300, 'Roboto', -0.0134em),
+  display-3: mat-typography-level(56px, 56px, 400, 'Roboto', -0.0089em),
+  display-2: mat-typography-level(45px, 48px, 400, 'Roboto', 0.0000em),
+  display-1: mat-typography-level(34px, 40px, 400, 'Roboto', 0.0074em),
+  headline: mat-typography-level(24px, 32px, 400, 'Roboto', 0.0000em),
+  title: mat-typography-level(20px, 32px, 500, 'Roboto', 0.0075em),
+  subheading-2: mat-typography-level(16px, 28px, 400, 'Roboto', 0.0094em),
+  subheading-1: mat-typography-level(15px, 24px, 500, 'Roboto', 0.0067em),
+  body-2: mat-typography-level(14px, 24px, 500, 'Roboto', 0.0179em),
+  body-1: mat-typography-level(14px, 20px, 400, 'Roboto', 0.0179em),
+  button: mat-typography-level(14px, 14px, 500, 'Roboto', 0.0893em),
+  caption: mat-typography-level(12px, 20px, 400, 'Roboto', 0.0333em),
+  input: mat-typography-level(inherit, 1.125, 400, 'Roboto', 1.5px)
 );
 
 // Foreground Elements
@@ -141,19 +149,18 @@ $mat-dark-theme-background: (
 // Theme Config
 
 body {
-  --primary-color: #2b2d42;
-  --primary-lighter-color: #bfc0c6;
-  --primary-darker-color: #1a1c2b;
+  --primary-color: #4051b5;
+  --primary-lighter-color: #c6cbe9;
+  --primary-darker-color: #2a379d;
   --text-primary-color: #{$light-primary-text};
   --text-primary-lighter-color: #{$dark-primary-text};
   --text-primary-darker-color: #{$light-primary-text};
-}
-
+}   
 $mat-primary: (
-  main: #2b2d42,
-  lighter: #bfc0c6,
-  darker: #1a1c2b,
-  200: #2b2d42, // For slide toggle,
+  main: #4051b5,
+  lighter: #c6cbe9,
+  darker: #2a379d,
+  200: #4051b5, // For slide toggle,
   contrast : (
     main: $light-primary-text,
     lighter: $dark-primary-text,
@@ -162,49 +169,50 @@ $mat-primary: (
 );
 $theme-primary: mat-palette($mat-primary, main, lighter, darker);
 
+
 body {
-  --accent-color: #edf2f4;
-  --accent-lighter-color: #fafbfc;
-  --accent-darker-color: #e5ecef;
+  --accent-color: #8c8fa9;
+  --accent-lighter-color: #dddde5;
+  --accent-darker-color: #6f728f;
   --text-accent-color: #{$dark-primary-text};
   --text-accent-lighter-color: #{$dark-primary-text};
-  --text-accent-darker-color: #{$dark-primary-text};
-}
-
+  --text-accent-darker-color: #{$light-primary-text};
+}   
 $mat-accent: (
-  main: #edf2f4,
-  lighter: #fafbfc,
-  darker: #e5ecef,
-  200: #edf2f4, // For slide toggle,
+  main: #8c8fa9,
+  lighter: #dddde5,
+  darker: #6f728f,
+  200: #8c8fa9, // For slide toggle,
   contrast : (
     main: $dark-primary-text,
-    lighter: $dark-primary-text,
-    darker: $dark-primary-text,
-  )
-);
-$theme-accent: mat-palette($mat-accent, main, lighter, darker);
-
-body {
-  --warn-color: #ef233c;
-  --warn-lighter-color: #fabdc5;
-  --warn-darker-color: #e81527;
-  --text-warn-color: #{$light-primary-text};
-  --text-warn-lighter-color: #{$dark-primary-text};
-  --text-warn-darker-color: #{$light-primary-text};
-}
-
-$mat-warn: (
-  main: #ef233c,
-  lighter: #fabdc5,
-  darker: #e81527,
-  200: #ef233c, // For slide toggle,
-  contrast : (
-    main: $light-primary-text,
     lighter: $dark-primary-text,
     darker: $light-primary-text,
   )
 );
-$theme-warn: mat-palette($mat-warn, main, lighter, darker);;
+$theme-accent: mat-palette($mat-accent, main, lighter, darker);
+
+
+body {
+  --warn-color: #ff5449;
+  --warn-lighter-color: #ffccc8;
+  --warn-darker-color: #ff3a31;
+  --text-warn-color: #{$dark-primary-text};
+  --text-warn-lighter-color: #{$dark-primary-text};
+  --text-warn-darker-color: #{$light-primary-text};
+}   
+$mat-warn: (
+  main: #ff5449,
+  lighter: #ffccc8,
+  darker: #ff3a31,
+  200: #ff5449, // For slide toggle,
+  contrast : (
+    main: $dark-primary-text,
+    lighter: $dark-primary-text,
+    darker: $light-primary-text,
+  )
+);
+$theme-warn: mat-palette($mat-warn, main, lighter, darker);
+;
 
 $theme: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
@@ -233,8 +241,8 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
 .material-icons {
   font-size: 24px;
-  font-family: 'Material Icons', 'Material Icons';
+  font-family: 'Material Icons', 'Material Icons';  
   .mat-badge-content {
-    font-family: 'Open Sans';
+    font-family: 'Roboto';
   }
 }

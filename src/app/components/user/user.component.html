@@ -1,35 +1,51 @@
 <app-loading-spinner *ngIf="!userData" color="#2B2D42"></app-loading-spinner>
 <div *ngIf="userData" class="userData">
   <h2 class="userData__heading">Profile Info</h2>
-  <div class="userData__table">
-    <p class="userData__detail userData__detail--label">
-      Email address
-    </p>
-    <p class="userData__detail userData__detail--value">
-      {{userData.email}}
-    </p>
-    <p class="userData__detail userData__detail--label">
-      Username
-    </p>
-    <p class="userData__detail userData__detail--value">
-      {{userData.username}}
-    </p>
-    <p class="userData__detail userData__detail--label">
-      First Name
-    </p>
-    <p class="userData__detail userData__detail--value">
-      {{userData.firstName}}
-    </p>
-    <p class="userData__detail userData__detail--label">
-      Last Name
-    </p>
-    <p class="userData__detail userData__detail--value">
-      {{userData.lastName}}
-    </p>
-  </div>
-  <h2 class="userData__subHeading">Your past orders</h2>
+  <form [formGroup]="userForm">
+    <div class="row">
+      <mat-form-field appearance="outline" class="col-3">
+        <mat-label>User ID</mat-label>
+        <input matInput formControlName="userId" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-3">
+        <mat-label>Username</mat-label>
+        <input matInput formControlName="username" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-3">
+        <mat-label>First Name</mat-label>
+        <input matInput formControlName="firstName" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-3">
+        <mat-label>Last Name</mat-label>
+        <input matInput formControlName="lastName" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-3">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" type="email" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-3">
+        <mat-label>password</mat-label>
+        <input matInput formControlName="password" type="password" />
+      </mat-form-field>
+    </div>
+    <h2 class="userData__heading">Favorite Genres</h2>
+    <mat-form-field class="example-chip-list col-12" appearance="outline">
+      <mat-label>Favorite Fruits</mat-label>
+      <mat-chip-list #chipList aria-label="Fruit selection">
+        <mat-chip *ngFor="let genre of userGenres" (removed)="remove(genre)">
+          {{genre}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="New Genre..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event)">
+      </mat-chip-list>
+    </mat-form-field>
+    </form>
   <div class="userData__ordersContainer">
-    <div class="userData__order" *ngFor="let order of userData.orders; index as i">
+    <!-- <div class="userData__order" *ngFor="let order of userData?.orders; index as i">
       <h3 class="userData__orderInfo">Order id: {{order.orderId}}
         <fa-icon [icon]="orderVisibility[i] ? faMinusSquare : faPlusSquare" class="userData__orderIcon" size="lg"
           (click)="toggleOrderVisibility(i)"></fa-icon>
@@ -43,16 +59,17 @@
       <p class="userData__orderAdditionalInfo">
         Order delivered: &#10003;
       </p>
-      <div class="userData__orderBooksContainer" [ngStyle]="{transform: orderVisibility[i] ? 'scaleY(1)' : 'scaleY(0)', height: orderVisibility[i] ? 'max-content' : 0}">
+      <div class="userData__orderBooksContainer"
+        [ngStyle]="{transform: orderVisibility[i] ? 'scaleY(1)' : 'scaleY(0)', height: orderVisibility[i] ? 'max-content' : 0}">
         <app-book-order class="userData__orderedBook" [book]="getBookById(product.id)" [qty]="product.qty"
           [review]="isBookReviewed(product.id)" (addedReview)="addReview($event)"
           *ngFor="let product of order.items"></app-book-order>
       </div>
-    </div>
+    </div> -->
   </div>
-  <p class="userData__disc" *ngIf="userData?.orders?.length === 0 || userData.orders == null">
+  <!-- <p class="userData__disc" *ngIf="userData?.orders?.length === 0 || userData.orders == null">
     No orders found (yet).
-  </p>
+  </p> -->
   <!-- <h2 class="userData__subHeading">Your reviews</h2>
   <div class="userData__reviewsContainer" *ngIf="userData.reviews.length > 0 && booksData.length > 0">
     <div class="userData__review" *ngFor="let review of userData.reviews">
@@ -65,5 +82,14 @@
   <!-- <p class="userData__disc" *ngIf="userData.reviews.length === 0">
     No reviews found (yet).
   </p> -->
-  <button mat-raised-button color="warn" (click)="logout()" class="userData__logout">Logout</button>
+  <div class="d-flex align-items-center gap-2">
+    <button mat-raised-button color="primary" (click)="logout()" class="userData__logout">
+      <mat-icon>save</mat-icon>
+      Save Profile
+    </button>
+    <button mat-stroked-button color="accent" (click)="logout()" class="userData__logout">
+      <mat-icon>logout</mat-icon>
+      Logout
+    </button>
+  </div>
 </div>

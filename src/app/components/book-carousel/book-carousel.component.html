@@ -2,10 +2,10 @@
   <div class="item" *nguCarouselDef="let book;">
     <app-book-carousel-item class="bookCarousel__item" [book]="book"></app-book-carousel-item>
   </div>
-  <button NguCarouselNext class="bookCarousel__button bookCarousel__button--next">
-    <fa-icon [icon]="faChevronRight"></fa-icon>
+  <button mat-fab NguCarouselNext class="bookCarousel__button bookCarousel__button--next">
+    <mat-icon class="py-0">navigate_next</mat-icon>
   </button>
-  <button NguCarouselPrev class="bookCarousel__button bookCarousel__button--prev">
-    <fa-icon [icon]="faChevronLeft"></fa-icon>
+  <button mat-fab NguCarouselPrev class="bookCarousel__button bookCarousel__button--prev">
+    <mat-icon>chevron_left</mat-icon>
   </button>
 </ngu-carousel>

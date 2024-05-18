@@ -1,4 +1,4 @@
-<div class="product">
+<mat-card class="product">
   <a class="product__imgContainer">
     <img [alt]="book.title" class="product__img" [src]="book.imageLink">
   </a>
@@ -17,8 +17,8 @@
     <button mat-stroked-button routerLink="/book/{{book.isbn}}" class="w-100">
       See more
     </button>
-    <button mat-stroked-button (click)="addToBasket(book.isbn)" class="product__button product__button--basket">
-      <fa-icon [icon]="faShoppingBasket"></fa-icon>
+    <button mat-flat-button color="primary" (click)="addToBasket(book.isbn)">
+      <mat-icon>add_shopping_cart</mat-icon>
     </button>
   </div>
-</div>
+</mat-card>

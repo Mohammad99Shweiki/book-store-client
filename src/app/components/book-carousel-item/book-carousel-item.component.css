@@ -4,7 +4,7 @@
   width: 100%;
   margin: 0 15px;
   /* box-shadow: 10px 10px 5px 0 rgba(70, 70, 70, 0.4); */
-  background-color: #EDF2F4;
+  /* background-color: #EDF2F4; */
 }
 
 .product__imgContainer {
@@ -30,11 +30,13 @@
 
 .product__name {
   font-family: 'Raleway', sans-serif;
-  font-size: 1.125em;
-  line-height: 1.3em;
-  height: 2.6em;
-  overflow: hidden;
+  font-size: 1em !important;
+  line-height: 1em !important;
+  min-height: 1.6em !important;
+  overflow: sc;
+  text-overflow: ellipsis;
   font-weight: 600;
+  text-wrap: nowrap !important;
 }
 
 .product__author {

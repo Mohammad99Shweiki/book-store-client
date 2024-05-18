@@ -19,16 +19,16 @@ export class BooksListComponent implements OnInit, OnDestroy {
   skip: number = 0;
   filtersOpened: boolean;
   noBooks: boolean = false;
-  booksFilter: BooksFilter = {
-    searchPhrase: null,
-    dateFrom: null,
-    dateTo: null,
-    genres: [],
-    sortBy: 'default',
-    sale: false,
-    bestseller: false,
-    new: false
-  };
+  // booksFilter: BooksFilter = {
+  //   searchPhrase: null,
+  //   dateFrom: null,
+  //   dateTo: null,
+  //   genres: [],
+  //   sortBy: 'default',
+  //   sale: false,
+  //   bestseller: false,
+  //   new: false
+  // };
   booksFilterSubscription: Subscription;
   type: 'sale' | 'browse' | 'bestseller' | 'new';
   title: string = '';
@@ -51,9 +51,9 @@ export class BooksListComponent implements OnInit, OnDestroy {
   }
 
   setupType(): void {
-    if (this.type !== 'browse') {
-      this.booksFilter[this.type] = true;
-    }
+    // if (this.type !== 'browse') {
+    //   this.booksFilter[this.type] = true;
+    // }
     this.getBooks();
   }
 
@@ -80,7 +80,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
   setupSubscription(): void {
     this.booksFilterSubscription = this.filterService.filter$.subscribe((filter: BooksFilter) => {
       this.books = [];
-      this.booksFilter = filter;
+      // this.booksFilter = filter;
       this.skip = 0;
       this.getBooks();
     });

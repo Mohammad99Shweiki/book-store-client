@@ -4,12 +4,12 @@
     <div class="product__imgContainer">
       <img class="product__img" [src]="book.coverPhoto" alt="" />
     </div>
-    <div class="product__basicInfo">
+    <mat-card class="product__basicInfo">
       <p class="product__name">
         {{book.title}}
       </p>
-      <p class="product__author">
-        {{book.author}}
+      <p class="product__author font-sm">
+        {{book.authors}}
       </p>
       <p class="product__price">
         <span [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:'&nbsp;'}}&nbsp;$</span>
@@ -18,17 +18,17 @@
       </p>
       <div class="d-flex flex-column gap-2">
         <button color="primary" mat-raised-button (click)="addToBasket(book.id)">
-          <mat-icon color="accent">add_shopping_cart</mat-icon>
+          <mat-icon>add_shopping_cart</mat-icon>
           Add to cart
         </button>
-        <button mat-raised-button (click)="addToBasket(book.id, true)">
+        <button color="primary" mat-stroked-button (click)="addToBasket(book.id, true)">
           Buy now
         </button>
       </div>
-    </div>
+    </mat-card>
     <div class="product__additionalInfo">
       <div class="product__tabs">
-        <a [class.product__tab--active]="activeTab === 'description'" (click)="changeActiveTab('description')"
+        <a (click)="changeActiveTab('description')"
           class="product__recommendedTitle text-decoration-none">
           Description
         </a>

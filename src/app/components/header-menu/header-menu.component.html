@@ -1,40 +1,24 @@
-<header class="header" [ngStyle]="{height: height + 'px', transform: navTransformString}">
-  <a routerLink="/" class="header__logoContainer">
-    <img class="header__logo" alt="BookStore logo" src="assets/logo.png"/>
-  </a>
-  <nav class="nav">
-    <div class="nav__iconContainer nav__icon--tablet" routerLink="/cart">
-      <app-number-indicator *ngIf="basketCounter > 0" [value]="basketCounter"></app-number-indicator>
-      <fa-icon class="nav__icon nav__icon--tablet" [icon]="faShoppingBasket" size="lg"></fa-icon>
-    </div>
-    <fa-icon class="nav__icon nav__icon--tablet" routerLink="/user" [icon]="faUser" size="lg"></fa-icon>
-    <fa-icon (click)="toggleMenu()" class="nav__icon nav__icon--hamburger" [icon]="menuIcon" size="lg"></fa-icon>
-    <div class="nav__links">
-      <!-- <a class="nav__link" routerLink="/bestsellers" routerLinkActive="nav__link--active">
-        Bestsellers
-      </a> -->
-      <a class="nav__link" routerLink="/sales" routerLinkActive="nav__link--active">
+<header class="header" [ngStyle]="{transform: navTransformString}">
+  <mat-toolbar color="primary">
+    <div class="d-flex site-logo" routerLink="/">Book Store</div>
+    <span class="toolbar-spacer"></span>
+    <div class="d-flex align-items-center gap-4 mx-4">
+      <a class="toolbar-nav-link" routerLinkActive="toolbar-nav-link_active" routerLink="/sales">
         Sales
       </a>
-      <a class="nav__link" routerLinkActive="nav__link--active" routerLink="/contact">
-        Contact
-      </a>
-      <a routerLink="/recommendations" class="nav__link" routerLinkActive="nav__link--active">
+      <a class="toolbar-nav-link" routerLink="/recommendations" routerLinkActive="toolbar-nav-link_active">
         Recommendations
       </a>
-      <!-- <div *ngIf="loggedIn" class="d-flex align-items-center">
-        <button (click)="onRecommendClick()" mat-raised-button color="primary">
-          Recommend me
-          <mat-icon>stars</mat-icon>
-        </button>
-      </div> -->
-      <div class="nav__iconsContainer">
-        <div class="nav__iconContainer nav__icon--mobile" routerLink="/cart">
-          <app-number-indicator *ngIf="basketCounter > 0" [value]="basketCounter"></app-number-indicator>
-          <fa-icon class="nav__icon nav__icon--mobile" [icon]="faShoppingBasket" size="2x"></fa-icon>
-        </div>
-        <fa-icon class="nav__icon nav__icon--mobile" routerLink="/user" [icon]="faUser" size="2x"></fa-icon>
-      </div>
+      <a class="toolbar-nav-link" routerLink="/contact" routerLinkActive="toolbar-nav-link_active">
+        Contact
+      </a>
     </div>
-  </nav>
+    <button routerLink="/cart" mat-icon-button class="example-icon favorite-icon"
+      aria-label="Example icon-button with heart icon">
+      <mat-icon>shopping_cart</mat-icon>
+    </button>
+    <button routerLink="/user" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </mat-toolbar>
 </header>
