@@ -17,4 +17,7 @@ export const END_POINTS = {
   }
 }
 
+export const ROLES = {
+  ADMIN: 'ADMIN',
+}
 export const TEMP_TOKEN = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmRhbGF6ZWV6IiwiaWF0IjoxNzE1MzQ1MDUwLCJleHAiOjE3MTU0MzE0NTB9.7d73IcXK-kpIseaXwW8jztDWDNyyxq90rfTpfFzlFtqeFVwX9o_g9Y5CVHuGfqPRE68isgGT3tuBh9KOmeaaUg';

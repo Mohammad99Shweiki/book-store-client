@@ -18,8 +18,12 @@ export class UserService {
     return this.http.get<UserData>(END_POINTS.USERS.index + '/' + id);
   }
 
-  recommend(): Observable<Book[]>{
+  recommend(): Observable<Book[]> {
     const { id } = JSON.parse(localStorage.getItem('userData')) ?? null;
     return this.http.get<Book[]>(END_POINTS.USERS.RECOMMEND + '/' + id);
+  }
+
+  updateProfile(id: string, data: any) {
+    return this.http.put(END_POINTS.USERS.index + '/' + id, data)
   }
 }

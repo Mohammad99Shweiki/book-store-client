@@ -1,5 +1,5 @@
 <header class="header" [ngStyle]="{transform: navTransformString}">
-  <mat-toolbar color="primary">
+  <mat-toolbar>
     <div class="d-flex site-logo" routerLink="/">Book Store</div>
     <span class="toolbar-spacer"></span>
     <div class="d-flex align-items-center gap-4 mx-4">
@@ -7,18 +7,40 @@
         Sales
       </a>
       <a class="toolbar-nav-link" routerLink="/recommendations" routerLinkActive="toolbar-nav-link_active">
-        Recommendations
+        Recommend Me
       </a>
       <a class="toolbar-nav-link" routerLink="/contact" routerLinkActive="toolbar-nav-link_active">
-        Contact
+        Contact Us
+      </a>
+      <a *ngIf="isAdmin" class="toolbar-nav-link" routerLink="/admin" routerLinkActive="toolbar-nav-link_active">
+        Admin Dashboard
       </a>
     </div>
-    <button routerLink="/cart" mat-icon-button class="example-icon favorite-icon"
-      aria-label="Example icon-button with heart icon">
-      <mat-icon>shopping_cart</mat-icon>
-    </button>
-    <button routerLink="/user" mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
-      <mat-icon>account_circle</mat-icon>
-    </button>
+    <div *ngIf="!loggedIn">
+      <button routerLink="/login" class="login-btn" mat-flat-button color="primary">
+        Login
+      </button>
+    </div>
+    <div *ngIf="loggedIn">
+      <button [matMenuTriggerFor]="menu" mat-icon-button class="example-icon"
+        aria-label="Example icon-button with share icon">
+        <mat-icon>account_circle</mat-icon>
+      </button>
+    </div>
+    <mat-menu #menu="matMenu">
+      <button routerLink="/user" mat-menu-item>
+        <mat-icon>person</mat-icon>
+        <span>Profile</span>
+      </button>
+      <button routerLink="/cart" mat-menu-item>
+        <mat-icon>shopping_cart</mat-icon>
+        <span>Cart</span>
+      </button>
+      <mat-divider></mat-divider>
+      <button (click)="logout()" mat-menu-item>
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
   </mat-toolbar>
 </header>

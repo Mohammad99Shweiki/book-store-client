@@ -12,6 +12,8 @@ import { CartComponent } from './components/cart/cart.component';
 import { LoginFormComponent } from './components/login-form/login-form.component';
 import { RegisterFormComponent } from './components/register-form/register-form.component';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { AdminGuard } from './guards/admin/admin.guard';
 
 const routes: Routes = [
   { path: '', component: MainPageComponent },
@@ -27,6 +29,7 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
   { path: 'cart', component: CartComponent },
+  {path: 'admin', component: AdminDashboardComponent, canActivate: [AdminGuard]},
   { path: '**', component: MainPageComponent }
 ];
 

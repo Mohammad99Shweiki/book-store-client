@@ -44,6 +44,7 @@ import { BookCartComponent } from './components/book-cart/book-cart.component';
 import { RequestInterceptor } from './interceptors/request.interceptor';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component'
 import { MaterialModule } from './material.module';
+import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
 
 @NgModule({
   declarations: [
@@ -74,7 +75,8 @@ import { MaterialModule } from './material.module';
     RatingSelectorComponent,
     CartComponent,
     BookCartComponent,
-    RecommendationsComponent
+    RecommendationsComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

@@ -4,6 +4,7 @@ import { LoginData } from '../../models/loginData';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { ROLES } from 'src/app/app.constants';
 
 @Component({
   selector: 'app-login-form',
@@ -41,7 +42,12 @@ export class LoginFormComponent implements OnInit {
         this.authService.loggedInChange.next(true)
         this.toastr.success('Logged in successfully', '', { positionClass: 'toast-top-center', closeButton: true });
         localStorage.setItem('userData', JSON.stringify(response));
-        this.router.navigate(['/user']);
+        if (response.role == ROLES.ADMIN) {
+          this.router.navigate(['/admin']);
+          this.authService.adminLoggedInChange.next(true);
+        } else {
+          this.router.navigate(['/user']);
+        }
       },
       error: () => {
         this.toastr.error('Wrong username or password')

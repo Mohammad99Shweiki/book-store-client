@@ -1,6 +1,6 @@
 .header {
   width: 100%;
-  background-color: #EDF2F4;
+  /* background-color: #EDF2F4; */
   position: fixed;
   top: 0;
   z-index: 13;
@@ -10,12 +10,17 @@
   justify-content: space-between;
   /* padding: 10px; */
   align-items: center;
+  color: #2B2D42 !important;
+}
+
+.mat-toolbar {
+  background-color: white;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
 .toolbar-spacer {
   flex: 1 1 auto;
 }
-
 
 .header__logoContainer {
   display: flex;
@@ -68,9 +73,9 @@
 
 .toolbar-nav-link {
   text-decoration: none !important;
-  color: white;
+  color: #2B2D42;
   font-weight: normal;
-  font-size: 18px;
+  font-size: 16px;
 }
 
 .toolbar-nav-link {
@@ -79,7 +84,7 @@
     width: 30px;
     bottom: 10px;
     content: "";
-    border: 1px solid white;
+    border: 1px solid var(--primary-color);
   }
 }
 
@@ -89,7 +94,7 @@
     width: 30px;
     bottom: 10px;
     content: "";
-    border: 1px solid white;
+    border: 1px solid var(--primary-color);
   }
 }
 

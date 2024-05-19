@@ -1,0 +1,31 @@
+.side-nav {
+  width: 17%;
+  padding: 10px 20px;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+}
+
+.side-nav-item {
+  cursor: pointer !important;
+  border-radius: 6px;
+  transition: 0.3s ease-in-out;
+}
+
+.side-nav-item:hover {
+  background-color: var(--primary-lighter-color);
+  transition: 0.3s ease-in-out;
+  color: white !important;
+}
+
+.side-nav-content {
+  padding: 10px 20px;
+}
+
+.example-container {
+  position: absolute;
+  top: 64px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+}

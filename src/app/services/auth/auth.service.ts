@@ -6,7 +6,7 @@ import { LoginData } from '../../models/loginData';
 import { AuthResponse } from '../../models/authResponse';
 import { LoginResponse } from '../../models/loginResponse';
 import { Router, UrlTree } from '@angular/router';
-import { END_POINTS } from 'src/app/app.constants';
+import { END_POINTS, ROLES } from 'src/app/app.constants';
 
 @Injectable({
   providedIn: 'root'
@@ -14,16 +14,26 @@ import { END_POINTS } from 'src/app/app.constants';
 export class AuthService {
   _loggedIn: boolean = false;
   loggedInChange: Subject<boolean> = new Subject();
+  adminLoggedInChange: Subject<boolean> = new Subject();
 
   constructor(private http: HttpClient, private router: Router) {
     this.loggedInChange.subscribe(val => this._loggedIn = val)
     this.checkUserData()
   }
 
+  checkIfAdmin(): Observable<boolean> {
+    const data: { role: string } = JSON.parse(localStorage.getItem('userData'));
+    if (data && data && data.role === ROLES.ADMIN) {
+      return of(true)
+    } else {
+      this.adminLoggedInChange.next(false);
+      return of(false);
+    }
+  }
+
   checkUserData(): Observable<boolean | UrlTree> {
     const data: { token: string, id: string } = JSON.parse(localStorage.getItem('userData'));
     if (data) {
-      this.loggedInChange.next(true)
       return of(true);
       // return this.http.post<boolean>(environment.serverUrL + 'authenticate', data).pipe(map((value: boolean) => {
       //   if (!value) {
@@ -37,7 +47,7 @@ export class AuthService {
     }
   }
 
-  loggedIn(){
+  loggedIn() {
     return this._loggedIn;
   }
 

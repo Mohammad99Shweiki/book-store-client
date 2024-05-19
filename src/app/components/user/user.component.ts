@@ -9,8 +9,7 @@ import { Review } from '../../models/review';
 import { faPlusSquare, faMinusSquare, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { LiveAnnouncer } from '@angular/cdk/a11y';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 export interface Fruit {
@@ -31,7 +30,7 @@ export class UserComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   userGenres: string[] = [];
-  
+
   constructor(
     private userService: UserService,
     private booksService: BooksService,
@@ -78,11 +77,11 @@ export class UserComponent implements OnInit {
         booksIds.add(product.bookId);
       });
     });
-    if (booksIds.size) {
-      this.booksService.getBooksByIds(Array.from(booksIds)).subscribe((books: Array<Book>) => {
-        this.booksData = books;
-      });
-    }
+    // if (booksIds.size) {
+    //   this.booksService.getBooksByIds(Array.from(booksIds)).subscribe((books: Array<Book>) => {
+    //     this.booksData = books;
+    //   });
+    // }
   }
 
   getBookById(id: string): Book {
@@ -93,10 +92,10 @@ export class UserComponent implements OnInit {
     // return this.userData.reviews.filter((review: Review) => review.bookId === id).length > 0;
   }
 
-  logout(): void {
-    localStorage.removeItem('userData');
-    this.authService.loggedInChange.next(false);
-    this.router.navigate(['/']);
+  saveProfile() {
+    this.userService.updateProfile(this.userData.userId, this.userForm.value).subscribe(res => {
+      console.log(res)
+    })
   }
 
   toggleOrderVisibility(i: number): void {

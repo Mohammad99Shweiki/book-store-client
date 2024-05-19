@@ -10,6 +10,16 @@
   width: 100%;
 }
 
+
+.create-account {
+  color: var(--primary-color);
+  text-decoration: none !important;
+}
+
+.create-account:hover {
+  text-decoration: underline;
+}
+
 .registerForm__submit {
   cursor: pointer;
   font-family: 'Raleway', sans-serif;

@@ -1,8 +1,8 @@
-import {Component, EventEmitter, HostListener, Input, OnInit, Output} from '@angular/core';
-import {faBars, faShoppingBasket, faUser, faTimes, IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {NavigationStart, Router, RouterEvent} from '@angular/router';
-import {filter} from 'rxjs/operators';
-import {CartService} from '../../services/cart/cart.service';
+import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
+import { faBars, faShoppingBasket, faUser, faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { NavigationStart, Router, RouterEvent } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { CartService } from '../../services/cart/cart.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -22,20 +22,38 @@ export class HeaderMenuComponent implements OnInit {
   menuIcon: IconDefinition = faBars;
   basketCounter: number = 5;
   loggedIn: boolean = false;
+  isAdmin: boolean = false;
 
   constructor(
-    private router: Router, 
+    private router: Router,
     private cartService: CartService,
     private authService: AuthService,
     private userService: UserService
   ) {
-    // this.loggedIn = this.authService.loggedIn();
+    this.authService.checkUserData().subscribe(res => {
+      this.loggedIn = res === true;
+    });
+    this.authService.checkIfAdmin().subscribe(res => {
+      this.isAdmin = res === true;
+    })
   }
-  
+
   ngOnInit(): void {
-    this.authService.loggedInChange.subscribe(res => this.loggedIn = res)
+    this.authService.adminLoggedInChange.subscribe(res => {
+      this.isAdmin = res;
+    })
+    this.authService.loggedInChange.subscribe(res => {
+      this.loggedIn = res;
+    })
     this.subscribeTouRouting();
     this.subscribeToBasketCounter();
+  }
+
+  logout(): void {
+    localStorage.removeItem('userData');
+    this.authService.loggedInChange.next(false);
+    this.authService.adminLoggedInChange.next(false);
+    this.router.navigate(['/']);
   }
 
   @HostListener('window:scroll', [])
@@ -74,7 +92,7 @@ export class HeaderMenuComponent implements OnInit {
     });
   }
 
-  onRecommendClick(){
-    this.userService.recommend().subscribe
+  onRecommendClick() {
+    this.userService.recommend();
   }
 }
