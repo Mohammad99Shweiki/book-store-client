@@ -24,7 +24,7 @@ export class ReviewsService {
     return this.http.get<Array<Review>>(environment.serverUrL + 'getLimitedReviews', this.httpOptions);
   }
 
-  getNumberOfReviews(id: number): Observable<number> {
+  getNumberOfReviews(id: string): Observable<number> {
     this.httpOptions.params = new HttpParams().append('id', id.toString());
     return this.http.get<number>(environment.serverUrL + 'getNumberOfReviews', this.httpOptions);
   }

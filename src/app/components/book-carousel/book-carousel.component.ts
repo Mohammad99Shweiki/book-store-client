@@ -25,7 +25,7 @@ export class BookCarouselComponent implements OnInit {
     speed: 500,
     point: {
       visible: true,
-      hideOnSingleSlide: true
+      hideOnSingleSlide: true,
     }
   };
 

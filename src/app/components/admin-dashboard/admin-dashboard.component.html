@@ -1,26 +1,24 @@
 <mat-sidenav-container class="example-container">
   <mat-sidenav class="side-nav" mode="side" opened>
-    <mat-list>
-      <mat-list-item class="side-nav-item">
-        <mat-icon mat-list-icon>group</mat-icon>
-        <div mat-line>Users</div>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item class="side-nav-item">
-        <mat-icon mat-list-icon>menu_book</mat-icon>
-        <div mat-line>Books</div>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item class="side-nav-item">
-        <mat-icon mat-list-icon>receipt_long</mat-icon>
-        <div mat-line>Orders Tracking</div>
-      </mat-list-item>
-      <mat-divider></mat-divider>
-      <mat-list-item class="side-nav-item">
-        <mat-icon mat-list-icon>signal_cellular_alt</mat-icon>
-        <div mat-line>Reports and Analytics</div>
-      </mat-list-item>
-    </mat-list>
+    <mat-selection-list multiple="false" (selectionChange)="onSelectionChange($event)">
+      <mat-list-option [selected]="link.value == selectedOption" *ngFor="let link of sidenavLinks" [value]="link.value" class="side-nav-item">
+        <mat-icon mat-list-icon>{{link.icon}}</mat-icon>
+        <div mat-line>{{link.title}}</div>
+      </mat-list-option>
+    </mat-selection-list>
   </mat-sidenav>
-  <mat-sidenav-content class="side-nav-content">الحشوة</mat-sidenav-content>
+  <mat-sidenav-content [ngSwitch]="selectedOption" class="side-nav-content">
+    <div *ngSwitchCase="'books'">
+      <app-books-section></app-books-section>
+    </div>
+    <div *ngSwitchCase="'users'">
+      users
+    </div>
+    <div *ngSwitchCase="'orders'">
+      orders
+    </div>
+    <div *ngSwitchCase="'reports'">
+      reports
+    </div>
+  </mat-sidenav-content>
 </mat-sidenav-container>

@@ -45,6 +45,10 @@ import { RequestInterceptor } from './interceptors/request.interceptor';
 import { RecommendationsComponent } from './components/recommendations/recommendations.component'
 import { MaterialModule } from './material.module';
 import { AdminDashboardComponent } from './components/admin-dashboard/admin-dashboard.component';
+import { BooksSectionComponent } from './components/admin-dashboard/components/books-section/books-section.component';
+import { BookDetailsDialogComponent } from './components/admin-dashboard/components/book-details-dialog/book-details-dialog.component';
+import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
+import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 
 @NgModule({
   declarations: [
@@ -76,7 +80,10 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     CartComponent,
     BookCartComponent,
     RecommendationsComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    BooksSectionComponent,
+    BookDetailsDialogComponent,
+    ConfirmationModalComponent
   ],
   imports: [
     BrowserModule,
@@ -86,19 +93,16 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
     FontAwesomeModule,
     NguCarouselModule,
     BrowserAnimationsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatDatepickerModule,
-    MatCheckboxModule,
-    MatButtonModule,
-    MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    MatDialogModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true }
+    MatDialogModule,
+    { provide: HTTP_INTERCEPTORS, useClass: RequestInterceptor, multi: true },
+    { provide: MatDialogRef, useValue: {} },
   ],
   bootstrap: [AppComponent],
 })

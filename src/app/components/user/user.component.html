@@ -30,8 +30,8 @@
     </div>
     <h2 class="userData__heading">Favorite Genres</h2>
     <mat-form-field class="example-chip-list col-12" appearance="outline">
-      <mat-label>Favorite Fruits</mat-label>
-      <mat-chip-list #chipList aria-label="Fruit selection">
+      <mat-label>Favorite Genres</mat-label>
+      <mat-chip-list #chipList>
         <mat-chip *ngFor="let genre of userGenres" (removed)="remove(genre)">
           {{genre}}
             <mat-icon matChipRemove>cancel</mat-icon>

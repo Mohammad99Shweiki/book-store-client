@@ -1,0 +1,8 @@
+<h3 mat-dialog-title>Confirmation</h3>
+<div class="mat-dialog-content">
+  {{data.message}}
+</div>
+<div class="mat-dialog-actions justify-content-end">
+  <button mat-button (click)="close()">close</button>
+  <button mat-flat-button cdkFocusInitial color="primary" (click)="submit()">Save</button>
+</div>

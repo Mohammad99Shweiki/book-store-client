@@ -1,0 +1,26 @@
+<div class="table-wrapper p-2">
+  <app-loading-spinner *ngIf="loading" color="#4051b5"></app-loading-spinner>
+  <table *ngIf="!loading" mat-table [dataSource]="books" class="mat-elevation-z8 w-100">
+
+    <!-- Position Column -->
+    <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef>{{col}}</th>
+      <td mat-cell *matCellDef="let element"> {{element[col]}} </td>
+    </ng-container>
+    <!-- 
+      <ng-container matColumnDef="actions" stickyEnd>
+        <th mat-header-cell *matHeaderCellDef>sdf</th>
+        <td mat-cell *matCellDef="let element"> dsf </td>
+      </ng-container> -->
+    <ng-container style="border-left: 1px solid black;" matColumnDef="actions" stickyEnd="true">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <!-- <span><button mat-button><mat-icon>edit</mat-icon></button></span> -->
+        <button mat-button (click)="deleteBook(element)"><mat-icon>delete</mat-icon></button>
+        <button mat-button (click)="viewDetails(element)"><mat-icon>edit</mat-icon></button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+</div>

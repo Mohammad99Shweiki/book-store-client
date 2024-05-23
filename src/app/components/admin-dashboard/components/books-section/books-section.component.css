@@ -1,0 +1,22 @@
+th,
+td {
+  overflow: hidden;
+  width: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100px;
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+  font-size: 10px;
+}
+
+th {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.mat-button {
+  min-width: auto !important;
+  padding: 0 !important;
+  margin-right: 4px;
+}

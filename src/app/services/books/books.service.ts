@@ -17,8 +17,16 @@ export class BooksService {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
-  getBook(id: number): Observable<Book> {
+  getBook(id: string): Observable<Book> {
     return this.http.get<Book>(END_POINTS.BOOKS + '/' + id);
+  }
+
+  updateBook(id: string, book: Book): Observable<string> {
+    return this.http.put<string>(END_POINTS.BOOKS + '/' + id, book);
+  }
+
+  deleteBook(id: string) {
+    return this.http.delete(END_POINTS.BOOKS + '/' + id);
   }
 
   getBooks(isBestSeller = false): Observable<any> {
@@ -35,7 +43,7 @@ export class BooksService {
     return this.http.post(END_POINTS.BOOKS, book);
   }
 
-  getSimilarBooks(bookId: number): Observable<Book[]> {
+  getSimilarBooks(bookId: string): Observable<Book[]> {
     return this.http.get<Book[]>(END_POINTS.BOOKS_SIMILAR + '/' + bookId);
   }
 

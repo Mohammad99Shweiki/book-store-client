@@ -12,9 +12,7 @@ import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
-export interface Fruit {
-  name: string;
-}
+
 @Component({
   selector: 'app-user',
   templateUrl: './user.component.html',
@@ -116,13 +114,9 @@ export class UserComponent implements OnInit {
 
   add(event: MatChipInputEvent): void {
     const value = (event.value || '').trim();
-
-    // Add our fruit
     if (value) {
       this.userGenres.push(value);
     }
-
-    // Clear the input value
     event.input.value = ''
   }
 }

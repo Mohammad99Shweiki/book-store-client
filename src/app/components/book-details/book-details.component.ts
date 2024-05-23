@@ -22,7 +22,7 @@ export class BookDetailsComponent implements OnInit {
   limit: number = 5;
   skip: number = 0;
   reviewsNumber: number;
-  id: number;
+  id: string;
   details: Array<Detail>;
   similarBooks: Array<Book> = [];
   title: string = ' - BookStore';
@@ -39,7 +39,7 @@ export class BookDetailsComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.id = Number(this.route.snapshot.paramMap.get('id'));
+    this.id = this.route.snapshot.paramMap.get('id');
     this.getBook();
     // this.getNumberOfReviews();
     this.getSimilarBooks();
