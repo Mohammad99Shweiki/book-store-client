@@ -2,7 +2,7 @@ import { Component, EventEmitter, HostListener, Input, OnInit, Output } from '@a
 import { faBars, faShoppingBasket, faUser, faTimes, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { NavigationStart, Router, RouterEvent } from '@angular/router';
 import { filter } from 'rxjs/operators';
-import { CartService } from '../../services/cart/cart.service';
+import { CartService } from '@/services/cart/cart.service';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
 
@@ -92,7 +92,4 @@ export class HeaderMenuComponent implements OnInit {
     });
   }
 
-  onRecommendClick() {
-    this.userService.recommend();
-  }
 }

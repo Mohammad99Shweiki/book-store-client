@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BooksService } from '../../services/books/books.service';
-import { Book } from '../../models/book';
-import { Review } from '../../models/review';
-import { ReviewsService } from '../../services/reviews/reviews.service';
-import { detailsMapping } from '../../helpers/detailsMapping/detailsMapping';
-import { DetailMapping } from '../../models/detailMapping';
-import { Detail } from '../../models/detail';
+import { BooksService } from '@/services/books/books.service';
+import { Book } from '@/models/book';
+import { Review } from '@/models/review';
+import { ReviewsService } from '@/services/reviews/reviews.service';
+import { detailsMapping } from '@/helpers/detailsMapping/detailsMapping';
+import { DetailMapping } from '@/models/detailMapping';
+import { Detail } from '@/models/detail';
 import { Title } from '@angular/platform-browser';
-import { CartService } from '../../services/cart/cart.service';
+import { CartService } from '@/services/cart/cart.service';
 
 @Component({
   selector: 'app-book-details',

@@ -9,9 +9,8 @@
     {{book.authors}}
   </p>
   <p class="product__price">
-    <span [class.product__price--discounted]="book.price">{{book.price}} $</span>
-    <span class="product__pricePromo" *ngIf="book.price"> {{book.price}}
-      $</span>
+    <span [class.product__price--discounted]="book.onSale">{{book.price | currency}}</span>
+    <span class="product__pricePromo" *ngIf="book.onSale"> {{book.salePrice | currency}}</span>
   </p>
   <div class="product__buttons gap-2">
     <button mat-stroked-button routerLink="/book/{{book.isbn}}" class="w-100">

@@ -1,10 +1,10 @@
 import { Injectable } from '@angular/core';
 import { Observable, Subject, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { RegisterData } from '../../models/registerData';
-import { LoginData } from '../../models/loginData';
-import { AuthResponse } from '../../models/authResponse';
-import { LoginResponse } from '../../models/loginResponse';
+import { RegisterData } from '@/models/registerData';
+import { LoginData } from '@/models/loginData';
+import { AuthResponse } from '@/models/authResponse';
+import { LoginResponse } from '@/models/loginResponse';
 import { Router, UrlTree } from '@angular/router';
 import { END_POINTS, ROLES } from 'src/app/app.constants';
 

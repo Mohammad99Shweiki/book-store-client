@@ -1,6 +1,6 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Book} from '../../models/book';
-import {faPlusSquare, faMinusSquare, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Book } from '@/models/book';
+import { faPlusSquare, faMinusSquare, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-book-cart',
@@ -22,11 +22,11 @@ export class BookCartComponent implements OnInit {
   }
 
   removeBook(): void {
-    this.productEdited.emit({id: +this.book.isbn, qty: this.qty, type: 'delete'});
+    this.productEdited.emit({ id: +this.book.isbn, qty: this.qty, type: 'delete' });
   }
 
   changeQty(value): void {
     this.qty += value;
-    this.productEdited.emit({id: +this.book.isbn, qty: this.qty, type: 'update'});
+    this.productEdited.emit({ id: +this.book.isbn, qty: this.qty, type: 'update' });
   }
 }

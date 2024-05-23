@@ -1,8 +1,8 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
-import {Book} from '../../models/book';
+import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Book } from '@/models/book';
 import 'hammerjs';
-import {NguCarousel, NguCarouselConfig} from '@ngu/carousel';
-import {faChevronLeft, faChevronRight, IconDefinition} from '@fortawesome/free-solid-svg-icons';
+import { NguCarousel, NguCarouselConfig } from '@ngu/carousel';
+import { faChevronLeft, faChevronRight, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -17,7 +17,7 @@ export class BookCarouselComponent implements OnInit {
   @ViewChild('bookCarousel') myCarousel: NguCarousel<any>;
   carouselConfig: NguCarouselConfig = {
     grid: { xs: 1, sm: 2, md: 3, lg: 3, all: 0 },
-    gridBreakpoints: {sm: 660, md: 920, lg: 1200, xl: 1200},
+    gridBreakpoints: { sm: 660, md: 920, lg: 1200, xl: 1200 },
     load: 3,
     loop: true,
     touch: true,

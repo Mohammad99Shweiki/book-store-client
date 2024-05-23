@@ -16,7 +16,7 @@ import { AdminDashboardComponent } from './components/admin-dashboard/admin-dash
 import { AdminGuard } from './guards/admin/admin.guard';
 
 const routes: Routes = [
-  { path: '', component: MainPageComponent },
+  { path: '', component: BooksListComponent, data: { type: 'main' } },
   { path: 'sales', component: BooksListComponent, data: { type: 'sale' } },
   { path: 'bestsellers', component: BooksListComponent, data: { type: 'bestseller' } },
   { path: 'new', component: BooksListComponent, data: { type: 'new' } },
@@ -29,7 +29,7 @@ const routes: Routes = [
   { path: 'login', component: LoginFormComponent },
   { path: 'register', component: RegisterFormComponent },
   { path: 'cart', component: CartComponent },
-  {path: 'admin', component: AdminDashboardComponent, canActivate: [AdminGuard]},
+  { path: 'admin', component: AdminDashboardComponent, canActivate: [AdminGuard] },
   { path: '**', component: MainPageComponent }
 ];
 

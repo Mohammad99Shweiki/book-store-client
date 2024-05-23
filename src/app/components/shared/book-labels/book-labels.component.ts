@@ -1,5 +1,5 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Book} from '../../../models/book';
+import { Component, Input, OnInit } from '@angular/core';
+import { Book } from '@/models/book';
 
 @Component({
   selector: 'app-book-labels',

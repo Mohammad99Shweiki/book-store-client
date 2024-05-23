@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { UserData } from '../../models/userData';
+import { UserData } from '@/models/userData';
 import { END_POINTS } from 'src/app/app.constants';
 import { Book } from 'src/app/models/book';
 

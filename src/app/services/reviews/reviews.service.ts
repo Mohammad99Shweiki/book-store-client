@@ -1,8 +1,8 @@
-import {Injectable} from '@angular/core';
-import {HttpClient, HttpHeaders, HttpParams} from '@angular/common/http';
-import {Observable} from 'rxjs';
-import {Review} from '../../models/review';
-import {environment} from '../../../environments/environment';
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { Review } from '@/models/review';
+import { environment } from '@/../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -13,7 +13,7 @@ export class ReviewsService {
   }
 
   httpOptions: { headers: HttpHeaders, params?: HttpParams } = {
-    headers: new HttpHeaders({'Content-Type': 'application/json'})
+    headers: new HttpHeaders({ 'Content-Type': 'application/json' })
   };
 
   getLimitedReviews(id: number, limit: number, skip: number): Observable<Array<Review>> {
@@ -30,7 +30,7 @@ export class ReviewsService {
   }
 
   addReview(review: Review): Observable<boolean> {
-    return this.http.post<boolean>(environment.serverUrL + 'addReview', {review, userData: JSON.parse(localStorage.getItem('userData'))});
+    return this.http.post<boolean>(environment.serverUrL + 'addReview', { review, userData: JSON.parse(localStorage.getItem('userData')) });
   }
 
 }

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Book } from '../../models/book';
-import { environment } from '../../../environments/environment';
+import { Book } from '@/models/book';
+import { environment } from '@/../environments/environment';
 import { END_POINTS } from 'src/app/app.constants';
 import { BooksResponse } from 'src/app/models/books-response';
 import { map } from 'rxjs/operators';
@@ -25,9 +25,10 @@ export class BooksService {
     return this.http.get<BooksResponse>(END_POINTS.BOOKS).pipe(map((res: any) => res.content));
   }
 
-  searchBooks(filters: any): Observable<any> {
-    filters['search'] = 'hi';
-    return this.http.get<Book[]>(END_POINTS.BOOKS_SEARCH, { params: filters })
+  searchBooks(searchParam: string): Observable<any> {
+    const filters = {};
+    filters['query'] = searchParam;
+    return this.http.get<Book[]>(END_POINTS.BOOKS_SEARCH + '/', { params: filters })
   }
 
   addBook(book: any): Observable<any> {

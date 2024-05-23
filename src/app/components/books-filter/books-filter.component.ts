@@ -1,8 +1,9 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {BooksFilter} from '../../models/booksFilter';
-import {FilterService} from '../../services/filter/filter.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { BooksFilter } from '@/models/booksFilter';
+import { FilterService } from '@/services/filter/filter.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BooksService } from 'src/app/services/books/books.service';
+import { Toast, ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-books-filter',
@@ -12,12 +13,12 @@ import { BooksService } from 'src/app/services/books/books.service';
 export class BooksFilterComponent implements OnInit {
   genres: Array<string> = ['Humor', 'Romance', 'Action', 'Adventure', 'Classic', 'Graphic Novel', 'Fantasy', 'Crime', 'Historical Fiction', 'Horror', 'Literary Fiction', 'Sci-Fi', 'Short Stories',
     'Thriller', 'Biography', 'History', 'Poetry'];
-  sortMethods: Array<{ name: string, value: string | {name: string, direction: 'asc' | 'desc'} }> = [
-    {name: 'Default', value: 'default'},
-    {name: 'Price (desc)', value: {name: 'minPrice', direction: 'desc'}},
-    {name: 'Price (asc)', value: {name: 'minPrice', direction: 'asc'}},
-    {name: 'Publication date (asc)', value: {name: 'publication', direction: 'asc'}},
-    {name: 'Publication date (desc)', value: {name: 'publication', direction: 'desc'}}
+  sortMethods: Array<{ name: string, value: string | { name: string, direction: 'asc' | 'desc' } }> = [
+    { name: 'Default', value: 'default' },
+    { name: 'Price (desc)', value: { name: 'minPrice', direction: 'desc' } },
+    { name: 'Price (asc)', value: { name: 'minPrice', direction: 'asc' } },
+    { name: 'Publication date (asc)', value: { name: 'publication', direction: 'asc' } },
+    { name: 'Publication date (desc)', value: { name: 'publication', direction: 'desc' } }
   ];
   filtersForm: FormGroup
   timeout: number = null;
@@ -36,7 +37,8 @@ export class BooksFilterComponent implements OnInit {
   constructor(
     private filterService: FilterService,
     private fb: FormBuilder,
-    private bookService: BooksService
+    private bookService: BooksService,
+    private toast: ToastrService
   ) {
     this.filtersForm = this.fb.group({
       searchParam: [''],
@@ -81,8 +83,21 @@ export class BooksFilterComponent implements OnInit {
   }
 
   filterBooks(): void {
-    console.log(this.filtersForm.get('searchParam').value);
-    this.bookService.searchBooks({}).subscribe(res => console.log(res));
-    // this.filterService.changeFilter(this.booksFilter);
+    if (this.timeout !== null) {
+      clearTimeout(this.timeout);
+    }
+    //@ts-ignore
+    this.timeout = setTimeout(() => {
+      const searchParam = this.filtersForm.get('searchParam').value;
+      this.bookService.searchBooks(searchParam).subscribe({
+        next: (res) => {
+          console.log(res)
+        },
+        error: (err) => {
+          console.log(err);
+          this.toast.error('Error occurred');
+        }
+      });
+    }, 1000);
   }
 }

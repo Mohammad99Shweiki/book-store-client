@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../services/cart/cart.service';
-import { Cart } from '../../models/cart';
-import { UserService } from '../../services/user/user.service';
-import { UserData } from '../../models/userData';
-import { Book } from '../../models/book';
-import { BooksService } from '../../services/books/books.service';
-import { OrderService } from '../../services/order/order.service';
+import { CartService } from '@/services/cart/cart.service';
+import { Cart } from '@/models/cart';
+import { UserService } from '@/services/user/user.service';
+import { UserData } from '@/models/userData';
+import { Book } from '@/models/book';
+import { BooksService } from '@/services/books/books.service';
+import { OrderService } from '@/services/order/order.service';
 import { ToastrService } from 'ngx-toastr';
 import { Title } from '@angular/platform-browser';
 

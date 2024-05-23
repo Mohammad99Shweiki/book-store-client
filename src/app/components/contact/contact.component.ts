@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {FormControl, Validators} from '@angular/forms';
-import {ContactService} from '../../services/contact/contact.service';
-import {Title} from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { FormControl, Validators } from '@angular/forms';
+import { ContactService } from '@/services/contact/contact.service';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-contact',

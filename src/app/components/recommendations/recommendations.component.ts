@@ -1,4 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Book } from 'src/app/models/book';
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { UserService } from 'src/app/services/user/user.service';
@@ -8,14 +10,16 @@ import { UserService } from 'src/app/services/user/user.service';
   templateUrl: './recommendations.component.html',
   styleUrls: ['./recommendations.component.css']
 })
-export class RecommendationsComponent implements OnInit {
+export class RecommendationsComponent {
   books: Book[] = [];
   loggedIn: boolean = false;
   noBooks: boolean = false;
   constructor(
     private userService: UserService,
-    private authService: AuthService
+    private authService: AuthService,
+    private titleService: Title
   ) {
+    this.titleService.setTitle('Recommendations');
     this.loggedIn = this.authService.loggedIn();
     this.userService.recommend().subscribe(res => {
       this.books = res;
@@ -23,8 +27,5 @@ export class RecommendationsComponent implements OnInit {
         this.noBooks = true;
       }
     })
-  }
-
-  ngOnInit(): void {
   }
 }

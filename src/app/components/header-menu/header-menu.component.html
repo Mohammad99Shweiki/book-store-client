@@ -6,7 +6,7 @@
       <a class="toolbar-nav-link" routerLinkActive="toolbar-nav-link_active" routerLink="/sales">
         Sales
       </a>
-      <a class="toolbar-nav-link" routerLink="/recommendations" routerLinkActive="toolbar-nav-link_active">
+      <a *ngIf="isAdmin || loggedIn" class="toolbar-nav-link" routerLink="/recommendations" routerLinkActive="toolbar-nav-link_active">
         Recommend Me
       </a>
       <a class="toolbar-nav-link" routerLink="/contact" routerLinkActive="toolbar-nav-link_active">

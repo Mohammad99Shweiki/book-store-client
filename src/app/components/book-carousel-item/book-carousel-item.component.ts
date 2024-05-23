@@ -1,7 +1,7 @@
-import {Component, Input, OnInit} from '@angular/core';
-import {Book} from '../../models/book';
-import {faShoppingBasket, IconDefinition} from '@fortawesome/free-solid-svg-icons';
-import {CartService} from '../../services/cart/cart.service';
+import { Component, Input, OnInit } from '@angular/core';
+import { Book } from '@/models/book';
+import { faShoppingBasket, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { CartService } from '@/services/cart/cart.service';
 
 @Component({
   selector: 'app-book-carousel-item',

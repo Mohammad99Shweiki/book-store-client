@@ -1,9 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {Book} from '../../models/book';
-import {FormControl, Validators} from '@angular/forms';
-import {ReviewsService} from '../../services/reviews/reviews.service';
-import {ToastrService} from 'ngx-toastr';
-import {Review} from '../../models/review';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Book } from '@/models/book';
+import { FormControl, Validators } from '@angular/forms';
+import { ReviewsService } from '@/services/reviews/reviews.service';
+import { ToastrService } from 'ngx-toastr';
+import { Review } from '@/models/review';
 
 @Component({
   selector: 'app-book-order',
@@ -33,7 +33,7 @@ export class BookOrderComponent implements OnInit {
       reviewText: this.reviewTextControl.value,
       rating: this.reviewRating,
       reviewDate: Date.now(),
-      userId : JSON.parse(localStorage.getItem('userData')).userId
+      userId: JSON.parse(localStorage.getItem('userData')).userId
     };
     this.reviewsService.addReview(review).subscribe((response: boolean) => {
       this.onGoingRequest = false;

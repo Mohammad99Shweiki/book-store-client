@@ -3,7 +3,7 @@
   <form [formGroup]="filtersForm">
     <mat-form-field appearance="outline" class="booksFilter__searchContainer col-12">
       <mat-label>Search</mat-label>
-      <input formControlName="searchParam" type="text" matInput>
+      <input (input)="filterBooks()" formControlName="searchParam" type="text" matInput>
     </mat-form-field>
     <p class="booksFilter__header booksFilter__header--sub">Filter results</p>
     <p class="booksFilter__label">Publication date</p>

@@ -1,9 +1,9 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { BooksService } from '../../services/books/books.service';
-import { Book } from '../../models/book';
+import { BooksService } from '@/services/books/books.service';
+import { Book } from '@/models/book';
 import { Subscription } from 'rxjs';
-import { BooksFilter } from '../../models/booksFilter';
-import { FilterService } from '../../services/filter/filter.service';
+import { BooksFilter } from '@/models/booksFilter';
+import { FilterService } from '@/services/filter/filter.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { BooksResponse } from 'src/app/models/books-response';
@@ -30,7 +30,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
   //   new: false
   // };
   booksFilterSubscription: Subscription;
-  type: 'sale' | 'browse' | 'bestseller' | 'new';
+  type: 'sale' | 'browse' | 'bestseller' | 'new' | 'main';
   title: string = '';
 
   constructor(
@@ -51,15 +51,12 @@ export class BooksListComponent implements OnInit, OnDestroy {
   }
 
   setupType(): void {
-    // if (this.type !== 'browse') {
-    //   this.booksFilter[this.type] = true;
-    // }
     this.getBooks();
   }
 
   setupTitle(): void {
     this.title += this.type.charAt(0).toUpperCase() + this.type.slice(1);
-    this.title += this.type === 'browse' || this.type === 'new' ? ' - BookStore' : 's - BookStore';
+    this.title += this.type === 'browse' || this.type === 'new' || this.type === 'main' ? ' - BookStore' : 's - BookStore';
     this.titleService.setTitle(this.title);
   }
 
@@ -68,12 +65,17 @@ export class BooksListComponent implements OnInit, OnDestroy {
 
   getBooks(): void {
     this.noBooks = false;
-    this.booksService.getBooksSales().subscribe((res: Book[]) => {
-      this.books.push(...res);
-      if (!this.books.length) {
-        this.noBooks = true;
-      }
-    });
+    if (this.type == 'sale') {
+      this.booksService.getBooksSales().subscribe((res: Book[]) => {
+        this.books.push(...res);
+        this.noBooks = !this.books.length;
+      });
+    } else if (this.type == 'main') {
+      this.booksService.getBooks().subscribe((res: Book[]) => {
+        this.books.push(...res);
+        this.noBooks = !this.books.length;
+      })
+    }
     // this.skip += limit;
   }
 

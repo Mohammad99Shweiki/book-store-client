@@ -1,7 +1,7 @@
-import {Component, OnInit} from '@angular/core';
-import {BooksService} from '../../services/books/books.service';
-import {Book} from '../../models/book';
-import {Title} from '@angular/platform-browser';
+import { Component, OnInit } from '@angular/core';
+import { BooksService } from '@/services/books/books.service';
+import { Book } from '@/models/book';
+import { Title } from '@angular/platform-browser';
 import { BooksResponse } from 'src/app/models/books-response';
 
 @Component({

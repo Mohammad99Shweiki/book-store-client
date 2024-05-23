@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../services/user/user.service';
-import { UserData } from '../../models/userData';
-import { BooksService } from '../../services/books/books.service';
-import { Order } from '../../models/order';
-import { Book } from '../../models/book';
+import { UserService } from '@/services/user/user.service';
+import { UserData } from '@/models/userData';
+import { BooksService } from '@/services/books/books.service';
+import { Order } from '@/models/order';
+import { Book } from '@/models/book';
 import { Router } from '@angular/router';
-import { Review } from '../../models/review';
+import { Review } from '@/models/review';
 import { faPlusSquare, faMinusSquare, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Title } from '@angular/platform-browser';
 import { AuthService } from 'src/app/services/auth/auth.service';

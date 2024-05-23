@@ -1,6 +1,6 @@
-import {Injectable} from '@angular/core';
-import {Observable, Subject} from 'rxjs';
-import {BooksFilter} from '../../models/booksFilter';
+import { Injectable } from '@angular/core';
+import { Observable, Subject } from 'rxjs';
+import { BooksFilter } from '@/models/booksFilter';
 
 @Injectable({
   providedIn: 'root'
