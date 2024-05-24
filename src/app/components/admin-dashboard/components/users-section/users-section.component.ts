@@ -82,7 +82,7 @@ export class UsersSectionComponent implements AfterViewInit {
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '400px',
       data: {
-        message: 'Are you sure you want to delete this nigga?',
+        message: 'Are you sure you want to delete this user?',
         isDelete: true
       }
     })
