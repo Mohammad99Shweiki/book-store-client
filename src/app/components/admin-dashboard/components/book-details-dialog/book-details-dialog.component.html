@@ -15,14 +15,14 @@
       <mat-label>Authors</mat-label>
       <mat-chip-list #chipList>
         <mat-chip *ngFor="let author of authors" (removed)="remove(author, 'authors')">
-          {{genre}}
+          {{author}}
             <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
-        <input placeholder="New Genre..."
+        <input placeholder="New Author..."
                [matChipInputFor]="chipList"
                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                [matChipInputAddOnBlur]="addOnBlur"
-               (matChipInputTokenEnd)="add($event, 'genres')">
+               (matChipInputTokenEnd)="add($event, 'authors')">
       </mat-chip-list>
     </mat-form-field>
     <mat-form-field class="example-chip-list col-12" appearance="outline">
@@ -43,7 +43,7 @@
       <mat-label>Awards</mat-label>
       <mat-chip-list #chipList>
         <mat-chip *ngFor="let award of awards" (removed)="remove(award, 'awards')">
-          {{genre}}
+          {{award}}
             <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
         <input placeholder="New Award..."

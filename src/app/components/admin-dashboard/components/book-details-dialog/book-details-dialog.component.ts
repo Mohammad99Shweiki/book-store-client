@@ -76,7 +76,7 @@ export class BookDetailsDialogComponent implements OnInit {
       ...this.form.value,
       genres: this.userGenres,
       awards: this.awards,
-      authors: this.awards
+      authors: this.authors
     }
     this.dialogRef.close(updatedBook)
   }

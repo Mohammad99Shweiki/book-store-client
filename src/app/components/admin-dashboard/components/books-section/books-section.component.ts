@@ -57,7 +57,6 @@ export class BooksSectionComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-
     merge(this.paginator.page)
       .pipe(
         startWith({}),
