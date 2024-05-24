@@ -2,7 +2,6 @@ export const BookDetailFields = [
   { name: "isbn", type: 'text' },
   { name: "title", type: 'text' },
   { name: "price", type: 'number' },
-  { name: "description", type: 'text' },
   { name: "publicationDate", type: 'text' },
   { name: "publisher", type: 'text' },
   { name: "language", type: 'text' },

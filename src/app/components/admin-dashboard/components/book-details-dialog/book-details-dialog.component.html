@@ -2,12 +2,15 @@
 <div class="mat-dialog-content">
   <form [formGroup]="form">
     <div class="row">
-
       <mat-form-field *ngFor="let field of fields" class="col-4" appearance="outline">
         <mat-label>{{field.name}}</mat-label>
         <input matInput [type]="field.type" [formControlName]="field.name" />
       </mat-form-field>
     </div>
+    <mat-form-field appearance="outline" class="col-12">
+      <mat-label>Description</mat-label>
+      <textarea rows="10" matInput formControlName="description"></textarea>
+    </mat-form-field>
     <mat-form-field class="example-chip-list col-12" appearance="outline">
       <mat-label>Authors</mat-label>
       <mat-chip-list #chipList>

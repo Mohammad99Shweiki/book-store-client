@@ -52,7 +52,7 @@ export class BooksSectionComponent implements OnInit, AfterViewInit {
       debounceTime(300),
       distinctUntilChanged()
     ).subscribe(searchTerm => {
-      this.fetchBooks(searchTerm);
+      this.searchBooks(searchTerm);
     });
   }
 
@@ -81,10 +81,17 @@ export class BooksSectionComponent implements OnInit, AfterViewInit {
       .subscribe(data => (this.books = data.content));
   }
 
-
-  fetchBooks(search?: string) {
+  searchBooks(search: string) {
     this.loading = true;
-    this.booksService.getBooks(this.paginator.pageIndex, search).subscribe(res => {
+    this.booksService.searchBooks(search).subscribe(res => {
+      this.books = res;
+      this.loading = false;
+    })
+  }
+
+  fetchBooks() {
+    this.loading = true;
+    this.booksService.getBooks().subscribe(res => {
       this.books = res.content;
       this.loading = false;
     });

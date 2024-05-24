@@ -30,7 +30,10 @@ export class BookDetailsDialogComponent implements OnInit {
     this.fields.forEach(field => {
       formConfig[field.name] = new FormControl('')
     });
-    this.form = this.fb.group(formConfig);
+    this.form = this.fb.group({
+      ...formConfig,
+      description: ['']
+    });
   }
 
   ngOnInit(): void {
