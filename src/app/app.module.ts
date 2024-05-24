@@ -51,6 +51,7 @@ import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
 import { UsersSectionComponent } from './components/admin-dashboard/components/users-section/users-section.component';
 import { UserDetailsDialogComponent } from './components/admin-dashboard/components/user-details-dialog/user-details-dialog.component';
+import { InfoDialogComponent } from './components/info-dialog/info-dialog.component';
 
 @NgModule({
   declarations: [
@@ -87,7 +88,8 @@ import { UserDetailsDialogComponent } from './components/admin-dashboard/compone
     BookDetailsDialogComponent,
     ConfirmationModalComponent,
     UsersSectionComponent,
-    UserDetailsDialogComponent
+    UserDetailsDialogComponent,
+    InfoDialogComponent
   ],
   imports: [
     BrowserModule,

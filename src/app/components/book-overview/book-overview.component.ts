@@ -2,6 +2,9 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Book } from '@/models/book';
 import { faShoppingBasket, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { CartService } from '@/services/cart/cart.service';
+import { AuthService } from '@/services/auth/auth.service';
+import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-book-overview',
@@ -11,13 +14,26 @@ import { CartService } from '@/services/cart/cart.service';
 export class BookOverviewComponent implements OnInit {
   @Input() book: Book;
   faShoppingBasket: IconDefinition = faShoppingBasket;
-
-  constructor(private cartService: CartService) { }
+  loggedIn = false;
+  constructor(
+    private cartService: CartService,
+    private authService: AuthService,
+    private dialog: MatDialog
+  ) {
+    this.authService.loggedInChange.subscribe(res => this.loggedIn = res);
+  }
 
   ngOnInit(): void {
   }
 
   addToBasket(id: string): void {
-    this.cartService.addProductToCart(id);
+    if (this.loggedIn) {
+      this.cartService.addProductToCart(id);
+    } else {
+      this.dialog.open(InfoDialogComponent, {
+        width: '400px',
+        data: { message: 'Please login to perform this process' }
+      })
+    }
   }
 }

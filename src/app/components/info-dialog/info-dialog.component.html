@@ -1,0 +1,7 @@
+<h3 mat-dialog-title>{{data.title || 'Note'}}</h3>
+<div class="mat-dialog-content">
+  {{data.message}}
+</div>
+<div class="mat-dialog-actions justify-content-end">
+  <button mat-button cdkFocusInitial color="primary" (click)="close()">Ok</button>
+</div>
