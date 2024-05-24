@@ -49,6 +49,8 @@ import { BooksSectionComponent } from './components/admin-dashboard/components/b
 import { BookDetailsDialogComponent } from './components/admin-dashboard/components/book-details-dialog/book-details-dialog.component';
 import { MatDialogModule, MatDialogRef } from '@angular/material/dialog';
 import { ConfirmationModalComponent } from './components/confirmation-modal/confirmation-modal.component';
+import { UsersSectionComponent } from './components/admin-dashboard/components/users-section/users-section.component';
+import { UserDetailsDialogComponent } from './components/admin-dashboard/components/user-details-dialog/user-details-dialog.component';
 
 @NgModule({
   declarations: [
@@ -83,7 +85,9 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
     AdminDashboardComponent,
     BooksSectionComponent,
     BookDetailsDialogComponent,
-    ConfirmationModalComponent
+    ConfirmationModalComponent,
+    UsersSectionComponent,
+    UserDetailsDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,24 @@
+<div class="table-wrapper p-2 position-relative">
+  <div class="example-loading-shade" *ngIf="loading">
+    <mat-spinner *ngIf="loading"></mat-spinner>
+  </div>
+  <table mat-table [dataSource]="users" class="mat-elevation-z8 w-100">
+
+    <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef>{{col}}</th>
+      <td mat-cell *matCellDef="let element"> {{element[col]}} </td>
+    </ng-container>
+    <ng-container style="border-left: 1px solid black;" matColumnDef="actions" stickyEnd="true">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button (click)="deleteUser(element)"><mat-icon>delete</mat-icon></button>
+        <button mat-button (click)="openUserDialog(element)"><mat-icon>edit</mat-icon></button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+  <mat-paginator [length]="resultLength" [pageSize]="itemsPerPage"
+    aria-label="Select page of GitHub search results"></mat-paginator>
+
+</div>

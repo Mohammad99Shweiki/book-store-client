@@ -10,7 +10,7 @@ import { MatSelectionListChange } from '@angular/material/list';
 })
 export class AdminDashboardComponent implements OnInit {
   sidenavLinks: SideNavLink[] = SIDE_NAV_OPTIONS;
-  selectedOption: SidenavValues = 'books';
+  selectedOption: SidenavValues = 'users';
 
   constructor() {}
 

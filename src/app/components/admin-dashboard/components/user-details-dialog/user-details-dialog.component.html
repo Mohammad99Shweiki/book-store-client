@@ -1,0 +1,70 @@
+<h3 mat-dialog-title>User Details</h3>
+<div class="mat-dialog-content">
+  <form [formGroup]="form">
+    <div class="row">
+      <mat-form-field *ngFor="let field of textNumberFields" class="col-4" appearance="outline">
+        <mat-label>{{field.name}}</mat-label>
+        <input matInput [type]="field.type" [formControlName]="field.name" />
+      </mat-form-field>
+      <mat-form-field *ngFor="let field of booleanFields" class="col-4" appearance="outline">
+        <mat-label>{{field.name}}</mat-label>
+        <input type="text"
+        matInput
+        [formControlName]="field.name"
+        [matAutocomplete]="auto">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let option of yesNoOptions" [value]="option.value">
+            {{option.name}}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    
+    <!-- <mat-form-field class="example-chip-list col-12" appearance="outline">
+      <mat-label>Authors</mat-label>
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let author of authors" (removed)="remove(author, 'authors')">
+          {{genre}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="New Genre..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event, 'genres')">
+      </mat-chip-list>
+    </mat-form-field> -->
+    <!-- <mat-form-field class="example-chip-list col-12" appearance="outline">
+      <mat-label>Genres</mat-label>
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let genre of userGenres" (removed)="remove(genre, 'genres')">
+          {{genre}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="New Genre..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event, 'genres')">
+      </mat-chip-list>
+    </mat-form-field> -->
+    <!-- <mat-form-field class="example-chip-list col-12" appearance="outline">
+      <mat-label>Awards</mat-label>
+      <mat-chip-list #chipList>
+        <mat-chip *ngFor="let award of awards" (removed)="remove(award, 'awards')">
+          {{genre}}
+            <mat-icon matChipRemove>cancel</mat-icon>
+        </mat-chip>
+        <input placeholder="New Award..."
+               [matChipInputFor]="chipList"
+               [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+               [matChipInputAddOnBlur]="addOnBlur"
+               (matChipInputTokenEnd)="add($event, 'awards')">
+      </mat-chip-list>
+    </mat-form-field> -->
+  </form>
+</div>
+<div class="mat-dialog-actions justify-content-end">
+  <button mat-dialog- cdkFocusInitial mat-button (click)="close()">close</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</div>
