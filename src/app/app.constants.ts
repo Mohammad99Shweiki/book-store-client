@@ -45,6 +45,7 @@ export const SIDE_NAV_OPTIONS: SideNavLink[] = [
   }
 ]
 
+export const TABLE_ITEMS_PER_PAGE = 10;
 export type SidenavValues = 'orders' | 'reports' | 'books' | 'users'
 
 export const TEMP_TOKEN = 'eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhYmRhbGF6ZWV6IiwiaWF0IjoxNzE1MzQ1MDUwLCJleHAiOjE3MTU0MzE0NTB9.7d73IcXK-kpIseaXwW8jztDWDNyyxq90rfTpfFzlFtqeFVwX9o_g9Y5CVHuGfqPRE68isgGT3tuBh9KOmeaaUg';

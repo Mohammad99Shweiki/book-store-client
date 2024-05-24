@@ -24,7 +24,7 @@
     <tr mat-header-row *matHeaderRowDef="columns"></tr>
     <tr mat-row *matRowDef="let row; columns: columns;"></tr>
   </table>
-  <mat-paginator [length]="resultLength" [pageSize]="20"
+  <mat-paginator [length]="resultLength" [pageSize]="itemsPerPage"
     aria-label="Select page of GitHub search results"></mat-paginator>
 
 </div>

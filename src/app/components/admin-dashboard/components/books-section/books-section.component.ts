@@ -8,6 +8,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { merge, of } from 'rxjs';
 import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { TABLE_ITEMS_PER_PAGE } from '@/app.constants';
 
 @Component({
   selector: 'app-books-section',
@@ -35,7 +36,8 @@ export class BooksSectionComponent implements AfterViewInit {
   ];
   displayedColumns = this.columns.filter(col => col != 'actions')
   books: any;
-  resultLength!: number
+  resultLength!: number;
+  itemsPerPage = TABLE_ITEMS_PER_PAGE
   constructor(
     private dialog: MatDialog,
     private booksService: BooksService,

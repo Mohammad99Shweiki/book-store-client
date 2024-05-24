@@ -3,7 +3,7 @@ import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Book } from '@/models/book';
 import { environment } from '@/../environments/environment';
-import { END_POINTS } from 'src/app/app.constants';
+import { END_POINTS, TABLE_ITEMS_PER_PAGE } from 'src/app/app.constants';
 import { BooksResponse } from 'src/app/models/books-response';
 import { map } from 'rxjs/operators';
 
@@ -32,8 +32,8 @@ export class BooksService {
   getBooks(page: number = 0): Observable<any> {
     let httpParams = new HttpParams();
     httpParams = httpParams.set('page', page + '');
-    httpParams = httpParams.set('size', 10 + '');
-    return this.http.get<BooksResponse>(END_POINTS.BOOKS, {params: httpParams}).pipe(map((res: any) => res));
+    httpParams = httpParams.set('size', TABLE_ITEMS_PER_PAGE + '');
+    return this.http.get<BooksResponse>(END_POINTS.BOOKS, { params: httpParams }).pipe(map((res: any) => res));
   }
 
   searchBooks(searchParam: string): Observable<any> {
