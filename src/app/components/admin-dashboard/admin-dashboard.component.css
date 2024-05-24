@@ -4,6 +4,9 @@
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
 
+.side-nav-content {
+  background-color: white;
+}
 .side-nav-item {
   cursor: pointer !important;
   border-radius: 6px;

@@ -6,8 +6,8 @@ import { BooksService } from '@/services/books/books.service';
 import { ConfirmationModalComponent } from '@/components/confirmation-modal/confirmation-modal.component';
 import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
-import { merge, of } from 'rxjs';
-import { catchError, map, startWith, switchMap } from 'rxjs/operators';
+import { Subject, merge, of } from 'rxjs';
+import { catchError, debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
 import { TABLE_ITEMS_PER_PAGE } from '@/app.constants';
 
 @Component({
@@ -15,7 +15,7 @@ import { TABLE_ITEMS_PER_PAGE } from '@/app.constants';
   templateUrl: './books-section.component.html',
   styleUrls: ['./books-section.component.css']
 })
-export class BooksSectionComponent implements AfterViewInit {
+export class BooksSectionComponent implements OnInit, AfterViewInit {
   @ViewChild(MatPaginator) paginator: MatPaginator;
 
   dataSource = [];
@@ -38,12 +38,22 @@ export class BooksSectionComponent implements AfterViewInit {
   books: any;
   resultLength!: number;
   itemsPerPage = TABLE_ITEMS_PER_PAGE
+  private searchSubject: Subject<string> = new Subject();
+
   constructor(
     private dialog: MatDialog,
     private booksService: BooksService,
     private toaster: ToastrService
   ) {
 
+  }
+  ngOnInit(): void {
+    this.searchSubject.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(searchTerm => {
+      this.fetchBooks(searchTerm);
+    });
   }
 
   ngAfterViewInit() {
@@ -72,12 +82,17 @@ export class BooksSectionComponent implements AfterViewInit {
   }
 
 
-  fetchBooks() {
+  fetchBooks(search?: string) {
     this.loading = true;
-    this.booksService.getBooks().subscribe(res => {
+    this.booksService.getBooks(this.paginator.pageIndex, search).subscribe(res => {
       this.books = res.content;
       this.loading = false;
     });
+  }
+
+  applySearch(event: any) {
+    const searchTerm = event.target.value;
+    this.searchSubject.next(searchTerm);
   }
 
   deleteBook(book: Book) {

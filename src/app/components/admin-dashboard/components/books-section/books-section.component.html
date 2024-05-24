@@ -1,5 +1,9 @@
 <div class="table-wrapper p-2 position-relative">
-  <div class="d-flex justify-content-end my-2">
+  <div class="d-flex align-items-center justify-content-between my-2">
+    <mat-form-field appearance="outline" class="col-6 py-0">
+      <mat-label>Search</mat-label>
+      <input matInput type="text" (keyup)="applySearch($event)" />
+    </mat-form-field>
     <button (click)="openBookDialog(null, false)" mat-raised-button color="primary" class="d-flex align-items-center">
       <mat-icon>add</mat-icon>
       Add book
