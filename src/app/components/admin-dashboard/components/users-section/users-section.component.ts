@@ -78,7 +78,7 @@ export class UsersSectionComponent implements AfterViewInit {
     });
   }
 
-  deleteUser(user: any) {
+  deleteUser(user: UserData) {
     const dialogRef = this.dialog.open(ConfirmationModalComponent, {
       width: '400px',
       data: {
@@ -89,7 +89,7 @@ export class UsersSectionComponent implements AfterViewInit {
 
     dialogRef.afterClosed().subscribe((res: UserData) => {
       if (res) {
-        this.userService.deleteUser(user.id).subscribe({
+        this.userService.deleteUser(user.userId).subscribe({
           next: () => {
             this.fetchUsers();
             this.toaster.success('User deleted successfully')
@@ -116,7 +116,7 @@ export class UsersSectionComponent implements AfterViewInit {
             this.toaster.success('User updated successfully')
           },
           error: () => {
-            this.toaster.warning('Something went wrong')
+            this.toaster.error('Something went wrong')
           }
         });
       }

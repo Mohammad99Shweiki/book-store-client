@@ -1,17 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { UserService } from '@/services/user/user.service';
 import { UserData } from '@/models/userData';
-import { BooksService } from '@/services/books/books.service';
 import { Order } from '@/models/order';
 import { Book } from '@/models/book';
-import { Router } from '@angular/router';
 import { Review } from '@/models/review';
 import { faPlusSquare, faMinusSquare, IconDefinition } from '@fortawesome/free-solid-svg-icons';
 import { Title } from '@angular/platform-browser';
-import { AuthService } from 'src/app/services/auth/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-user',
@@ -31,11 +29,9 @@ export class UserComponent implements OnInit {
 
   constructor(
     private userService: UserService,
-    private booksService: BooksService,
-    private router: Router,
     private titleService: Title,
-    private authService: AuthService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private toaster: ToastrService
   ) {
     this.userForm = this.fb.group({
       userId: [{ value: '', disabled: true }],
@@ -45,7 +41,6 @@ export class UserComponent implements OnInit {
       email: ['', Validators.email],
       password: [''],
       genres: [''],
-      // genres1: ['']
     });
   }
 
@@ -91,8 +86,10 @@ export class UserComponent implements OnInit {
   }
 
   saveProfile() {
-    this.userService.updateProfile(this.userData.userId, this.userForm.value).subscribe(res => {
-      console.log(res)
+    this.userService.updateProfile(this.userData.userId, this.userForm.value).subscribe({
+      next: () => {
+        this.toaster.success('Profile updated successfully')
+      }
     })
   }
 

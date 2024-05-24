@@ -33,6 +33,7 @@ export class BooksService {
     let httpParams = new HttpParams();
     httpParams = httpParams.set('page', page + '');
     httpParams = httpParams.set('size', TABLE_ITEMS_PER_PAGE + '');
+    // httpParams = httpParams.set('sort', 'isbn');
     return this.http.get<BooksResponse>(END_POINTS.BOOKS, { params: httpParams }).pipe(map((res: any) => res));
   }
 

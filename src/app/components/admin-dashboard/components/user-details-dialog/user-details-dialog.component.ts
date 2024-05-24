@@ -25,7 +25,6 @@ export class UserDetailsDialogComponent implements OnInit {
     private dialogRef: MatDialogRef<UserDetailsDialogComponent>
   ) {
     const formConfig = {};
-    console.log(this.textNumberFields)
     this.fields.forEach(field => {
       formConfig[field.name] = new FormControl({ value: '', disabled: field.disabled })
     });
@@ -40,7 +39,7 @@ export class UserDetailsDialogComponent implements OnInit {
 
   save() {
     const updateUser = this.form.value;
-    this.dialogRef.close(updateUser)
+    this.dialogRef.close({...updateUser, userId: this.data.user.userId})
   }
 
   close() {

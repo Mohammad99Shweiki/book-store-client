@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { UserData } from '@/models/userData';
 import { END_POINTS, TABLE_ITEMS_PER_PAGE } from 'src/app/app.constants';
@@ -17,6 +17,7 @@ export class UserService {
     let httpParams = new HttpParams();
     httpParams = httpParams.set('page', page + '');
     httpParams = httpParams.set('size', TABLE_ITEMS_PER_PAGE + '');
+    // httpParams = httpParams.set('sort', 'userId');
     return this.http.get<any>(END_POINTS.USERS.index, { params: httpParams });
   }
 
@@ -34,7 +35,7 @@ export class UserService {
     return this.http.delete<any>(END_POINTS.USERS.index + '/' + id);
   }
 
-  updateProfile(id: string, data: any) {
-    return this.http.put(END_POINTS.USERS.index + '/' + id, data)
+  updateProfile(id: string, data: UserData): Observable<string> {
+    return this.http.put<string>(END_POINTS.USERS.index + '/' + id, data, {responseType: 'text' as 'json'})
   }
 }
