@@ -4,5 +4,5 @@
 </div>
 <div class="mat-dialog-actions justify-content-end">
   <button mat-button (click)="close()">close</button>
-  <button mat-flat-button cdkFocusInitial color="primary" (click)="submit()">Save</button>
+  <button mat-flat-button [color]="data.isDelete ? 'warn': 'primary'" (click)="submit()">Save</button>
 </div>

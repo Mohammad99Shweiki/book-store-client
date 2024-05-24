@@ -26,8 +26,8 @@ export class MainPageComponent implements OnInit {
   }
 
   getBooks(): void {
-    this.booksService.getBooks().subscribe((res: Book[]) => {
-      this.bestsellers = res;
+    this.booksService.getBooks().subscribe((res) => {
+      this.bestsellers = res.content;
       // this.booksLoaded += res.size;
     });
   }

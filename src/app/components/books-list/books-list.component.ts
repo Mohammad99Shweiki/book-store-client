@@ -6,7 +6,6 @@ import { BooksFilter } from '@/models/booksFilter';
 import { FilterService } from '@/services/filter/filter.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
-import { BooksResponse } from 'src/app/models/books-response';
 
 @Component({
   selector: 'app-books-list',
@@ -19,16 +18,6 @@ export class BooksListComponent implements OnInit, OnDestroy {
   skip: number = 0;
   filtersOpened: boolean;
   noBooks: boolean = false;
-  // booksFilter: BooksFilter = {
-  //   searchPhrase: null,
-  //   dateFrom: null,
-  //   dateTo: null,
-  //   genres: [],
-  //   sortBy: 'default',
-  //   sale: false,
-  //   bestseller: false,
-  //   new: false
-  // };
   booksFilterSubscription: Subscription;
   type: 'sale' | 'browse' | 'bestseller' | 'new' | 'main';
   title: string = '';
@@ -71,8 +60,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
         this.noBooks = !this.books.length;
       });
     } else if (this.type == 'main') {
-      this.booksService.getBooks().subscribe((res: Book[]) => {
-        this.books.push(...res);
+      this.booksService.getBooks().subscribe((res) => {
+        this.books.push(...res.content);
         this.noBooks = !this.books.length;
       })
     }

@@ -29,8 +29,11 @@ export class BooksService {
     return this.http.delete(END_POINTS.BOOKS + '/' + id);
   }
 
-  getBooks(isBestSeller = false): Observable<any> {
-    return this.http.get<BooksResponse>(END_POINTS.BOOKS).pipe(map((res: any) => res.content));
+  getBooks(page: number = 0): Observable<any> {
+    let httpParams = new HttpParams();
+    httpParams = httpParams.set('page', page + '');
+    httpParams = httpParams.set('size', 10 + '');
+    return this.http.get<BooksResponse>(END_POINTS.BOOKS, {params: httpParams}).pipe(map((res: any) => res));
   }
 
   searchBooks(searchParam: string): Observable<any> {
