@@ -15,6 +15,12 @@ th {
   padding-right: 16px !important;
 }
 
+.mat-button:hover {
+  .mat-icon {
+    color: var(--primary-color) !important;
+  }
+}
+
 .mat-button {
   min-width: auto !important;
   padding: 0 !important;

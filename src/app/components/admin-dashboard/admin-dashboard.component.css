@@ -1,5 +1,5 @@
 .side-nav {
-  width: 17%;
+  width: 19%;
   padding: 10px 20px;
   box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
 }
@@ -16,8 +16,8 @@
   color: white !important;
 }
 
-.side-nav-content {
-  /* padding: 10px 20px; */
+.mat-line {
+  font-size: 13px !important;
 }
 
 .mat-list-single-selected-option,
