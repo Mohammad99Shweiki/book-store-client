@@ -1,6 +1,6 @@
 <div class="container pt-0">
-  <app-loading-spinner *ngIf="!books.length && !noBooks" class="spinner" color="#2B2D42"></app-loading-spinner>
-  <div *ngIf="books.length" class="booksContainer" infiniteScroll
+  <app-loading-spinner *ngIf="!books.length && !noBooks || loading" class="spinner" color="#2B2D42"></app-loading-spinner>
+  <div *ngIf="books.length && !loading" class="booksContainer" infiniteScroll
        [infiniteScrollDistance]="2"
        [infiniteScrollThrottle]="50"
        (scrolled)="onScroll()"
@@ -15,6 +15,6 @@
   </div>
   <div class="booksFilter" [class.booksFilter--opened]="filtersOpened">
     <div (click)="toggleFilters()" class="booksFilter__open"></div>
-    <app-books-filter [type]="type"></app-books-filter>
+    <app-books-filter (onSearch)="onSearch($event)" [type]="type"></app-books-filter>
   </div>
 </div>

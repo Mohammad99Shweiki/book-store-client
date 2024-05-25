@@ -6,6 +6,7 @@ import { BooksFilter } from '@/models/booksFilter';
 import { FilterService } from '@/services/filter/filter.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-books-list',
@@ -21,13 +22,15 @@ export class BooksListComponent implements OnInit, OnDestroy {
   booksFilterSubscription: Subscription;
   type: 'sale' | 'browse' | 'bestseller' | 'new' | 'main';
   title: string = '';
+  loading = false;
 
   constructor(
     private booksService: BooksService,
     private filterService: FilterService,
     private router: Router,
     private titleService: Title,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private toast: ToastrService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.type = this.route.snapshot.data.type;
@@ -35,12 +38,8 @@ export class BooksListComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.setupSubscription();
-    this.setupType();
-    this.setupTitle();
-  }
-
-  setupType(): void {
     this.getBooks();
+    this.setupTitle();
   }
 
   setupTitle(): void {
@@ -49,11 +48,29 @@ export class BooksListComponent implements OnInit, OnDestroy {
     this.titleService.setTitle(this.title);
   }
 
+  onSearch(searchTerm: string) {
+    if (searchTerm === '') {
+      this.getBooks();
+      return;
+    }
+    this.loading = true;
+    this.booksService.searchBooks(searchTerm).subscribe({
+      next: (res) => {
+        this.books = res;
+        this.loading = false;
+      },
+      error: () => {
+        this.toast.error('Something went wrong');
+      }
+    });
+  }
+
   onScroll(): void {
   }
 
   getBooks(): void {
     this.noBooks = false;
+    this.loading = true;
     if (this.type == 'sale') {
       this.booksService.getBooksSales().subscribe((res: Book[]) => {
         this.books.push(...res);
@@ -65,6 +82,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
         this.noBooks = !this.books.length;
       })
     }
+    this.loading = false;
     // this.skip += limit;
   }
 

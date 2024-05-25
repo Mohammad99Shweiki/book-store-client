@@ -86,7 +86,7 @@ export class UserComponent implements OnInit {
   }
 
   saveProfile() {
-    this.userService.updateProfile(this.userData.userId, this.userForm.value).subscribe({
+    this.userService.updateProfile(this.userData.userId, { ...this.userForm.value, favoriteGenres: this.userGenres }).subscribe({
       next: () => {
         this.toaster.success('Profile updated successfully')
       }

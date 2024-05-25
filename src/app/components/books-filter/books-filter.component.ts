@@ -1,9 +1,9 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { BooksFilter } from '@/models/booksFilter';
 import { FilterService } from '@/services/filter/filter.service';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { BooksService } from 'src/app/services/books/books.service';
-import { Toast, ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-books-filter',
@@ -33,6 +33,7 @@ export class BooksFilterComponent implements OnInit {
     new: false
   };
   @Input() type: 'sale' | 'browse' | 'bestseller' | 'new';
+  @Output() onSearch: EventEmitter<any> = new EventEmitter();
 
   constructor(
     private filterService: FilterService,
@@ -89,15 +90,7 @@ export class BooksFilterComponent implements OnInit {
     //@ts-ignore
     this.timeout = setTimeout(() => {
       const searchParam = this.filtersForm.get('searchParam').value;
-      this.bookService.searchBooks(searchParam).subscribe({
-        next: (res) => {
-          console.log(res)
-        },
-        error: (err) => {
-          console.log(err);
-          this.toast.error('Error occurred');
-        }
-      });
+      this.onSearch.emit(searchParam);
     }, 1000);
   }
 }
