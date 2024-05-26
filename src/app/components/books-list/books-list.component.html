@@ -4,14 +4,24 @@
     <input (input)="onAdvanceSearch($event)" matInput type="text" />
   </mat-form-field>
 </div>
-<div class="container pt-0">
-  <app-loading-spinner *ngIf="!books.length && !noBooks || loading" class="spinner"
-    color="#2B2D42"></app-loading-spinner>
-  <div *ngIf="books.length && !loading" class="booksContainer" infiniteScroll [infiniteScrollDistance]="2"
-    [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="true" [fromRoot]="true">
+<div class="container pt-0 d-flex flex-column gap-4">
+  <app-loading-spinner *ngIf="(!books.length && !noBooks) || loading" class="spinner" color="#2B2D42"></app-loading-spinner>
+  <div *ngIf="books.length && !loading" class="booksContainer" 
+        infiniteScroll 
+        [infiniteScrollDistance]="2"
+        [infiniteScrollThrottle]="50" 
+        (scrolled)="onScroll()" 
+        [scrollWindow]="true" 
+        [fromRoot]="true">
     <app-book-overview class="book" *ngFor="let book of books" [book]="book">
     </app-book-overview>
   </div>
+  <mat-paginator
+             class="d-flex w-100"
+             [length]="totalElements"
+             [pageSize]="10"
+             (page)="onPageChange($event)">
+  </mat-paginator>
   <div *ngIf="noBooks" class="booksWarning">
     No books found
   </div>

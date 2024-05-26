@@ -7,6 +7,8 @@ import { FilterService } from '@/services/filter/filter.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Title } from '@angular/platform-browser';
 import { ToastrService } from 'ngx-toastr';
+import { BooksResponse } from '@/models/books-response';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-books-list',
@@ -24,6 +26,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
   title: string = '';
   loading = false;
   timeout: number = null;
+  totalElements = 0;
 
   constructor(
     private booksService: BooksService,
@@ -66,7 +69,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
       return;
     }
     this.loading = true;
-    this.booksService.searchBooks(searchTerm).subscribe({
+    this.booksService.getBooks().subscribe({
       next: (res) => {
         this.books = res;
         this.loading = false;
@@ -80,21 +83,23 @@ export class BooksListComponent implements OnInit, OnDestroy {
   onScroll(): void {
   }
 
-  getBooks(): void {
+  getBooks(page: number = 0, search: string = ''): void {
     this.noBooks = false;
     this.loading = true;
     if (this.type == 'sale') {
       this.booksService.getBooksSales().subscribe((res: Book[]) => {
         this.books.push(...res);
         this.noBooks = !this.books.length;
+        this.loading = false;
       });
     } else if (this.type == 'main') {
-      this.booksService.getBooks().subscribe((res) => {
-        this.books.push(...res.content);
+      this.booksService.getBooks(page, search).subscribe((res: BooksResponse) => {
+        this.books = res.content;
+        this.totalElements = res.totalElements;
         this.noBooks = !this.books.length;
+        this.loading = false;
       })
     }
-    this.loading = false;
     // this.skip += limit;
   }
 
@@ -105,6 +110,11 @@ export class BooksListComponent implements OnInit, OnDestroy {
       this.skip = 0;
       this.getBooks();
     });
+  }
+
+  onPageChange(event: PageEvent) {
+    console.log(event);
+    this.getBooks(event.pageIndex);
   }
 
   toggleFilters(): void {
