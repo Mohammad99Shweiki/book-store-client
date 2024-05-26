@@ -40,7 +40,7 @@ export class BooksService {
   searchBooks(searchParam: string): Observable<any> {
     const filters = {};
     filters['query'] = searchParam;
-    return this.http.get<Book[]>(END_POINTS.BOOKS_SEARCH + '/', { params: filters })
+    return this.http.get<Book[]>(END_POINTS.BOOKS_SEARCH, { params: filters })
   }
 
   addBook(book: any): Observable<any> {

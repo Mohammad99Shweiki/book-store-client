@@ -1,13 +1,15 @@
+<div *ngIf="type == 'main'" class="d-flex justify-content-center">
+  <mat-form-field appearance="outline" class="col-6">
+    <mat-label>Advance Search</mat-label>
+    <input (input)="onAdvanceSearch($event)" matInput type="text" />
+  </mat-form-field>
+</div>
 <div class="container pt-0">
-  <app-loading-spinner *ngIf="!books.length && !noBooks || loading" class="spinner" color="#2B2D42"></app-loading-spinner>
-  <div *ngIf="books.length && !loading" class="booksContainer" infiniteScroll
-       [infiniteScrollDistance]="2"
-       [infiniteScrollThrottle]="50"
-       (scrolled)="onScroll()"
-       [scrollWindow]="true"
-       [fromRoot]="true">
-    <app-book-overview class="book" *ngFor="let book of books"
-                       [book]="book">
+  <app-loading-spinner *ngIf="!books.length && !noBooks || loading" class="spinner"
+    color="#2B2D42"></app-loading-spinner>
+  <div *ngIf="books.length && !loading" class="booksContainer" infiniteScroll [infiniteScrollDistance]="2"
+    [infiniteScrollThrottle]="50" (scrolled)="onScroll()" [scrollWindow]="true" [fromRoot]="true">
+    <app-book-overview class="book" *ngFor="let book of books" [book]="book">
     </app-book-overview>
   </div>
   <div *ngIf="noBooks" class="booksWarning">

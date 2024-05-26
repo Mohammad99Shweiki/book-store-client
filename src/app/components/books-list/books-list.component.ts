@@ -23,6 +23,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
   type: 'sale' | 'browse' | 'bestseller' | 'new' | 'main';
   title: string = '';
   loading = false;
+  timeout: number = null;
 
   constructor(
     private booksService: BooksService,
@@ -46,6 +47,17 @@ export class BooksListComponent implements OnInit, OnDestroy {
     this.title += this.type.charAt(0).toUpperCase() + this.type.slice(1);
     this.title += this.type === 'browse' || this.type === 'new' || this.type === 'main' ? ' - BookStore' : 's - BookStore';
     this.titleService.setTitle(this.title);
+  }
+
+  onAdvanceSearch(event: any) {
+
+    if (this.timeout !== null) {
+      clearTimeout(this.timeout);
+    }
+    //@ts-ignore
+    this.timeout = setTimeout(() => {
+      this.onSearch(event.target.value)
+    }, 1000);
   }
 
   onSearch(searchTerm: string) {
