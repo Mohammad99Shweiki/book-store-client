@@ -1,19 +1,19 @@
 <div class="orderedBook" *ngIf="book">
-  <a class="orderedBook__anchor" routerLink="/book/{{book.id}}">
-    <img class="orderedBook__cover" src="{{book.coverPhoto}}" [alt]="book.title">
+  <a class="orderedBook__anchor" routerLink="/book/{{book.isbn}}">
+    <img class="orderedBook__cover" src="{{book.imageLink}}" [alt]="book.title">
   </a>
   <div class="orderedBook__infoContainer">
-    <a class="orderedBook__anchor" routerLink="/book/{{book.id}}">
+    <a class="orderedBook__anchor" routerLink="/book/{{book.isbn}}">
       <h4 class="orderedBook__title">{{book.title}}</h4>
     </a>
     <p class="orderedBook__info">
-      ISBN: {{book.ISBN}}
+      ISBN: {{book.isbn}}
     </p>
     <p class="orderedBook__info">
       Publisher: {{book.publisher}}
     </p>
     <p class="orderedBook__info">
-      Publication: {{book.publication | date: 'dd/MM/YYYY'}}
+      Publication: {{book.publicationDate | date: 'dd/MM/YYYY'}}
     </p>
     <p class="orderedBook__info">
       Number of pages: {{book.pages}}

@@ -32,7 +32,7 @@ export class BooksFilterComponent implements OnInit {
     bestseller: false,
     new: false
   };
-  @Input() type: 'sale' | 'browse' | 'bestseller' | 'new';
+  @Input() type: 'sale' | 'browse' | 'bestseller' | 'new' | 'main';
   @Output() onSearch: EventEmitter<any> = new EventEmitter();
 
   constructor(

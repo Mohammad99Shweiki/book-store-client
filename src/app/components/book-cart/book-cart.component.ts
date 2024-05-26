@@ -10,8 +10,8 @@ import { faPlusSquare, faMinusSquare, IconDefinition } from '@fortawesome/free-s
 export class BookCartComponent implements OnInit {
   @Input() book: Book;
   @Input() qty: number;
-  @Output() productEdited: EventEmitter<{ id: number, qty: number, type: 'update' | 'delete' }> =
-    new EventEmitter<{ id: number; qty: number; type: 'update' | 'delete' }>();
+  @Output() productEdited: EventEmitter<{ id: string, qty: number, type: 'update' | 'delete' }> =
+    new EventEmitter<{ id: string; qty: number; type: 'update' | 'delete' }>();
   faPlusSquare: IconDefinition = faPlusSquare;
   faMinusSquare: IconDefinition = faMinusSquare;
 
@@ -22,11 +22,11 @@ export class BookCartComponent implements OnInit {
   }
 
   removeBook(): void {
-    this.productEdited.emit({ id: +this.book.isbn, qty: this.qty, type: 'delete' });
+    this.productEdited.emit({ id: this.book.isbn, qty: this.qty, type: 'delete' });
   }
 
   changeQty(value): void {
     this.qty += value;
-    this.productEdited.emit({ id: +this.book.isbn, qty: this.qty, type: 'update' });
+    this.productEdited.emit({ id: this.book.isbn, qty: this.qty, type: 'update' });
   }
 }

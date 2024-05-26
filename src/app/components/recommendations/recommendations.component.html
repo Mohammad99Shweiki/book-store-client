@@ -1,6 +1,6 @@
 <app-loading-spinner *ngIf="!books.length && !noBooks" class="spinner" color="#2B2D42"></app-loading-spinner>
 <div class="px-4">
-  <app-book-carousel size="xs" [books]="books"></app-book-carousel>
+  <app-book-carousel [books]="books"></app-book-carousel>
 </div>
 <div *ngIf="noBooks" class="booksWarning">
   No books found

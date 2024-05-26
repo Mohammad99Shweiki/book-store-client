@@ -20,7 +20,7 @@
     </p>
     <p class="bookCart__price">
       <span [class.bookCart__price--discounted]="book.price">{{book.price | currency:'&nbsp;'}}&nbsp;$</span>
-      <span class="bookCart__pricePromo" *ngIf="book.price"> {{book.discountedPrice | currency:'&nbsp;'}}&nbsp;$</span>
+      <span class="bookCart__pricePromo" *ngIf="book.price"> {{book.salePrice| currency:'&nbsp;'}}&nbsp;$</span>
     </p>
     <p class="bookCart__qty">
       Qty:

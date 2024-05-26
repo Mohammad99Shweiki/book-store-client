@@ -2,7 +2,7 @@
 <div *ngIf="book" class="product">
   <div class="product__container">
     <div class="product__imgContainer">
-      <img class="product__img" [src]="book.coverPhoto" alt="" />
+      <img class="product__img" [src]="book.imageLink" alt="" />
     </div>
     <mat-card class="product__basicInfo">
       <p class="product__name">
@@ -12,16 +12,16 @@
         {{book.authors}}
       </p>
       <p class="product__price">
-        <span [class.product__price--discounted]="book.discountedPrice">{{book.price | currency:'&nbsp;'}}&nbsp;$</span>
-        <span class="product__pricePromo" *ngIf="book.discountedPrice"> {{book.discountedPrice |
+        <span [class.product__price--discounted]="book.salePrice">{{book.price | currency:'&nbsp;'}}&nbsp;$</span>
+        <span class="product__pricePromo" *ngIf="book.salePrice"> {{book.salePrice |
           currency:'&nbsp;'}}&nbsp;$</span>
       </p>
       <div class="d-flex flex-column gap-2">
-        <button color="primary" mat-raised-button (click)="addToBasket(book.id)">
+        <button color="primary" mat-raised-button (click)="addToBasket(book.isbn)">
           <mat-icon>add_shopping_cart</mat-icon>
           Add to cart
         </button>
-        <button color="primary" mat-stroked-button (click)="addToBasket(book.id, true)">
+        <button color="primary" mat-stroked-button (click)="addToBasket(book.isbn, true)">
           Buy now
         </button>
       </div>
@@ -45,7 +45,7 @@
             {{detail.value}}
           </p>
           <p *ngIf="detail.customPipe" class="product__detail product__detail--value">
-            {{detail.value | customDetail: detail.key}}
+            {{detail.value + '' | customDetail: detail.key}}
           </p>
         </ng-container>
       </div>
