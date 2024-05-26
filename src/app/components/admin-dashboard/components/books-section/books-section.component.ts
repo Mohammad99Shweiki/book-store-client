@@ -9,6 +9,7 @@ import { MatPaginator } from '@angular/material/paginator';
 import { Subject, merge, of } from 'rxjs';
 import { catchError, debounceTime, distinctUntilChanged, map, startWith, switchMap } from 'rxjs/operators';
 import { TABLE_ITEMS_PER_PAGE } from '@/app.constants';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-books-section',
@@ -43,7 +44,8 @@ export class BooksSectionComponent implements OnInit, AfterViewInit {
   constructor(
     private dialog: MatDialog,
     private booksService: BooksService,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private router: Router
   ) {
 
   }
@@ -122,6 +124,10 @@ export class BooksSectionComponent implements OnInit, AfterViewInit {
     })
   }
 
+  viewBookDetails(book: Book) {
+    this.router.navigate([`book/${book.isbn}`])
+  }
+  
   openBookDialog(book: Book | null, isEdit: boolean = true) {
     const dialogRef = this.dialog.open(BookDetailsDialogComponent, {
       width: '800px',
