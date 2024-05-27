@@ -13,13 +13,13 @@
     </mat-form-field>
     <mat-form-field class="example-chip-list col-12" appearance="outline">
       <mat-label>Authors</mat-label>
-      <mat-chip-list #chipList>
+      <mat-chip-list #authorsList>
         <mat-chip *ngFor="let author of authors" (removed)="remove(author, 'authors')">
           {{author}}
             <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
         <input placeholder="New Author..."
-               [matChipInputFor]="chipList"
+               [matChipInputFor]="authorsList"
                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                [matChipInputAddOnBlur]="addOnBlur"
                (matChipInputTokenEnd)="add($event, 'authors')">
@@ -27,13 +27,13 @@
     </mat-form-field>
     <mat-form-field class="example-chip-list col-12" appearance="outline">
       <mat-label>Genres</mat-label>
-      <mat-chip-list #chipList>
+      <mat-chip-list #genresList>
         <mat-chip *ngFor="let genre of userGenres" (removed)="remove(genre, 'genres')">
           {{genre}}
             <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
         <input placeholder="New Genre..."
-               [matChipInputFor]="chipList"
+               [matChipInputFor]="genresList"
                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                [matChipInputAddOnBlur]="addOnBlur"
                (matChipInputTokenEnd)="add($event, 'genres')">
@@ -41,13 +41,13 @@
     </mat-form-field>
     <mat-form-field class="example-chip-list col-12" appearance="outline">
       <mat-label>Awards</mat-label>
-      <mat-chip-list #chipList>
+      <mat-chip-list #awardsList>
         <mat-chip *ngFor="let award of awards" (removed)="remove(award, 'awards')">
           {{award}}
             <mat-icon matChipRemove>cancel</mat-icon>
         </mat-chip>
         <input placeholder="New Award..."
-               [matChipInputFor]="chipList"
+               [matChipInputFor]="awardsList"
                [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
                [matChipInputAddOnBlur]="addOnBlur"
                (matChipInputTokenEnd)="add($event, 'awards')">
