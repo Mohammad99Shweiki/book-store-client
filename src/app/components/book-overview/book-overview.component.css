@@ -3,6 +3,12 @@
   max-width: 220px;
   width: 100%;
   margin: 0 15px;
+  transition: 0.3s all ease-in-out;
+}
+
+.product:hover{
+  transition: 0.3s all ease-in-out;
+  scale: calc(1.05);
 }
 
 .product__box {
