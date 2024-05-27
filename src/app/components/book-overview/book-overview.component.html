@@ -13,7 +13,7 @@
     <span class="product__pricePromo" *ngIf="book.onSale"> {{book.salePrice | currency}}</span>
   </p>
   <div class="product__buttons gap-2">
-    <button mat-stroked-button (click)="showDetails(book.isbn)" class="w-100">
+    <button mat-stroked-button color="primary" (click)="showDetails(book.isbn)" class="w-100">
       See more
     </button>
     <button mat-flat-button color="primary" (click)="addToBasket(book.isbn)">

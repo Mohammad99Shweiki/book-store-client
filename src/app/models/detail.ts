@@ -1,6 +1,6 @@
 export interface Detail {
   key: string;
   label: string;
-  value: string | boolean | number;
+  value: any;
   customPipe: boolean;
 }

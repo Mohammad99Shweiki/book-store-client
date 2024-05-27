@@ -8,8 +8,9 @@ export class CustomDetailPipe implements PipeTransform {
   transform(value: string | Array<string>, type: string): string {
     let transformedString: string;
     switch (type) {
-      case 'genre': {
-        transformedString = Array.from(value).join(', ');
+      case 'genres': {
+        //@ts-ignore
+        transformedString = value.join(' - ');
         break;
       }
       case 'publication': {

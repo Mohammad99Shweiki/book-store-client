@@ -26,17 +26,19 @@
         </button>
       </div>
     </mat-card>
-    <div class="product__additionalInfo">
+    <div class="product__additionalInfo mt-4">
       <div class="product__tabs">
-        <a (click)="changeActiveTab('description')"
-          class="product__recommendedTitle text-decoration-none">
+        <span class="product__recommendedTitle text-decoration-none">
           Description
-        </a>
+        </span>
       </div>
-      <div *ngIf="activeTab === 'description'" class="product__description">
+      <div class="product__description">
         {{book.description}}
       </div>
-      <div *ngIf="activeTab === 'details'" class="product__details">
+      <div class="product__details mt-4">
+        <span class="product__recommendedTitle text-decoration-none">
+          Book Details
+        </span>
         <ng-container class="product__detailsContainer" *ngFor="let detail of details">
           <p class="product__detail product__detail--label">
             {{detail.label}}
@@ -45,7 +47,7 @@
             {{detail.value}}
           </p>
           <p *ngIf="detail.customPipe" class="product__detail product__detail--value">
-            {{detail.value + '' | customDetail: detail.key}}
+            {{detail.value | customDetail: detail.key}}
           </p>
         </ng-container>
       </div>

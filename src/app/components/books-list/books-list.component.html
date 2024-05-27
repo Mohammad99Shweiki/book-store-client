@@ -16,7 +16,7 @@
     <app-book-overview class="book" *ngFor="let book of books" [book]="book">
     </app-book-overview>
   </div>
-  <mat-paginator
+  <mat-paginator *ngIf="books.length && !loading" 
              class="d-flex w-100"
              [length]="totalElements"
              [pageSize]="10"

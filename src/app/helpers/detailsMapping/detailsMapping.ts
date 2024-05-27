@@ -1,12 +1,11 @@
 import { DetailMapping } from '@/models/detailMapping';
 
 export const detailsMapping: Array<DetailMapping> = [
-  { key: 'author', label: 'Author', customPipe: false },
+  { key: 'authors', label: 'Authors', customPipe: false },
   { key: 'title', label: 'Title', customPipe: false },
-  { key: 'genre', label: 'Genre', customPipe: true },
+  { key: 'genres', label: 'Genres', customPipe: true },
   { key: 'pages', label: 'Pages', customPipe: false },
-  { key: 'publication', label: 'Publication date', customPipe: true },
+  { key: 'publicationDate', label: 'Publication date', customPipe: false },
   { key: 'publisher', label: 'Publisher', customPipe: false },
-  { key: 'ISBN', label: 'ISBN', customPipe: false },
-  { key: 'id', label: 'ID number', customPipe: false }
+  { key: 'isbn', label: 'ISBN', customPipe: false },
 ];
