@@ -41,6 +41,11 @@
   margin: 4px 0 7px;
   font-size: 0.95em;
   color: #222;
+  line-height: 1em !important;
+  min-height: 1.6em !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-wrap: nowrap !important;
 }
 
 .product__price--discounted {

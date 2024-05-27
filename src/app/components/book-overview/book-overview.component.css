@@ -1,5 +1,8 @@
 .product {
   width: 100%;
+  max-width: 220px;
+  width: 100%;
+  margin: 0 15px;
 }
 
 .product__box {
@@ -43,6 +46,10 @@
   margin: 4px 0 7px;
   font-size: 0.95em;
   color: #222;
+  text-overflow: ellipsis;
+  text-wrap: nowrap;
+  overflow: hidden;
+
 }
 
 .product__price--discounted {
