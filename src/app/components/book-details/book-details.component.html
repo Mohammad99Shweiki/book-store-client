@@ -17,11 +17,11 @@
           currency:'&nbsp;'}}&nbsp;$</span>
       </p>
       <div class="d-flex flex-column gap-2">
-        <button color="primary" mat-raised-button (click)="addToBasket(book.isbn)">
+        <button color="primary" mat-raised-button (click)="addToCart(book.isbn)">
           <mat-icon>add_shopping_cart</mat-icon>
           Add to cart
         </button>
-        <button color="primary" mat-stroked-button (click)="addToBasket(book.isbn, true)">
+        <button color="primary" mat-stroked-button (click)="addToCart(book.isbn, true)">
           Buy now
         </button>
       </div>

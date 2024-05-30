@@ -69,7 +69,7 @@ export class BooksListComponent implements OnInit, OnDestroy {
       return;
     }
     this.loading = true;
-    this.booksService.getBooks().subscribe({
+    this.booksService.searchBooks(searchTerm).subscribe({
       next: (res) => {
         this.books = res;
         this.loading = false;

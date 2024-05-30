@@ -87,7 +87,7 @@ export class BookDetailsComponent implements OnInit {
     this.booksService.getSimilarBooks(this.id).subscribe((books: Array<Book>) => this.similarBooks = books);
   }
 
-  addToBasket(id: string, redirect?: boolean): void {
+  addToCart(id: string, redirect?: boolean): void {
     this.cartService.addProductToCart(id);
     if (redirect) {
       this.router.navigate(['/cart']);

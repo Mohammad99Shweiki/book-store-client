@@ -18,7 +18,7 @@ export class BookCarouselItemComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  addToBasket(id: string): void {
+  addToCart(id: string): void {
     this.cartService.addProductToCart(id);
   }
 }

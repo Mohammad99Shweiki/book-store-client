@@ -53,6 +53,8 @@
   margin: 0.5em 0;
   color: #2b2d42;
   font-size: 1.1em;
+  display: flex;
+  align-items: center;
 }
 
 .bookCart__icon {
@@ -95,7 +97,7 @@
   }
 
   .bookCart__infoContainer {
-    align-items: flex-end;
+    /* align-items: flex-end; */
   }
 
   .bookCart__disc, .bookCart__button {

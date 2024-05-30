@@ -15,7 +15,9 @@ export const END_POINTS = {
   USERS: {
     RECOMMEND: "/users/recommend",
     index: "/users",
-  }
+  },
+  STORE: "/store",
+  CART: "/store/cart"
 }
 
 export const ROLES = {

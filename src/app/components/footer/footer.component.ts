@@ -7,15 +7,8 @@ import {faFacebook, faTwitter, faInstagram} from '@fortawesome/free-brands-svg-i
   templateUrl: './footer.component.html',
   styleUrls: ['./footer.component.css']
 })
-export class FooterComponent implements OnInit {
+export class FooterComponent {
   faFacebook: IconDefinition = faFacebook;
   faTwitter: IconDefinition = faTwitter;
   faInstagram: IconDefinition = faInstagram;
-
-  constructor() {
-  }
-
-  ngOnInit(): void {
-  }
-
 }

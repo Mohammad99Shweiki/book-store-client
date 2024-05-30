@@ -3,19 +3,19 @@
   <h1 class="cart__heading">
     Your cart
   </h1>
-  <p class="cart__disc" *ngIf="!cart.products.length">Your cart is empty</p>
-  <app-book-cart *ngFor="let product of cart.products" [book]="getBookById(product.id)" [qty]="product.qty"
+  <p class="cart__disc">Your cart is empty</p>
+  <app-book-cart *ngFor="let product of books" [book]="getBookById(product.isbn)" [qty]="product.available"
     (productEdited)="editProductInCart($event)"></app-book-cart>
   <p class="cart__value" *ngIf="cartValue !== 0">
     <span class="cart__valueTitle">Price: </span>
     {{cartValue | currency:'&nbsp;'}}&nbsp;$
   </p>
-  <p class="cart__disc" *ngIf="!loggedIn && cart.products.length">
+  <p class="cart__disc" *ngIf="!loggedIn">
     You are not logged in, you can place order but you will not have access to order history, and you will can not
     review books that you bought. Please consider registering.
   </p>
-  <div class="col-12 d-flex align-items-center justify-content-end">
-    <button class="d-flex align-items-center" mat-raised-button [disabled]="!cart.products.length || onGoingRequest" type="button" (click)="placeOrder()">
+  <div class="col-12 d-flex align-items-center justify-content-end mt-4">
+    <button class="d-flex align-items-center" color="primary" mat-raised-button [disabled]="onGoingRequest" type="button" (click)="placeOrder()">
       Order & Pay
       <mat-icon>paid</mat-icon>
     </button>

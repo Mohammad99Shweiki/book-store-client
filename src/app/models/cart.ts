@@ -1,3 +1,4 @@
 export interface Cart {
-  products: Array<{id: string, qty: number}>;
+  items: any[],
+  totalPrice: number;
 }

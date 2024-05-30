@@ -33,7 +33,7 @@ export class BookOverviewComponent implements OnInit {
     })
   }
 
-  addToBasket(id: string): void {
+  addToCart(id: string): void {
     if (this.loggedIn) {
       this.cartService.addProductToCart(id);
     } else {

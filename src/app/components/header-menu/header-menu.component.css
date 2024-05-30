@@ -1,6 +1,5 @@
 .header {
   width: 100%;
-  /* background-color: #EDF2F4; */
   position: fixed;
   top: 0;
   z-index: 13;
@@ -196,10 +195,6 @@
 }
 
 @media screen and (min-width: 1440px) {
-  .header {
-    /* padding: 0px 25px; */
-  }
-
   .nav__link {
     padding: 10px 20px;
     font-size: 1em;
