@@ -26,6 +26,7 @@ export class OrdersTrackingSectionComponent implements OnInit {
     "actions"
   ];
   orderStatusMap: any = [];
+  totalProfit: number = 0;
   displayedColumns = this.columns.filter(col => !['actions'].includes(col));
 
   constructor(
@@ -37,6 +38,7 @@ export class OrdersTrackingSectionComponent implements OnInit {
   ngOnInit(): void {
     this.ordersReportService.getOrdersReport().subscribe(res => {
       console.log(res);
+      this.totalProfit = res.totalProfit;
       this.orders = res.orders.map((item, index) => ({ ...item, id: index + 1 }));
       this.orderStatusMap = Object.entries(res.orderStatusMap)
         .map(item => ({

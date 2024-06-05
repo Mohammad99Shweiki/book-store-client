@@ -1,3 +1,4 @@
+import { ORDER_STATUS } from "@/app.constants";
 import { CartItem } from "./cart-item";
 
 export interface Order {
@@ -9,4 +10,11 @@ export interface Order {
   status: string;
   address: string;
   phoneNo: string;
+}
+
+export interface ReportOrder {
+  date: string;
+  totalPrice: number;
+  status: keyof typeof ORDER_STATUS;
+  address: string;
 }

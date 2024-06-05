@@ -5,6 +5,10 @@
   <div class="my-3 d-flex col-12 justify-content-start gap-2">
     <app-status-card class="col-2" *ngFor="let status of orderStatusMap" [title]="status.title" [bgColor]="status.bg" [color]="status.text" [count]="status.count"></app-status-card>
   </div>
+  <mat-form-field appearance="fill" class="col-3">
+    <mat-label>Total Profit</mat-label>
+    <input matInput [value]="867" disabled/>
+  </mat-form-field>
   <table mat-table [dataSource]="orders" class="mat-elevation-z8 w-100">
     <ng-container matColumnDef="index">
       <th mat-header-cell *matHeaderCellDef>Index</th>

@@ -246,3 +246,14 @@ $altTheme: mat-dark-theme($theme-primary, $theme-accent, $theme-warn);
     font-family: 'Roboto';
   }
 }
+
+.mat-form-field-appearance-fill {
+  .mat-form-field-flex {
+    background-color: green;
+  }
+
+
+  &.mat-form-field-disabled .mat-form-field-flex {
+    background-color: #8c8fa94c;
+  }
+}
