@@ -4,6 +4,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { OrderDetailsDialogComponent } from '../order-details-dialog/order-details-dialog.component';
+import { ReportOrder } from '@/models/order';
 
 @Component({
   selector: 'app-orders-tracking-section',
@@ -37,7 +38,6 @@ export class OrdersTrackingSectionComponent implements OnInit {
 
   ngOnInit(): void {
     this.ordersReportService.getOrdersReport().subscribe(res => {
-      console.log(res);
       this.totalProfit = res.totalProfit;
       this.orders = res.orders.map((item, index) => ({ ...item, id: index + 1 }));
       this.orderStatusMap = Object.entries(res.orderStatusMap)
@@ -51,9 +51,9 @@ export class OrdersTrackingSectionComponent implements OnInit {
     })
   }
 
-  viewOrderDetails(order: any) {
+  viewOrderDetails(order: ReportOrder) {
     this.dialog.open(OrderDetailsDialogComponent, {
-      width: '400px',
+      width: '800px',
       data: { order }
     })
   }

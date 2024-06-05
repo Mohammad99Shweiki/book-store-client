@@ -17,4 +17,16 @@ export interface ReportOrder {
   totalPrice: number;
   status: keyof typeof ORDER_STATUS;
   address: string;
+  phoneNo: string;
+  cart: {
+    items: {
+      [key: string]: {
+        bookTitle: string;
+        bookAuthors: string[];
+        quantity: number;
+        price: number;
+        totalPrice: number;
+      }
+    }
+  }
 }

@@ -2,17 +2,56 @@
 <div class="mat-dialog-content">
   <form [formGroup]="form">
     <div class="row">
-      <!-- <mat-form-field *ngFor="let field of fields" class="col-4" appearance="outline">
-        <mat-label>{{field.name}}</mat-label>
-        <input matInput [type]="field.type" [formControlName]="field.name" />
-      </mat-form-field> -->
+      <mat-form-field appearance="outline" class="col-4">
+        <mat-label>Date</mat-label>
+        <input matInput formControlName="date" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-4">
+        <mat-label>Total Price</mat-label>
+        <input matInput formControlName="totalPrice" />
+        <mat-icon matSuffix>attach_money</mat-icon>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-4">
+        <mat-label>Status</mat-label>
+        <input matInput formControlName="status" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-4">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" />
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-4">
+        <mat-label>Phone NO</mat-label>
+        <input matInput formControlName="phoneNo" />
+      </mat-form-field>
     </div>
-    <mat-form-field appearance="outline" class="col-12">
-      <mat-label>Description</mat-label>
-      <textarea rows="10" matInput formControlName="description"></textarea>
-    </mat-form-field>
-
   </form>
+  <h5>Cart</h5>
+  <div class="my-3">
+    <mat-card *ngFor="let item of cartItems" class="mb-3 item-card">
+      <mat-card-subtitle>{{item.isbn}}</mat-card-subtitle>
+      <mat-card-title class="font-smaller">{{item.book.bookTitle}}</mat-card-title>
+      <mat-card-content>
+        <span>{{item.book.bookAuthors.join(' - ').toString()}}</span>
+      </mat-card-content>
+      <mat-divider inset></mat-divider>
+      <mat-card-actions class="d-flex gap-4">
+        <div class="d-flex flex-column align-items-center gap-2">
+          <span class="font-sm text-black-50">Quantity</span>
+          <span>{{item.book.quantity}}</span>
+        </div>
+        <div class="d-flex flex-column align-items-center gap-2">
+          <span class="font-sm text-black-50">Price</span>
+          <span>{{item.book.price | currency}}</span>
+        </div>
+        <div class="d-flex flex-column align-items-center gap-2">
+          <span class="font-sm text-black-50">Total Price</span>
+          <span>{{item.book.totalPrice | currency}}</span>
+        </div>
+      </mat-card-actions>
+      <mat-card-footer>
+      </mat-card-footer>
+    </mat-card>
+  </div>
 </div>
 <div class="mat-dialog-actions justify-content-end">
   <button mat-dialog-close mat-button cdkFocusInitial>close</button>
