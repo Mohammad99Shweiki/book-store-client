@@ -17,13 +17,39 @@ export const END_POINTS = {
     index: "/users",
   },
   STORE: "/store",
-  CART: "/store/cart"
+  CART: "/store/cart",
+  REPORT: "/store/report"
 }
 
 export const ROLES = {
   ADMIN: 'ADMIN',
 }
 
+export const ORDER_STATUS = {
+  CONFIRMED: "CONFIRMED",
+  SHIPPED: "SHIPPED",
+  OUT_FOR_DELIVERY: "OUT_FOR_DELIVERY",
+  DELIVERED: "DELIVERED"
+}
+
+export const ORDER_STATUS_COLOR = {
+  CONFIRMED: {
+    bg: "#0d6efd",
+    text: "#FFF"
+  },
+  SHIPPED: {
+    bg: "#f39c12",
+    text: "#121212"
+  },
+  OUT_FOR_DELIVERY: {
+    bg: "#0dcaf0",
+    text: "#121212"
+  },
+  DELIVERED: {
+    bg: "#198754",
+    text: "#FFF"
+  }
+}
 export const SIDE_NAV_OPTIONS: SideNavLink[] = [
   {
     title: 'Users',
@@ -39,11 +65,6 @@ export const SIDE_NAV_OPTIONS: SideNavLink[] = [
     title: 'Orders Tracking',
     value: 'orders',
     icon: 'receipt_long'
-  },
-  {
-    title: 'Reports and Analytics',
-    value: 'reports',
-    icon: 'signal_cellular_alt'
   }
 ]
 

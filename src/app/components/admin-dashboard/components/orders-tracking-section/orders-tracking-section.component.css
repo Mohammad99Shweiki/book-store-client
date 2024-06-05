@@ -1,0 +1,41 @@
+th,
+td {
+  overflow: hidden;
+  width: auto;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100px;
+  padding-right: 16px !important;
+  padding-left: 16px !important;
+  font-size: 10px;
+}
+
+th {
+  padding-left: 16px !important;
+  padding-right: 16px !important;
+}
+
+.mat-button:hover {
+  .mat-icon {
+    color: var(--primary-color) !important;
+  }
+}
+
+.mat-button {
+  min-width: auto !important;
+  padding: 0 !important;
+  margin-right: 4px;
+}
+
+.example-loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

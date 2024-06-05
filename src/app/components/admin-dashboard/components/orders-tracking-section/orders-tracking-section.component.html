@@ -1,0 +1,27 @@
+<div class="example-loading-shade" *ngIf="loading">
+  <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading" class="table-wrapper p-2 position-relative">
+  <div class="my-3 d-flex col-12 justify-content-start gap-2">
+    <app-status-card class="col-2" *ngFor="let status of orderStatusMap" [title]="status.title" [bgColor]="status.bg" [color]="status.text" [count]="status.count"></app-status-card>
+  </div>
+  <table mat-table [dataSource]="orders" class="mat-elevation-z8 w-100">
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef>Index</th>
+      <td mat-cell *matCellDef="let element"> {{ element | json }} </td>
+    </ng-container>
+    <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef>{{col}}</th>
+      <td mat-cell *matCellDef="let element"> {{element[col]}} </td>
+    </ng-container>
+    <ng-container style="border-left: 1px solid black;" matColumnDef="actions" stickyEnd="true">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button matTooltip="show details" mat-button (click)="viewOrderDetails(element)"><mat-icon>visibility</mat-icon></button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+
+</div>

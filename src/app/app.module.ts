@@ -52,6 +52,9 @@ import { ConfirmationModalComponent } from './components/confirmation-modal/conf
 import { UsersSectionComponent } from './components/admin-dashboard/components/users-section/users-section.component';
 import { UserDetailsDialogComponent } from './components/admin-dashboard/components/user-details-dialog/user-details-dialog.component';
 import { InfoDialogComponent } from './components/info-dialog/info-dialog.component';
+import { OrdersTrackingSectionComponent } from './components/admin-dashboard/components/orders-tracking-section/orders-tracking-section.component';
+import { OrderDetailsDialogComponent } from './components/admin-dashboard/components/order-details-dialog/order-details-dialog.component';
+import { StatusCardComponent } from './components/admin-dashboard/components/status-card/status-card.component';
 
 @NgModule({
   declarations: [
@@ -89,7 +92,10 @@ import { InfoDialogComponent } from './components/info-dialog/info-dialog.compon
     ConfirmationModalComponent,
     UsersSectionComponent,
     UserDetailsDialogComponent,
-    InfoDialogComponent
+    InfoDialogComponent,
+    OrdersTrackingSectionComponent,
+    OrderDetailsDialogComponent,
+    StatusCardComponent
   ],
   imports: [
     BrowserModule,
