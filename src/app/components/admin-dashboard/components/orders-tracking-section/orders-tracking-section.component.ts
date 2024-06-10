@@ -5,7 +5,6 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { OrderDetailsDialogComponent } from '../order-details-dialog/order-details-dialog.component';
 import { ReportOrder } from '@/models/order';
-import { Book } from '@/models/book';
 
 @Component({
   selector: 'app-orders-tracking-section',
@@ -22,12 +21,10 @@ export class OrdersTrackingSectionComponent implements OnInit {
     "id",
     "date",
     "totalPrice",
-    "status",
     "address",
     "phoneNo",
     "actions"
   ];
-  orderStatusMap: any = [];
   totalProfit: number = 0;
   displayedColumns = this.columns.filter(col => !['actions'].includes(col));
 
@@ -41,13 +38,6 @@ export class OrdersTrackingSectionComponent implements OnInit {
     this.ordersReportService.getOrdersReport().subscribe(res => {
       this.totalProfit = res.totalProfit;
       this.orders = res.orders.map((item, index) => ({ ...item, id: index + 1 }));
-      this.orderStatusMap = Object.entries(res.orderStatusMap)
-        .map(item => ({
-          title: item[0],
-          count: item[1],
-          bg: ORDER_STATUS_COLOR[item[0]].bg,
-          text: ORDER_STATUS_COLOR[item[0]].text,
-        }))
       this.loading = false;
     })
   }
