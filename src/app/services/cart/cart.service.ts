@@ -20,11 +20,13 @@ export class CartService {
     return this.httpClient.get<Cart>([END_POINTS.CART, id].join('/'));
   }
 
-  addProductToCart(bookId: string): void {
-    const bookIndex: number = this.cart.items.findIndex((element: { id: string, qty: number }) => element.id === bookId);
-    bookIndex !== -1 ? this.cart.items[bookIndex].qty++ : this.cart.items.push({ id: bookId, qty: 1 });
-    this.countCartProductsLength();
-    this.setCartToLocalStorage();
+  addProductToCart(bookId: string): Observable<any> {
+    const { id } = JSON.parse(localStorage.getItem('userData'));
+    return this.httpClient.post(END_POINTS.STORE + '/' + id + '/' + bookId + '/' + 1, {});
+    // const bookIndex: number = this.cart.items.findIndex((element: { id: string, qty: number }) => element.id === bookId);
+    // bookIndex !== -1 ? this.cart.items[bookIndex].qty++ : this.cart.items.push({ id: bookId, qty: 1 });
+    // this.countCartProductsLength();
+    // this.setCartToLocalStorage();
   }
 
   modifyProductInCart(bookId: string, qty: number): void {

@@ -6,6 +6,7 @@ import { AuthService } from '@/services/auth/auth.service';
 import { InfoDialogComponent } from '../info-dialog/info-dialog.component';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book-overview',
@@ -20,7 +21,8 @@ export class BookOverviewComponent implements OnInit {
     private cartService: CartService,
     private authService: AuthService,
     private dialog: MatDialog,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {
     this.authService.checkUserData().subscribe(res => {
       this.loggedIn = res === true;
@@ -35,7 +37,11 @@ export class BookOverviewComponent implements OnInit {
 
   addToCart(id: string): void {
     if (this.loggedIn) {
-      this.cartService.addProductToCart(id);
+      this.cartService.addProductToCart(id).subscribe({
+        next: () => {
+          this.toastr.success('Item added successfully')
+        }
+      });
     } else {
       this.dialog.open(InfoDialogComponent, {
         width: '400px',

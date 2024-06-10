@@ -9,6 +9,7 @@ import { DetailMapping } from '@/models/detailMapping';
 import { Detail } from '@/models/detail';
 import { Title } from '@angular/platform-browser';
 import { CartService } from '@/services/cart/cart.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-book-details',
@@ -33,7 +34,8 @@ export class BookDetailsComponent implements OnInit {
     private reviewsService: ReviewsService,
     private router: Router,
     private titleService: Title,
-    private cartService: CartService
+    private cartService: CartService,
+    private toastr: ToastrService
   ) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
   }
@@ -88,7 +90,11 @@ export class BookDetailsComponent implements OnInit {
   }
 
   addToCart(id: string, redirect?: boolean): void {
-    this.cartService.addProductToCart(id);
+    this.cartService.addProductToCart(id).subscribe({
+      next: () => {
+        this.toastr.success('Item added successfully')
+      }
+    });
     if (redirect) {
       this.router.navigate(['/cart']);
     }
