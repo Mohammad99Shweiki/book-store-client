@@ -86,10 +86,29 @@
   <!-- <p class="userData__disc" *ngIf="userData.reviews.length === 0">
     No reviews found (yet).
   </p> -->
-  <div class="d-flex align-items-center gap-2">
+  <div class="d-flex align-items-center gap-2 mb-4">
     <button mat-raised-button color="primary" (click)="saveProfile()" class="userData__logout">
       <mat-icon>save</mat-icon>
       Save Profile
     </button>
   </div>
+  <h2 class="userData__heading">Favorite Genres</h2>
+  <table mat-table [dataSource]="orders" class="mat-elevation-z8 w-100 mt-4">
+    <ng-container matColumnDef="index">
+      <th mat-header-cell *matHeaderCellDef>Index</th>
+      <td mat-cell *matCellDef="let element"> {{ element | json }} </td>
+    </ng-container>
+    <ng-container *ngFor="let col of displayedColumns" [matColumnDef]="col">
+      <th mat-header-cell *matHeaderCellDef>{{col}}</th>
+      <td mat-cell *matCellDef="let element"> {{element[col]}} </td>
+    </ng-container>
+    <ng-container style="border-left: 1px solid black;" matColumnDef="actions" stickyEnd="true">
+      <th mat-header-cell *matHeaderCellDef>Action</th>
+      <td mat-cell *matCellDef="let element">
+        <button matTooltip="show details" mat-button (click)="viewOrderDetails(element)"><mat-icon>visibility</mat-icon></button>
+      </td>
+    </ng-container>
+    <tr mat-header-row *matHeaderRowDef="columns"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
 </div>

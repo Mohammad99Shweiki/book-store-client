@@ -10,6 +10,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatChipInputEvent } from '@angular/material/chips';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { ToastrService } from 'ngx-toastr';
+import { MatDialog } from '@angular/material/dialog';
+import { OrderDetailsDialogComponent } from '../admin-dashboard/components/order-details-dialog/order-details-dialog.component';
 
 @Component({
   selector: 'app-user',
@@ -26,12 +28,24 @@ export class UserComponent implements OnInit {
   addOnBlur = true;
   readonly separatorKeysCodes = [ENTER, COMMA] as const;
   userGenres: string[] = [];
+  orders: any[] = [];
+
+  columns: string[] = [
+    "date",
+    "totalPrice",
+    "status",
+    "address",
+    "phoneNo",
+    "actions"
+  ];
+  displayedColumns = this.columns.filter(col => !['actions'].includes(col));
 
   constructor(
     private userService: UserService,
     private titleService: Title,
     private fb: FormBuilder,
-    private toaster: ToastrService
+    private toaster: ToastrService,
+    private dialog: MatDialog
   ) {
     this.userForm = this.fb.group({
       userId: [{ value: '', disabled: true }],
@@ -50,10 +64,18 @@ export class UserComponent implements OnInit {
     this.titleService.setTitle('User page - BookStore');
   }
 
+  viewOrderDetails(element: any) {
+    this.dialog.open(OrderDetailsDialogComponent, {
+      width: '800px',
+      data: { order: element, readOnly: true }
+    })
+  }
   getUserData(): void {
     this.userService.getUserData().subscribe((userData: UserData) => {
       this.userData = userData;
       this.userGenres = userData.favoriteGenres;
+      //@ts-ignore
+      this.orders = userData.orders.orders
       this.userForm.patchValue({
         ...this.userData
       });

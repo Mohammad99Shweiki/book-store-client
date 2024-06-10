@@ -24,7 +24,7 @@ export class CartComponent implements OnInit {
   booksLoaded: boolean = true;
   cartValue: number = 0;
   onGoingRequest: boolean = false;
-
+  wallet: number = 0;
   constructor(
     private cartService: CartService,
     private userService: UserService,
@@ -39,20 +39,25 @@ export class CartComponent implements OnInit {
 
   ngOnInit(): void {
     this.title.setTitle('Cart - BookStore');
+    this.fetchCart();
+    // this.checkIfLoggedIn();
+    // this.getBooksInfo();
+  }
+
+  fetchCart() {
     this.cartService.getUserCart().subscribe(res => {
       console.log(res);
       this.cartItems = Object.entries(res.items).map(item => {
         //@ts-ignore
         return { isbn: item[0], ...item[1] };
       })
-      console.log(this.cartItems)
     });
-    // this.checkIfLoggedIn();
-    // this.getBooksInfo();
   }
 
   checkIfLoggedIn(): void {
     this.userService.getUserData().subscribe((val: UserData) => {
+      //@ts-ignore
+      this.wallet = val.wallet;
       if (val.userId) {
         this.loggedIn = true;
       }
@@ -105,6 +110,7 @@ export class CartComponent implements OnInit {
       this.orderService.placeOrder(address, phoneNo).subscribe({
         next: () => {
           this.toastr.success('Your order was correctly placed, thank you');
+          this.fetchCart();
         },
         error: () => {
           this.toastr.error('Something went wrong');

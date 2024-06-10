@@ -1,6 +1,6 @@
 import { ORDER_STATUS } from '@/app.constants';
 import { ReportOrder } from '@/models/order';
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, Inject, Input, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
@@ -11,13 +11,13 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class OrderDetailsDialogComponent implements OnInit {
   form: FormGroup;
-  cartItems: {isbn: string; book: ReportOrder['cart']['items']['']}[];
+  cartItems: { isbn: string; book: ReportOrder['cart']['items'][''] }[];
   authors: string;
   orderStatuses = ORDER_STATUS;
-  
+
   constructor(
     private fb: FormBuilder,
-    @Inject(MAT_DIALOG_DATA) public data: { order: ReportOrder }
+    @Inject(MAT_DIALOG_DATA) public data: { order: ReportOrder, readOnly: boolean }
   ) {
     this.form = this.fb.group({
       date: [{ value: '', disabled: true }],
@@ -26,6 +26,9 @@ export class OrderDetailsDialogComponent implements OnInit {
       phoneNo: [{ value: '', disabled: true }],
       address: [{ value: '', disabled: true }],
     })
+    if (this.data?.readOnly) {
+      this.form.disable();
+    }
   }
 
   ngOnInit(): void {
