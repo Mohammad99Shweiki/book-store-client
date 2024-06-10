@@ -5,6 +5,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { OrderDetailsDialogComponent } from '../order-details-dialog/order-details-dialog.component';
 import { ReportOrder } from '@/models/order';
+import { Book } from '@/models/book';
 
 @Component({
   selector: 'app-orders-tracking-section',

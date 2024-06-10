@@ -1,3 +1,4 @@
+import { ORDER_STATUS } from '@/app.constants';
 import { ReportOrder } from '@/models/order';
 import { Component, Inject, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
@@ -12,6 +13,8 @@ export class OrderDetailsDialogComponent implements OnInit {
   form: FormGroup;
   cartItems: {isbn: string; book: ReportOrder['cart']['items']['']}[];
   authors: string;
+  orderStatuses = ORDER_STATUS;
+  
   constructor(
     private fb: FormBuilder,
     @Inject(MAT_DIALOG_DATA) public data: { order: ReportOrder }
@@ -19,7 +22,7 @@ export class OrderDetailsDialogComponent implements OnInit {
     this.form = this.fb.group({
       date: [{ value: '', disabled: true }],
       totalPrice: [{ value: '', disabled: true }],
-      status: [{ value: '', disabled: true }],
+      status: [{ value: '', disabled: false }],
       phoneNo: [{ value: '', disabled: true }],
       address: [{ value: '', disabled: true }],
     })

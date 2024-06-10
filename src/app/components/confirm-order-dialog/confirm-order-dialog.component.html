@@ -1,0 +1,19 @@
+<h3 mat-dialog-title>Order Confirmation</h3>
+<div class="mat-dialog-content">
+  <form [formGroup]="form">
+    <div class="row">
+      <mat-form-field appearance="outline" class="col-6">
+        <mat-label>Address</mat-label>
+        <input formControlName="address" type="text" matInput>
+      </mat-form-field>
+      <mat-form-field appearance="outline" class="col-6">
+        <mat-label>PhoneNo</mat-label>
+        <input formControlName="phoneNo" type="text" matInput>
+      </mat-form-field>
+    </div>
+  </form>
+</div>
+<div class="mat-dialog-actions justify-content-end">
+  <button mat-button mat-dialog-close>close</button>
+  <button mat-flat-button color="primary" (click)="save()">Save</button>
+</div>

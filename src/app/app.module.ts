@@ -55,6 +55,7 @@ import { InfoDialogComponent } from './components/info-dialog/info-dialog.compon
 import { OrdersTrackingSectionComponent } from './components/admin-dashboard/components/orders-tracking-section/orders-tracking-section.component';
 import { OrderDetailsDialogComponent } from './components/admin-dashboard/components/order-details-dialog/order-details-dialog.component';
 import { StatusCardComponent } from './components/admin-dashboard/components/status-card/status-card.component';
+import { ConfirmOrderDialogComponent } from './components/confirm-order-dialog/confirm-order-dialog.component';
 
 @NgModule({
   declarations: [
@@ -95,7 +96,8 @@ import { StatusCardComponent } from './components/admin-dashboard/components/sta
     InfoDialogComponent,
     OrdersTrackingSectionComponent,
     OrderDetailsDialogComponent,
-    StatusCardComponent
+    StatusCardComponent,
+    ConfirmOrderDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,4 +1,4 @@
 export interface Cart {
-  items: any[],
+  items: any,
   totalPrice: number;
 }

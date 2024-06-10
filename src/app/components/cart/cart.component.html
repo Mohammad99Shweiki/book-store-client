@@ -3,8 +3,8 @@
   <h1 class="cart__heading">
     Your cart
   </h1>
-  <p class="cart__disc">Your cart is empty</p>
-  <app-book-cart *ngFor="let product of books" [book]="getBookById(product.isbn)" [qty]="product.available"
+  <p class="cart__disc" *ngIf="!cartItems.length">Your cart is empty</p>
+  <app-book-cart [book]="item" *ngFor="let item of cartItems" [qty]="item.quantity"
     (productEdited)="editProductInCart($event)"></app-book-cart>
   <p class="cart__value" *ngIf="cartValue !== 0">
     <span class="cart__valueTitle">Price: </span>

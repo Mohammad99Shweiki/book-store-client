@@ -41,6 +41,7 @@ export class UserComponent implements OnInit {
       email: ['', Validators.email],
       password: [''],
       genres: [''],
+      wallet: ['']
     });
   }
 
@@ -67,6 +68,8 @@ export class UserComponent implements OnInit {
     const booksIds: Set<string> = new Set();
     this.userData?.orders?.forEach((order: Order) => {
       order.items.forEach((product) => {
+
+        //@ts-ignore
         booksIds.add(product.bookId);
       });
     });

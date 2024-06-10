@@ -11,14 +11,15 @@ export const END_POINTS = {
   BOOKS: "/books",
   BOOKS_SIMILAR: "/books/similar",
   BOOKS_SALES: "/books/onSale",
-  BOOKS_SEARCH: "/books/search",
+  BOOKS_SEARCH: "/books/like",
   USERS: {
     RECOMMEND: "/users/recommend",
     index: "/users",
   },
   STORE: "/store",
   CART: "/store/cart",
-  REPORT: "/store/report"
+  REPORT: "/store/report",
+  PURCHASE_CART: "/store/purchaseCart"
 }
 
 export const ROLES = {

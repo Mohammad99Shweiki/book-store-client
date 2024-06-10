@@ -8,19 +8,10 @@
   <div class="bookCart">
     <div class="bookCart__infoContainer">
       <a class="bookCart__anchor" routerLink="/book/{{book.isbn}}">
-        <h4 class="bookCart__title">{{book.title}}</h4>
+        <h4 class="bookCart__title">{{book.bookTitle}}</h4>
       </a>
       <p class="bookCart__info">
         ISBN: {{book.isbn}}
-      </p>
-      <p class="bookCart__info">
-        Publisher: {{book.publisher}}
-      </p>
-      <p class="bookCart__info">
-        Publication: {{book.publicationDate | date: 'dd/MM/YYYY'}}
-      </p>
-      <p class="bookCart__info">
-        Number of pages: {{book.pages}}
       </p>
       <p class="bookCart__price">
         <span [class.bookCart__price--discounted]="book.onSale">{{book.price | currency:'&nbsp;'}}&nbsp;$</span>
@@ -29,12 +20,13 @@
       <p class="bookCart__qty">
         Qty:
         <button (click)="changeQty(-1)" mat-icon-button color="primary"><mat-icon>remove_circle</mat-icon></button>
-        {{qty}}
+        {{book.quantity}}
         <button (click)="changeQty(1)" mat-icon-button color="primary"><mat-icon>add_circle</mat-icon></button>
       </p>
+      <p>Total Price: {{book.totalPrice}}</p>
     </div>
     <a class="bookCart__anchor" routerLink="/book/{{book.isbn}}">
-      <img class="bookCart__cover" src="{{book.imageLink}}" [alt]="book.title">
+      <img class="bookCart__cover" src="{{book.bookImage}}" [alt]="book.title">
     </a>
   </div>
 </mat-card>

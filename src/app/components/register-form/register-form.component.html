@@ -45,15 +45,6 @@
       *ngIf="registerForm.errors?.passwordMatches && registerForm.controls.password.dirty && registerForm.controls.confirmPassword.dirty">
       Passwords are different
     </mat-error>
-    <mat-form-field appearance="outline" class="col-12">
-      <mat-label>Role</mat-label>
-      <mat-select formControlName="role">
-        <mat-option value="CUSTOMER">Customer</mat-option>
-        <mat-option value="AUTHOR">Author</mat-option>
-        <mat-option value="PUBLISHER">Publisher</mat-option>
-      </mat-select>
-      <mat-error>This field is required</mat-error>
-    </mat-form-field>
     <button class="w-100 py-1 mb-4" mat-raised-button color="primary" [disabled]="!registerForm.valid"
       type="submit">Register</button>
       <div>

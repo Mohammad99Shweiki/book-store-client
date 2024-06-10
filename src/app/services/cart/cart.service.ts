@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import { Cart } from '@/models/cart';
 import { HttpClient } from '@angular/common/http';
 import { END_POINTS } from '@/app.constants';
@@ -15,9 +15,9 @@ export class CartService {
     this.countCartProductsLength();
   }
 
-  getUserCart() {
+  getUserCart(): Observable<Cart> {
     const { id } = JSON.parse(localStorage.getItem('userData'));
-    return this.httpClient.get([END_POINTS.CART, id].join('/'));
+    return this.httpClient.get<Cart>([END_POINTS.CART, id].join('/'));
   }
 
   addProductToCart(bookId: string): void {

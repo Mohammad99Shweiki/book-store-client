@@ -83,11 +83,15 @@ export class BooksSectionComponent implements OnInit, AfterViewInit {
   }
 
   searchBooks(search: string) {
-    this.loading = true;
-    this.booksService.searchBooks(search).subscribe(res => {
-      this.books = res;
-      this.loading = false;
-    })
+    if (search == '') {
+      this.fetchBooks();
+    } else {
+      this.loading = true;
+      this.booksService.searchBooks(search).subscribe(res => {
+        this.books = res.content;
+        this.loading = false;
+      })
+    }
   }
 
   fetchBooks() {
@@ -127,7 +131,7 @@ export class BooksSectionComponent implements OnInit, AfterViewInit {
   viewBookDetails(book: Book) {
     this.router.navigate([`book/${book.isbn}`])
   }
-  
+
   openBookDialog(book: Book | null, isEdit: boolean = true) {
     const dialogRef = this.dialog.open(BookDetailsDialogComponent, {
       width: '800px',

@@ -22,7 +22,6 @@ export class RegisterFormComponent implements OnInit {
     lastName: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [Validators.required, Validators.minLength(6)]),
-    role: new FormControl('', Validators.required),
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
@@ -38,6 +37,7 @@ export class RegisterFormComponent implements OnInit {
 
   registerUser(): void {
     const data = this.form.value;
+    data.role = 'CUSTOMER';
     delete data['confirmPassword'];
 
     this.authService.registerUser(data).subscribe({
